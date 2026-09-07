@@ -47,7 +47,7 @@ function ChangelogPreviewCard({
       />
       <div className="relative z-10 flex h-full w-full items-center justify-center overflow-hidden bg-neutral-50 dark:bg-neutral-950/80">
         {component.preview ? (
-          component.preview.endsWith(".mp4") ? (
+          component.preview.includes(".mp4") ? (
             <video
               ref={videoRef}
               src={component.preview}

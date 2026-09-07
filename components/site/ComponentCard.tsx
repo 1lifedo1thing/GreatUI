@@ -79,7 +79,7 @@ export default function ComponentCard({
             transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
             className="relative z-10 flex h-full w-full items-center justify-center overflow-hidden bg-neutral-50 transition-colors duration-300 group-hover:border-transparent dark:bg-neutral-950/80"
           >
-            {component.preview.endsWith(".mp4") ? (
+            {component.preview.includes(".mp4") ? (
               <video
                 ref={videoRef}
                 src={component.preview}

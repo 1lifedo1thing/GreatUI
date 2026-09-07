@@ -36,7 +36,11 @@ export const metadata: Metadata = {
   },
 };
 
-const FEATURED_SLUGS = ["twitter-card", "pixel-to-ascii-image", "team-section"];
+const FEATURED_SLUGS = [
+  "twitter-card",
+  "pixel-to-ascii-image",
+  "animated-path",
+];
 
 export default function ComponentsPage() {
   const featuredComponents = components.filter((c) =>

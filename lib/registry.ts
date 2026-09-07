@@ -23,6 +23,87 @@ export type Component = {
 
 export const components: Component[] = [
   {
+    slug: "animated-path",
+    category: "Visuals",
+    inspiration: "",
+    preview: "https://ik.imagekit.io/niqgaoeg3/GUI-Animated-Path.mp4?v=2",
+    name: "Animated Path",
+    description:
+      "An animated logo component that draws the paths smoothly using Framer Motion.",
+    interactionType:
+      "On initial render, the logo paths are drawn and filled sequentially.",
+    dependencies: ["motion"],
+    previewFile: "AnimatedPathPreview",
+    props: [
+      {
+        name: "className",
+        type: ["string"],
+        description: "Optional CSS classes to style the logo wrapper.",
+      },
+      {
+        name: "rawSvg",
+        type: ["string"],
+        description:
+          "Raw SVG string to parse and animate. Overrides paths if provided.",
+      },
+      {
+        name: "paths",
+        type: ["string[]"],
+        description: "Array of SVG path strings to draw and fill sequentially.",
+      },
+      {
+        name: "viewBox",
+        type: ["string"],
+        description: "The SVG viewBox attribute.",
+        default: "0 0 363 513",
+      },
+      {
+        name: "strokeColor",
+        type: ["string"],
+        description: "Color of the SVG path strokes.",
+        default: "#007F7E",
+      },
+      {
+        name: "strokeWidth",
+        type: ["string", "number"],
+        description: "Width of the SVG path strokes.",
+        default: "3",
+      },
+      {
+        name: "fillColor",
+        type: ["string"],
+        description: "Color to fill the SVG paths with after drawing.",
+        default: "#007F7E",
+      },
+      {
+        name: "pathLengthDuration",
+        type: ["number"],
+        description: "Duration for the path drawing animation in seconds.",
+        default: "1.5",
+      },
+      {
+        name: "fillDuration",
+        type: ["number"],
+        description: "Duration for the fill animation in seconds.",
+        default: "0.8",
+      },
+      {
+        name: "pathDelay",
+        type: ["number"],
+        description:
+          "Delay increment between starting each path animation in seconds.",
+        default: "0.1",
+      },
+      {
+        name: "fillDelay",
+        type: ["number"],
+        description:
+          "Base delay before starting the fill animation in seconds.",
+        default: "1.2",
+      },
+    ],
+  },
+  {
     slug: "linkedin-card",
     category: "Social Cards",
     inspiration: "",

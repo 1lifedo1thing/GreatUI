@@ -5,6 +5,12 @@ export type ChangelogItem = {
 
 export const changelogData: ChangelogItem[] = [
   {
+    date: "September 8, 2026",
+    features: [
+      "Added [Animated Path](/components/animated-path) component featuring a sequential SVG path drawing and fill animation.",
+    ],
+  },
+  {
     date: "September 6, 2026",
     features: [
       "Added [Blur Fade Theme Transition](/components/blur-fade-theme-transition) component featuring a smooth cross-fade and blur transition between light and dark modes.",
