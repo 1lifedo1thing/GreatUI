@@ -5,6 +5,12 @@ export type ChangelogItem = {
 
 export const changelogData: ChangelogItem[] = [
   {
+    date: "September 9, 2026",
+    features: [
+      "Added [Scroll Flying Cards](/components/scroll-flying-cards) component featuring scroll-driven card entry and exit animations with rotation, scale, blur, and sticky background text.",
+    ],
+  },
+  {
     date: "September 8, 2026",
     features: [
       "Added [Animated Path](/components/animated-path) component featuring a sequential SVG path drawing and fill animation.",

@@ -4,7 +4,7 @@ import Footer from "@/components/site/Footer";
 import BackgroundGrid from "@/components/site/BackgroundGrid";
 import Container from "@/components/site/Container";
 import ComponentCard from "@/components/site/ComponentCard";
-import { components } from "@/lib/registry";
+import { components, type Component } from "@/lib/registry";
 import { CATEGORY_ORDER, componentsByCategory } from "@/lib/categories";
 import type { Metadata } from "next";
 
@@ -36,16 +36,12 @@ export const metadata: Metadata = {
   },
 };
 
-const FEATURED_SLUGS = [
-  "twitter-card",
-  "pixel-to-ascii-image",
-  "animated-path",
-];
+const FEATURED_SLUGS = ["scroll-flying-cards", "animated-path", "twitter-card"];
 
 export default function ComponentsPage() {
-  const featuredComponents = components.filter((c) =>
-    FEATURED_SLUGS.includes(c.slug),
-  );
+  const featuredComponents = FEATURED_SLUGS.map((slug) =>
+    components.find((c) => c.slug === slug),
+  ).filter((c): c is Component => c !== undefined);
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white text-neutral-900 transition-colors dark:bg-[#0a0a0a] dark:text-white">

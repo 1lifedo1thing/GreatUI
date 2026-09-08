@@ -3743,4 +3743,92 @@ export default function PageTransitionWrapper() {
   );
 }`,
   },
+  {
+    slug: "scroll-flying-cards",
+    name: "Scroll Flying Cards",
+    category: "Visuals",
+    inspiration: "https://www.hexcode.design/",
+    preview: "https://ik.imagekit.io/niqgaoeg3/GUI-Scroll-flying-Cards.mp4?v=2",
+    description:
+      "A scroll-driven flying cards component featuring dynamic entry/exit transforms, rotation, scale depth, blur filters, and sticky background text.",
+    interactionType:
+      "Cards float into and out of view on scroll with dynamic translation, tilt, scaling, and blur filters.",
+    dependencies: ["motion"],
+    previewFile: "ScrollFlyingCardsPreview",
+    props: [
+      {
+        name: "cards",
+        type: ["FlyingCard[]"],
+        description:
+          "Array of card objects containing id, title, description, and optional icon, imageUrl, or className.",
+      },
+      {
+        name: "backgroundText",
+        type: ["string"],
+        description:
+          "Background sticky text displayed behind the flying cards.",
+        default: '"GREAT UI"',
+      },
+      {
+        name: "className",
+        type: ["string"],
+        description: "Class name for the main container.",
+      },
+      {
+        name: "cardClassName",
+        type: ["string"],
+        description: "Class name for each flying card element.",
+      },
+      {
+        name: "titleClassName",
+        type: ["string"],
+        description: "Class name for card titles.",
+      },
+      {
+        name: "descriptionClassName",
+        type: ["string"],
+        description: "Class name for card descriptions.",
+      },
+      {
+        name: "backgroundTextClassName",
+        type: ["string"],
+        description: "Class name for the background sticky text.",
+      },
+      {
+        name: "scrollContainerRef",
+        type: ["React.RefObject<HTMLElement | null>"],
+        description:
+          "Optional custom scroll container reference for scroll progress tracking.",
+      },
+      {
+        name: "animationConfig",
+        type: ["object"],
+        description:
+          "Custom animation configurations including direction ('up' | 'down' | 'left' | 'right'), offset, rotation, scale, and blur.",
+      },
+    ],
+    usageCode: `import { ScrollFlyingCards } from "@/components/ui/ScrollFlyingCards";
+
+const cards = [
+  {
+    id: 1,
+    title: "Discovery",
+    description: "User research, competitive analysis, and technical audits.",
+  },
+  {
+    id: 2,
+    title: "Strategy",
+    description: "Defining product roadmaps and mapping out user journeys.",
+  },
+];
+
+export default function Example() {
+  return (
+    <ScrollFlyingCards
+      backgroundText="GREAT UI"
+      cards={cards}
+    />
+  );
+}`,
+  },
 ];
