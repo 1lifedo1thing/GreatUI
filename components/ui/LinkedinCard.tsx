@@ -193,11 +193,11 @@ export const LinkedinCard = ({
             },
           }}
           className={cn(
-            "absolute bottom-full z-50 mb-4 w-72 rounded-xl border border-neutral-200 bg-white shadow-xl transition-colors after:absolute after:top-full after:left-0 after:h-4 after:w-full dark:border-neutral-800 dark:bg-neutral-950",
+            "absolute bottom-full z-50 mb-4 w-80 rounded-2xl border border-dashed border-neutral-300 bg-white/95 p-4 shadow-xl backdrop-blur-md transition-colors after:absolute after:top-full after:left-0 after:h-4 after:w-full dark:border-dashed dark:border-neutral-800 dark:bg-neutral-950/80",
             popoverClassName,
           )}
         >
-          <div className="relative h-20 overflow-hidden rounded-t-xl bg-neutral-200 dark:bg-neutral-800">
+          <div className="relative -mx-4 -mt-4 h-20 overflow-hidden rounded-t-2xl bg-neutral-200 dark:bg-neutral-800">
             {bannerUrl && (
               <img
                 src={bannerUrl}
@@ -206,7 +206,7 @@ export const LinkedinCard = ({
               />
             )}
           </div>
-          <div className="px-4 pb-4">
+          <div className="pb-2">
             <div className="relative flex justify-between">
               <div className="-mt-10 h-20 w-20 rounded-full border-4 border-white bg-white dark:border-neutral-950 dark:bg-neutral-950">
                 <img

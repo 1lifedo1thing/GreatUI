@@ -6,6 +6,9 @@ function getComponentFileName(name: string): string {
   if (name.toLowerCase().includes("shader")) {
     return "PageTransitionShader.tsx";
   }
+  if (name === "LinkedIn Card") return "LinkedinCard.tsx";
+  if (name === "Twitter(X) Card") return "TwitterCard.tsx";
+
   let cleaned = name.replace(/\s+/g, "");
   if (cleaned.startsWith("ASCII")) {
     cleaned = "Ascii" + cleaned.substring(5);

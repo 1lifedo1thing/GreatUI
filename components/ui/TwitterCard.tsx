@@ -389,7 +389,7 @@ export const TwitterCard = ({
             },
           }}
           className={cn(
-            "absolute bottom-full z-50 mb-4 w-80 rounded-2xl bg-white/95 p-4 shadow-xl backdrop-blur-md transition-colors after:absolute after:top-full after:left-0 after:h-4 after:w-full dark:border-neutral-800 dark:bg-neutral-950/80",
+            "absolute bottom-full z-50 mb-4 w-80 rounded-2xl border border-dashed border-neutral-300 bg-white/95 p-4 shadow-xl backdrop-blur-md transition-colors after:absolute after:top-full after:left-0 after:h-4 after:w-full dark:border-dashed dark:border-neutral-800 dark:bg-neutral-950/80",
             popoverClassName,
           )}
         >
