@@ -313,6 +313,245 @@ export const components: Component[] = [
     ],
   },
   {
+    slug: "facebook-card",
+    category: "Social Cards",
+    inspiration: "",
+    preview: "https://ik.imagekit.io/niqgaoeg3/GUI-Facebook-Card.mp4",
+    name: "Facebook Card",
+    description:
+      "An interactive Facebook profile card component with magnetic 3D tilt effects on hover.",
+    interactionType:
+      "Hover triggers a magnetic 3D tilt effect on the card and the link with spring physics.",
+    dependencies: ["motion"],
+    previewFile: "FacebookCardPreview",
+    props: [
+      {
+        name: "username",
+        type: ["string"],
+        description: "The Facebook username or page handle.",
+      },
+      {
+        name: "name",
+        type: ["string"],
+        description: "The display name of the profile.",
+        default: "'Facebook User'",
+      },
+      {
+        name: "avatarUrl",
+        type: ["string"],
+        description: "Optional custom URL for the profile avatar.",
+      },
+      {
+        name: "bannerUrl",
+        type: ["string"],
+        description: "Optional custom URL for the cover banner image.",
+      },
+      {
+        name: "bio",
+        type: ["string"],
+        description: "Short bio or description of the user/page.",
+      },
+      {
+        name: "friends",
+        type: ["number", "string"],
+        description: "Number or formatted string of friends.",
+        default: "'1.2K'",
+      },
+      {
+        name: "mutualFriends",
+        type: ["number", "string"],
+        description: "Number or formatted string of mutual friends.",
+        default: "'12'",
+      },
+      {
+        name: "text",
+        type: ["string"],
+        description: "Label text shown before the link.",
+        default: "'Connect on'",
+      },
+      {
+        name: "linkText",
+        type: ["string"],
+        description: "Text for the hoverable link.",
+        default: "'Facebook'",
+      },
+      {
+        name: "href",
+        type: ["string"],
+        description: "Custom URL for the profile link.",
+      },
+      {
+        name: "enableLinkTilt",
+        type: ["boolean"],
+        description:
+          "Whether to enable mouse tracking 3D tilt effect on the link hover.",
+        default: "true",
+      },
+      {
+        name: "linkTiltMaxRotate",
+        type: ["number"],
+        description: "Maximum tilt angle in degrees for the link rotation.",
+        default: "5",
+      },
+      {
+        name: "enableCardTilt",
+        type: ["boolean"],
+        description:
+          "Whether to enable mouse tracking 3D tilt effect on the card hover.",
+        default: "true",
+      },
+      {
+        name: "cardTiltMaxRotate",
+        type: ["number"],
+        description: "Maximum tilt angle in degrees for the card rotation.",
+        default: "5",
+      },
+      {
+        name: "className",
+        type: ["string"],
+        description: "Additional CSS classes to style the outer container.",
+      },
+      {
+        name: "popoverClassName",
+        type: ["string"],
+        description:
+          "Additional CSS classes to style the popup card container.",
+      },
+      {
+        name: "linkClassName",
+        type: ["string"],
+        description:
+          "Additional CSS classes to style the anchor trigger element.",
+      },
+      {
+        name: "labelClassName",
+        type: ["string"],
+        description:
+          "Additional CSS classes to style the label description text.",
+      },
+    ],
+  },
+  {
+    slug: "instagram-card",
+    category: "Social Cards",
+    inspiration: "",
+    preview: "https://ik.imagekit.io/niqgaoeg3/GUI-Instagram-Card.mp4",
+    name: "Instagram Card",
+    description:
+      "An interactive Instagram profile card component featuring gradient avatar border and 3D tilt effects on hover.",
+    interactionType:
+      "Hover triggers a magnetic 3D tilt effect on the card and the link with spring physics.",
+    dependencies: ["motion"],
+    previewFile: "InstagramCardPreview",
+    props: [
+      {
+        name: "username",
+        type: ["string"],
+        description: "The Instagram handle of the profile.",
+      },
+      {
+        name: "name",
+        type: ["string"],
+        description: "The display name of the profile.",
+        default: "'Instagram User'",
+      },
+      {
+        name: "avatarUrl",
+        type: ["string"],
+        description: "Optional custom URL for the profile avatar.",
+      },
+      {
+        name: "bio",
+        type: ["string"],
+        description: "Short bio or description of the user/account.",
+      },
+      {
+        name: "posts",
+        type: ["number", "string"],
+        description: "Number or formatted string of posts.",
+        default: "'120'",
+      },
+      {
+        name: "followers",
+        type: ["number", "string"],
+        description: "Number or formatted string of followers.",
+        default: "'10K'",
+      },
+      {
+        name: "following",
+        type: ["number", "string"],
+        description: "Number or formatted string of following accounts.",
+        default: "'450'",
+      },
+      {
+        name: "text",
+        type: ["string"],
+        description: "Label text shown before the link.",
+        default: "'Follow me on'",
+      },
+      {
+        name: "linkText",
+        type: ["string"],
+        description: "Text for the hoverable link.",
+        default: "'Instagram'",
+      },
+      {
+        name: "href",
+        type: ["string"],
+        description: "Custom URL for the profile link.",
+      },
+      {
+        name: "enableLinkTilt",
+        type: ["boolean"],
+        description:
+          "Whether to enable mouse tracking 3D tilt effect on the link hover.",
+        default: "true",
+      },
+      {
+        name: "linkTiltMaxRotate",
+        type: ["number"],
+        description: "Maximum tilt angle in degrees for the link rotation.",
+        default: "5",
+      },
+      {
+        name: "enableCardTilt",
+        type: ["boolean"],
+        description:
+          "Whether to enable mouse tracking 3D tilt effect on the card hover.",
+        default: "true",
+      },
+      {
+        name: "cardTiltMaxRotate",
+        type: ["number"],
+        description: "Maximum tilt angle in degrees for the card rotation.",
+        default: "5",
+      },
+      {
+        name: "className",
+        type: ["string"],
+        description: "Additional CSS classes to style the outer container.",
+      },
+      {
+        name: "popoverClassName",
+        type: ["string"],
+        description:
+          "Additional CSS classes to style the popup card container.",
+      },
+      {
+        name: "linkClassName",
+        type: ["string"],
+        description:
+          "Additional CSS classes to style the anchor trigger element.",
+      },
+      {
+        name: "labelClassName",
+        type: ["string"],
+        description:
+          "Additional CSS classes to style the label description text.",
+      },
+    ],
+  },
+  {
     slug: "radial-gooey-menu",
     category: "Visuals",
     inspiration: "",

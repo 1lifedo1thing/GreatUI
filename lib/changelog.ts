@@ -7,6 +7,8 @@ export const changelogData: ChangelogItem[] = [
   {
     date: "September 9, 2026",
     features: [
+      "Added [Facebook Card](/components/facebook-card) component featuring an interactive profile card with 3D magnetic hover tilt effects.",
+      "Added [Instagram Card](/components/instagram-card) component featuring an interactive profile card with gradient avatar border and 3D magnetic hover tilt effects.",
       "Added [Scroll Flying Cards](/components/scroll-flying-cards) component featuring scroll-driven card entry and exit animations with rotation, scale, blur, and sticky background text.",
     ],
   },
