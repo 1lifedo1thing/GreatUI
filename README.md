@@ -13,19 +13,14 @@
 </p>
 
 <p align="center">
-  <a href="https://great-ui.com">Documentation</a> ·
-  <a href="https://great-ui.com">Components</a> ·
-  <a href="https://github.com/Saurabh-2607/GreatUI/issues">Report Bug</a> ·
-  <a href="https://github.com/Saurabh-2607/GreatUI/issues">Request Feature</a>
+  <img src="https://img.shields.io/badge/Next.js-0a0a0a?logo=nextdotjs&logoColor=f6821f" alt="Next.js" />
+  <img src="https://img.shields.io/badge/React-0a0a0a?logo=react&logoColor=f6821f" alt="React" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-0a0a0a?logo=tailwindcss&logoColor=f6821f" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/TypeScript-0a0a0a?logo=typescript&logoColor=f6821f" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Motion-0a0a0a?logo=framer&logoColor=f6821f" alt="Motion" />
+  <img src="https://img.shields.io/badge/shadcn-registry-f6821f?labelColor=0a0a0a" alt="shadcn registry" />
+  <img src="https://img.shields.io/badge/License-MIT-f6821f?labelColor=0a0a0a" alt="License" />
 </p>
-
-<p align="center">
-  <a href="https://github.com/Saurabh-2607/GreatUI/blob/main/LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" />
-  </a>
-</p>
-
----
 
 ## Introduction
 
@@ -107,11 +102,6 @@ When creating new components:
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
 - **Components**: [React 19](https://react.dev/)
 - **Package Manager**: [npm](https://www.npmjs.com/)
-
-## Acknowledgments
-
-- Inspired by [Cloudflare](https://cloudflare.com/)
-- Built with [Tailwind CSS](https://tailwindcss.com/)
 
 ## License
 
