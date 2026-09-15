@@ -1,4 +1,5 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import React, { useState, useEffect } from "react";
 import BlurFadeThemeTransition, {
@@ -49,7 +50,6 @@ function PreviewInner() {
 
   return (
     <div className="flex h-full w-full flex-col justify-between">
-      {/* Mock Header */}
       <header className="flex w-full items-center justify-between px-6 py-4">
         <div className="flex items-center gap-2">
           <div className="h-6 w-6 rounded-full bg-rose-500" />
@@ -71,7 +71,6 @@ function PreviewInner() {
         </nav>
       </header>
 
-      {/* Main content */}
       <div className="relative flex flex-1 flex-col items-center justify-center p-4 sm:p-8">
         <div className="flex flex-col items-center justify-center text-center">
           <span className="mb-4 rounded-full bg-rose-100 px-3 py-1 text-xs font-medium text-rose-600 dark:bg-rose-900/30 dark:text-rose-400">
@@ -88,7 +87,6 @@ function PreviewInner() {
         </div>
       </div>
 
-      {/* Floating Action Button */}
       <div className="mt-8 flex items-center justify-center pb-8">
         <button
           onClick={() => triggerTransition()}
@@ -114,6 +112,8 @@ function PreviewInner() {
 import { useTheme } from "@/components/site/ThemeProvider";
 
 export default function BlurFadeThemeTransitionPreview() {
+  const { props } = useProps();
+
   const [mounted, setMounted] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
@@ -124,7 +124,11 @@ export default function BlurFadeThemeTransitionPreview() {
   if (!mounted) return null;
 
   return (
-    <BlurFadeThemeTransition theme={theme} onThemeChange={toggleTheme}>
+    <BlurFadeThemeTransition
+      theme={theme}
+      onThemeChange={toggleTheme}
+      {...props}
+    >
       <div className="relative mx-5 flex h-[500px] w-full max-w-3xl flex-col overflow-hidden rounded-2xl border border-neutral-100 bg-white dark:border-neutral-900 dark:bg-neutral-950">
         <PreviewInner />
       </div>

@@ -1,10 +1,13 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import React from "react";
 import SplitLineFlyIn from "../../ui/SplitLineFlyIn";
 import { useViewer } from "@/lib/viewer-context";
 
 export default function SplitLineFlyInPreview() {
+  const { props } = useProps();
+
   const { previewContainer } = useViewer();
 
   if (!previewContainer) {
@@ -29,6 +32,7 @@ export default function SplitLineFlyInPreview() {
         scrollContainerRef={
           scrollContainerRef as unknown as React.RefObject<HTMLElement>
         }
+        {...props}
       />
 
       <div className="flex h-screen w-full items-center justify-center text-center text-lg font-semibold text-neutral-400">

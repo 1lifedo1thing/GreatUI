@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { type Component } from "@/lib/registry";
 
 interface ViewerContextType {
@@ -12,6 +12,8 @@ interface ViewerContextType {
   setIsCodeOpen: (open: boolean) => void;
   isMarkdownOpen: boolean;
   setIsMarkdownOpen: (open: boolean) => void;
+  isCustomizerOpen: boolean;
+  setIsCustomizerOpen: (open: boolean) => void;
   activeComponent: Component | null;
   setActiveComponent: (comp: Component | null) => void;
   previewContainer: HTMLElement | null;
@@ -22,26 +24,24 @@ const ViewerContext = createContext<ViewerContextType | undefined>(undefined);
 
 export function ViewerProvider({ children }: { children: React.ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const [isPanelOpen, setIsPanelOpen] = useState(() => {
+    if (typeof window === "undefined") return false;
+    try {
+      const savedPanelOpen = localStorage.getItem("great-ui-panel-open");
+      return savedPanelOpen !== null ? savedPanelOpen === "true" : false;
+    } catch {
+      return false;
+    }
+  });
   const [isCodeOpen, setIsCodeOpen] = useState(false);
   const [isMarkdownOpen, setIsMarkdownOpen] = useState(false);
+  const [isCustomizerOpen, setIsCustomizerOpen] = useState(false);
   const [activeComponent, setActiveComponent] = useState<Component | null>(
     null,
   );
   const [previewContainer, setPreviewContainer] = useState<HTMLElement | null>(
     null,
   );
-
-  useEffect(() => {
-    try {
-      const savedPanelOpen = localStorage.getItem("great-ui-panel-open");
-      const isVal = savedPanelOpen !== null ? savedPanelOpen === "true" : true;
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setIsPanelOpen(isVal);
-    } catch (e) {
-      console.error("Failed to read from localStorage", e);
-    }
-  }, []);
 
   const handleSetPanelOpen = (open: boolean) => {
     setIsPanelOpen(open);
@@ -77,6 +77,8 @@ export function ViewerProvider({ children }: { children: React.ReactNode }) {
         setIsCodeOpen: handleSetCodeOpen,
         isMarkdownOpen,
         setIsMarkdownOpen: handleSetMarkdownOpen,
+        isCustomizerOpen,
+        setIsCustomizerOpen,
         activeComponent,
         setActiveComponent,
         previewContainer,

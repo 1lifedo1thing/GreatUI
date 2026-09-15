@@ -1,9 +1,12 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import React from "react";
 import { LinkedinCard } from "../../ui/LinkedinCard";
 
 export default function LinkedinCardPreview() {
+  const { props } = useProps();
+
   return (
     <div className="flex h-full w-full items-center justify-center p-12 select-none">
       <LinkedinCard
@@ -13,6 +16,7 @@ export default function LinkedinCardPreview() {
         connections="10K+"
         location="San Francisco, CA"
         enableCardTilt={false}
+        {...props}
       />
     </div>
   );

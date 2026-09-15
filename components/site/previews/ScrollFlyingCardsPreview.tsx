@@ -1,4 +1,5 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import React from "react";
 import { ScrollFlyingCards } from "@/components/ui/ScrollFlyingCards";
@@ -370,6 +371,8 @@ const cards = [
 ];
 
 export default function ScrollFlyingCardsPreview() {
+  const { props } = useProps();
+
   const { previewContainer } = useViewer();
 
   if (!previewContainer) {
@@ -395,6 +398,7 @@ export default function ScrollFlyingCardsPreview() {
         scrollContainerRef={
           scrollContainerRef as unknown as React.RefObject<HTMLElement>
         }
+        {...props}
       />
 
       <div className="flex h-screen w-full items-center justify-center text-center text-lg font-semibold text-neutral-800 dark:text-neutral-200">

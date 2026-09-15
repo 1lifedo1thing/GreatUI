@@ -1,4 +1,5 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import { useState, useEffect, useCallback } from "react";
 import { ColorWipePageTransition } from "@/components/ui/ColorWipePageTransition";
@@ -68,6 +69,8 @@ const ArrowRightIcon = ({ className }: { className?: string }) => (
 );
 
 export default function ColorWipePageTransitionPreview() {
+  const { props } = useProps();
+
   const [trigger, setTrigger] = useState(0);
   const [direction, setDirection] = useState<
     "top" | "bottom" | "left" | "right"
@@ -90,7 +93,6 @@ export default function ColorWipePageTransitionPreview() {
 
   return (
     <div className="relative mx-5 flex h-[500px] w-full max-w-3xl flex-col overflow-hidden rounded-2xl bg-white dark:bg-neutral-950">
-      {/* Mock Header */}
       <header className="flex w-full items-center justify-between px-6 py-4">
         <div className="flex items-center gap-2">
           <div className="h-6 w-6 rounded-full bg-rose-500" />
@@ -112,10 +114,8 @@ export default function ColorWipePageTransitionPreview() {
         </nav>
       </header>
 
-      {/* Page Content */}
       <div className="relative flex flex-1 flex-col items-center justify-center p-4 sm:p-8">
         <div className="grid w-full place-items-center">
-          {/* Home State */}
           <div
             className={`col-start-1 row-start-1 flex flex-col items-center justify-center text-center transition-opacity duration-300 ${
               activePage === "home"
@@ -131,7 +131,6 @@ export default function ColorWipePageTransitionPreview() {
             </h1>
           </div>
 
-          {/* Work State */}
           <div
             className={`col-start-1 row-start-1 flex flex-col items-center justify-center text-center transition-opacity duration-300 ${
               activePage === "work"
@@ -149,7 +148,6 @@ export default function ColorWipePageTransitionPreview() {
           </div>
         </div>
 
-        {/* Directional Toggle Buttons */}
         <div className="mt-12 flex items-center gap-3">
           <button
             onClick={() => handleTransition("top")}
@@ -190,6 +188,7 @@ export default function ColorWipePageTransitionPreview() {
           onViewSwap={swapView}
           showTrailingStroke={false}
           columns={8}
+          {...props}
         />
       )}
     </div>

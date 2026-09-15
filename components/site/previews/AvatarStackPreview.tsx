@@ -2,56 +2,33 @@
 
 import React from "react";
 import AvatarStack from "../../ui/AvatarStack";
+import { useProps } from "@/lib/PropsContext";
+
+const DEMO_USERS = [
+  {
+    name: "John Doe",
+    img: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=100&auto=format&fit=crop",
+  },
+  {
+    name: "Jane Smith",
+    img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&auto=format&fit=crop",
+  },
+  {
+    name: "Alice Johnson",
+    img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=100&auto=format&fit=crop",
+  },
+  {
+    name: "Bob Wilson",
+    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop",
+  },
+];
 
 export default function AvatarStackPreview() {
+  const { props } = useProps();
+
   return (
-    <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-12 p-8 select-none">
-      <div className="flex flex-col items-center gap-3">
-        <span className="text-neutral-450 font-mono text-xs tracking-wider uppercase dark:text-neutral-500">
-          Spring Tilt (Moves with Cursor)
-        </span>
-        <AvatarStack variant="spring-tilt" size="md" />
-      </div>
-
-      <div className="flex flex-col items-center gap-3">
-        <span className="text-neutral-450 font-mono text-xs tracking-wider uppercase dark:text-neutral-500">
-          Spring Box (Inner Tilting Box)
-        </span>
-        <AvatarStack variant="spring-box" size="md" />
-      </div>
-
-      <div className="flex flex-col items-center gap-3">
-        <span className="text-neutral-450 font-mono text-xs tracking-wider uppercase dark:text-neutral-500">
-          Slide Blur (Directional Reveal)
-        </span>
-        <AvatarStack variant="slide-blur" size="md" />
-      </div>
-
-      <div className="flex w-full flex-col items-center gap-6 border-t border-neutral-200 pt-8 dark:border-neutral-800">
-        <span className="text-neutral-450 font-mono text-xs tracking-wider uppercase dark:text-neutral-500">
-          Size Comparison (Spring Tilt)
-        </span>
-        <div className="flex flex-wrap items-center justify-center gap-12">
-          <div className="flex flex-col items-center gap-2">
-            <span className="font-mono text-[10px] text-neutral-400">
-              Small (SM)
-            </span>
-            <AvatarStack variant="spring-tilt" size="sm" />
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <span className="font-mono text-[10px] text-neutral-400">
-              Medium (MD)
-            </span>
-            <AvatarStack variant="spring-tilt" size="md" />
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <span className="font-mono text-[10px] text-neutral-400">
-              Large (LG)
-            </span>
-            <AvatarStack variant="spring-tilt" size="lg" />
-          </div>
-        </div>
-      </div>
+    <div className="mx-auto flex min-h-[400px] w-full items-center justify-center p-8 select-none">
+      <AvatarStack users={DEMO_USERS} {...props} />
     </div>
   );
 }

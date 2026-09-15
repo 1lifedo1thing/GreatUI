@@ -1,4 +1,5 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import { useState, useEffect, useCallback } from "react";
 import InterlockingPageTransition from "../../ui/InterlockingPageTransition";
@@ -40,6 +41,8 @@ const ArrowLeftRightIcon = ({ className }: { className?: string }) => (
 );
 
 export default function InterlockingPageTransitionPreview() {
+  const { props } = useProps();
+
   const [trigger, setTrigger] = useState(0);
   const [activePage, setActivePage] = useState<"home" | "about">("home");
   const [direction, setDirection] = useState<"vertical" | "horizontal">(
@@ -126,7 +129,6 @@ export default function InterlockingPageTransitionPreview() {
         </div>
 
         <div className="mt-8 flex flex-col items-center justify-center">
-          {/* Trigger Buttons */}
           <div className="flex items-center gap-3">
             <button
               type="button"
@@ -157,6 +159,7 @@ export default function InterlockingPageTransitionPreview() {
           exitOpposite={true}
           columns={4}
           panelClassName="bg-rose-500 dark:bg-rose-600"
+          {...props}
         />
       )}
     </div>

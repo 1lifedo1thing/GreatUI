@@ -89,8 +89,7 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
     id: "scrambled-install-command",
     title: "Scrambled Install Command",
-    videoLink:
-      "https://ik.imagekit.io/niqgaoeg3/cyberglitch.mp4",
+    videoLink: "https://ik.imagekit.io/niqgaoeg3/cyberglitch.mp4",
     icon: (
       <svg
         width="24"

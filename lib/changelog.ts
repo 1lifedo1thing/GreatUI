@@ -5,6 +5,12 @@ export type ChangelogItem = {
 
 export const changelogData: ChangelogItem[] = [
   {
+    date: "September 16, 2026",
+    features: [
+      "Added interactive schema-driven Prop Customizer pipeline allowing real-time prop tweaking and live JSX code generation across component previews.",
+    ],
+  },
+  {
     date: "September 9, 2026",
     features: [
       "Added [Facebook Card](/components/facebook-card) component featuring an interactive profile card with 3D magnetic hover tilt effects.",

@@ -158,10 +158,13 @@ export function AnimatedPath({
             stroke={p.stroke || strokeColor}
             strokeWidth={p.strokeWidth || strokeWidth}
             transform={p.transform}
-            initial={{ pathLength: 0, fill: "transparent", fillOpacity: 0 }}
+            initial={{
+              pathLength: 0,
+              fill: pFill === "none" ? "none" : pFill,
+              fillOpacity: 0,
+            }}
             animate={{
               pathLength: 1,
-              fill: pFill,
               fillOpacity: pFill === "none" ? 0 : 1,
             }}
             transition={{
@@ -169,11 +172,6 @@ export function AnimatedPath({
                 duration: pathLengthDuration,
                 ease: "easeInOut",
                 delay: i * pathDelay,
-              },
-              fill: {
-                duration: fillDuration,
-                ease: "easeOut",
-                delay: fillDelay + i * (pathDelay / 2),
               },
               fillOpacity: {
                 duration: fillDuration,

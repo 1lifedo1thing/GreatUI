@@ -5,6 +5,7 @@ import SwipeThemeProvider, {
   useSwipeTheme,
 } from "@/components/ui/SwipeThemeProvider";
 import { useTheme } from "@/components/site/ThemeProvider";
+import { useProps } from "@/lib/PropsContext";
 
 const ArrowUpLeftIcon = ({ className }: { className?: string }) => (
   <svg
@@ -134,17 +135,11 @@ const ArrowRightIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-interface DPadProps {
-  angle: number;
-  setAngle: (angle: number) => void;
-}
-
-function PreviewInner({ angle, setAngle }: DPadProps) {
+function PreviewInner() {
   const { triggerSwipe, isAnimating, theme } = useSwipeTheme();
 
   return (
     <div className="flex h-full w-full flex-col justify-between">
-      {/* Mock Header */}
       <header className="flex w-full items-center justify-between px-6 py-4">
         <div className="flex items-center gap-2">
           <div className="h-6 w-6 rounded-full bg-rose-500" />
@@ -166,7 +161,6 @@ function PreviewInner({ angle, setAngle }: DPadProps) {
         </nav>
       </header>
 
-      {/* Page Content */}
       <div className="relative flex flex-1 flex-col items-center justify-center p-4 sm:p-8">
         <div className="flex flex-col items-center justify-center text-center">
           <span className="mb-4 rounded-full bg-rose-100 px-3 py-1 text-xs font-medium text-rose-600 dark:bg-rose-900/30 dark:text-rose-400">
@@ -182,9 +176,7 @@ function PreviewInner({ angle, setAngle }: DPadProps) {
           </p>
         </div>
 
-        {/* 3x3 D-Pad Controller */}
         <div className="mt-8 flex flex-col items-center gap-2">
-          {/* Row 1 */}
           <div className="flex gap-2">
             <button
               disabled={isAnimating}
@@ -212,7 +204,6 @@ function PreviewInner({ angle, setAngle }: DPadProps) {
             </button>
           </div>
 
-          {/* Row 2 */}
           <div className="flex items-center gap-2">
             <button
               disabled={isAnimating}
@@ -222,7 +213,6 @@ function PreviewInner({ angle, setAngle }: DPadProps) {
             >
               <ArrowLeftIcon className="h-5 w-5 text-neutral-600 transition-transform group-hover:-translate-x-0.5 dark:text-neutral-400" />
             </button>
-            {/* Center transparent spacer */}
             <div className="h-11 w-11" />
 
             <button
@@ -235,7 +225,6 @@ function PreviewInner({ angle, setAngle }: DPadProps) {
             </button>
           </div>
 
-          {/* Row 3 */}
           <div className="flex gap-2">
             <button
               disabled={isAnimating}
@@ -263,53 +252,14 @@ function PreviewInner({ angle, setAngle }: DPadProps) {
             </button>
           </div>
         </div>
-
-        {/* Slant Angle Presets */}
-        <div className="mt-8 flex items-center justify-center gap-2">
-          <span className="text-xs font-semibold text-neutral-400 dark:text-neutral-500">
-            Slant Angle:
-          </span>
-          <div className="flex rounded-lg bg-neutral-100 p-0.5 dark:bg-neutral-900">
-            <button
-              onClick={() => setAngle(0)}
-              className={`cursor-pointer rounded-md px-2.5 py-1 text-xs font-semibold transition-all ${
-                angle === 0
-                  ? "bg-white text-neutral-900 shadow-sm dark:bg-neutral-800 dark:text-white"
-                  : "text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
-              }`}
-            >
-              0° (Straight)
-            </button>
-            <button
-              onClick={() => setAngle(15)}
-              className={`cursor-pointer rounded-md px-2.5 py-1 text-xs font-semibold transition-all ${
-                angle === 15
-                  ? "bg-white text-neutral-900 shadow-sm dark:bg-neutral-800 dark:text-white"
-                  : "text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
-              }`}
-            >
-              15° Slant
-            </button>
-            <button
-              onClick={() => setAngle(-15)}
-              className={`cursor-pointer rounded-md px-2.5 py-1 text-xs font-semibold transition-all ${
-                angle === -15
-                  ? "bg-white text-neutral-900 shadow-sm dark:bg-neutral-800 dark:text-white"
-                  : "text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
-              }`}
-            >
-              -15° Slant
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );
 }
 
 export default function SwipeThemeChangePreview() {
+  const { props } = useProps();
   const [mounted, setMounted] = useState(false);
-  const [angle, setAngle] = useState(0);
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
@@ -319,9 +269,9 @@ export default function SwipeThemeChangePreview() {
   if (!mounted) return null;
 
   return (
-    <SwipeThemeProvider angle={angle} theme={theme} onThemeChange={toggleTheme}>
+    <SwipeThemeProvider theme={theme} onThemeChange={toggleTheme} {...props}>
       <div className="relative mx-5 flex h-[500px] w-full max-w-3xl flex-col overflow-hidden rounded-2xl bg-white dark:bg-neutral-950">
-        <PreviewInner angle={angle} setAngle={setAngle} />
+        <PreviewInner />
       </div>
     </SwipeThemeProvider>
   );

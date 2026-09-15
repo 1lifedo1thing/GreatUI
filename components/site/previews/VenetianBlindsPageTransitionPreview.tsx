@@ -1,4 +1,5 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import { useState, useEffect, useCallback } from "react";
 import VenetianBlindsPageTransition from "../../ui/VenetianBlindsPageTransition";
@@ -38,6 +39,8 @@ const VerticalIcon = ({ className }: { className?: string }) => (
 );
 
 export default function VenetianBlindsPageTransitionPreview() {
+  const { props } = useProps();
+
   const [trigger, setTrigger] = useState(0);
   const [activePage, setActivePage] = useState<"home" | "about">("home");
   const [columns] = useState(20);
@@ -166,6 +169,7 @@ export default function VenetianBlindsPageTransitionPreview() {
           direction={direction}
           origin={origin}
           panelClassName="bg-rose-500 dark:bg-rose-600"
+          {...props}
         />
       )}
     </div>

@@ -1,4 +1,7 @@
+"use client";
+
 import { AnimatedPath } from "@/components/ui/AnimatedPath";
+import { useProps } from "@/lib/PropsContext";
 
 const RAW_SVG = `<svg width="515" height="515" viewBox="353 49.5 515 515" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g >
@@ -91,17 +94,61 @@ const RAW_SVG = `<svg width="515" height="515" viewBox="353 49.5 515 515" fill="
   </g>
 </svg>`;
 
+import { useState } from "react";
+
+const RotateCcwIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+    <polyline points="3 3 3 8 8 8" />
+  </svg>
+);
+
 export default function AnimatedPathPreview() {
+  const { props } = useProps();
+  const [replayKey, setReplayKey] = useState(0);
+
+  const strokeColor =
+    typeof props.strokeColor === "string" ? props.strokeColor : "#007F7E";
+  const fillColor =
+    typeof props.fillColor === "string" ? props.fillColor : "#007F7E";
+  const strokeWidth =
+    props.strokeWidth !== undefined ? Number(props.strokeWidth) : 3;
+  const pathLengthDuration =
+    props.pathLengthDuration !== undefined
+      ? Number(props.pathLengthDuration)
+      : 1.5;
+  const fillDuration =
+    props.fillDuration !== undefined ? Number(props.fillDuration) : 0.8;
+
   return (
-    <div className="flex h-[400px] w-full items-center justify-center rounded-xl bg-transparent">
+    <div className="relative flex h-[400px] w-full items-center justify-center rounded-xl bg-transparent">
       <AnimatedPath
+        key={replayKey}
         className="h-full w-full max-w-lg"
         rawSvg={RAW_SVG}
-        pathLengthDuration={2}
-        fillDuration={1}
+        strokeColor={strokeColor}
+        fillColor={fillColor}
+        strokeWidth={strokeWidth}
+        pathLengthDuration={pathLengthDuration}
+        fillDuration={fillDuration}
         pathDelay={0.02}
-        fillDelay={2.5}
+        fillDelay={1}
       />
+      <button
+        onClick={() => setReplayKey((prev) => prev + 1)}
+        className="absolute right-4 bottom-4 flex items-center justify-center rounded-full bg-neutral-100 p-2 text-neutral-600 transition-colors hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-700"
+        title="Replay Animation"
+      >
+        <RotateCcwIcon className="h-4 w-4" />
+      </button>
     </div>
   );
 }

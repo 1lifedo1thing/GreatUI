@@ -1,4 +1,5 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import React, { useState, useEffect, useCallback } from "react";
 import CrossBlurPageTransition from "../../ui/CrossBlurPageTransition";
@@ -22,6 +23,8 @@ const RefreshCwIcon = ({ className }: { className?: string }) => (
 );
 
 export default function CrossBlurPageTransitionPreview() {
+  const { props } = useProps();
+
   const [trigger, setTrigger] = useState(0);
   const [activePage, setActivePage] = useState<"home" | "about">("home");
   const [mounted, setMounted] = useState(false);
@@ -103,7 +106,11 @@ export default function CrossBlurPageTransitionPreview() {
       </div>
 
       {mounted && (
-        <CrossBlurPageTransition trigger={trigger} onViewSwap={swapView} />
+        <CrossBlurPageTransition
+          trigger={trigger}
+          onViewSwap={swapView}
+          {...props}
+        />
       )}
     </div>
   );

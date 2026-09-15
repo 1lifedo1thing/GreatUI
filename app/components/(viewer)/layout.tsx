@@ -19,7 +19,10 @@ import {
   CheckIcon,
 } from "@/components/site/Icons";
 import { components } from "@/lib/registry";
+import { getComponentPropsSchema } from "@/lib/propsRegistry";
 import { ViewerProvider, useViewer } from "@/lib/viewer-context";
+import { PropsProvider } from "@/lib/PropsContext";
+import PropsCustomizationPanel from "@/components/site/PropsCustomizationPanel";
 import { ProgressiveBlur } from "@/components/site/ProgressiveBlur";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -49,6 +52,8 @@ function ViewerLayoutContent({ children }: { children: React.ReactNode }) {
     setIsCodeOpen,
     isMarkdownOpen,
     setIsMarkdownOpen,
+    isCustomizerOpen,
+    setIsCustomizerOpen,
     activeComponent,
     setPreviewContainer,
   } = useViewer();
@@ -83,6 +88,13 @@ function ViewerLayoutContent({ children }: { children: React.ReactNode }) {
 
   const component =
     activeComponent?.slug === slug ? activeComponent : clientComponent;
+
+  const propsSchema = component
+    ? getComponentPropsSchema(component.slug)
+    : null;
+  const hasCustomizableProps = propsSchema
+    ? propsSchema.schemas.length > 0
+    : false;
 
   const origin = isMounted ? window.location.origin : "https://great-ui.com";
   const registryUrl = component ? `${origin}/r/${component.slug}.json` : "";
@@ -226,6 +238,7 @@ function ViewerLayoutContent({ children }: { children: React.ReactNode }) {
             } else {
               setIsPanelOpen(true);
               setIsCodeOpen(false);
+              setIsCustomizerOpen(false);
               posthog.capture("docs_panel_toggled", {
                 state: "open",
                 component_slug: component.slug,
@@ -255,6 +268,7 @@ function ViewerLayoutContent({ children }: { children: React.ReactNode }) {
                 });
               } else {
                 setIsCodeOpen(true);
+                setIsCustomizerOpen(false);
                 setIsSidebarOpen(false);
                 posthog.capture("code_panel_toggled", {
                   state: "open",
@@ -264,6 +278,7 @@ function ViewerLayoutContent({ children }: { children: React.ReactNode }) {
             } else {
               setIsPanelOpen(true);
               setIsCodeOpen(true);
+              setIsCustomizerOpen(false);
               setIsSidebarOpen(false);
               posthog.capture("code_panel_toggled", {
                 state: "open",
@@ -277,6 +292,104 @@ function ViewerLayoutContent({ children }: { children: React.ReactNode }) {
         >
           <CodeIcon className="h-5 w-5" />
         </button>
+
+        {hasCustomizableProps && (
+          <button
+            type="button"
+            onClick={() => {
+              const nextState = !isCustomizerOpen;
+              setIsCustomizerOpen(nextState);
+              if (nextState) {
+                setIsPanelOpen(false);
+                setIsCodeOpen(false);
+              }
+              posthog.capture("customizer_panel_toggled", {
+                state: nextState ? "open" : "closed",
+                component_slug: component?.slug,
+              });
+            }}
+            title={isCustomizerOpen ? "Hide props panel" : "Show props panel"}
+            className={`relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl transition-all ${
+              isCustomizerOpen
+                ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950"
+                : "bg-neutral-100 text-neutral-700 shadow-xs hover:bg-neutral-200 hover:text-neutral-950 dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-white"
+            }`}
+            aria-label="Toggle prop customizer panel"
+          >
+            <AnimatePresence>
+              {!isCustomizerOpen && !isPanelOpen && !isCodeOpen && (
+                <motion.div
+                  initial={{ opacity: 0, filter: "blur(4px)", y: -6 }}
+                  animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                  exit={{ opacity: 0, filter: "blur(4px)", y: -6 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  className="pointer-events-none absolute top-full right-0 mt-2 hidden w-max items-center justify-end gap-1.5 md:flex"
+                >
+                  <style>
+                    {`
+                    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap');
+                    @keyframes text-shimmer {
+                      0% { -webkit-mask-position: 200% center; mask-position: 200% center; }
+                      100% { -webkit-mask-position: -200% center; mask-position: -200% center; }
+                    }
+                    .animate-text-shimmer {
+                      -webkit-mask-image: linear-gradient(-75deg, rgba(0,0,0,0.5) 30%, #000 50%, rgba(0,0,0,0.5) 70%);
+                      -webkit-mask-size: 200%;
+                      mask-image: linear-gradient(-75deg, rgba(0,0,0,0.5) 30%, #000 50%, rgba(0,0,0,0.5) 70%);
+                      mask-size: 200%;
+                      animation: text-shimmer 2.5s linear infinite;
+                    }
+                  `}
+                  </style>
+                  <div
+                    style={{ fontFamily: "Caveat, cursive" }}
+                    className="animate-text-shimmer mt-2 -rotate-2 pr-2 text-right text-2xl leading-[0.85] font-medium whitespace-nowrap text-neutral-500 select-none dark:text-neutral-400"
+                  >
+                    Click here to customize the preview <br /> or view all the
+                    variants!
+                  </div>
+                  <svg
+                    className="h-16 w-16 shrink-0 text-neutral-400 dark:text-neutral-500"
+                    viewBox="0 0 100 100"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    {/* Clean sweeping curved shaft */}
+                    <path
+                      d="M 12 72 C 32 72, 54 54, 68 18"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    {/* Balanced hand-drawn arrowhead */}
+                    <path
+                      d="M 50 28 Q 60 21 68 18 Q 74 27 78 36"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+              />
+            </svg>
+          </button>
+        )}
 
         <ThemeToggle className="dark:!hover:text-white !h-10 !w-10 !rounded-xl !border-0 !bg-neutral-100 !text-neutral-700 shadow-xs hover:!bg-neutral-200 hover:!text-neutral-950 dark:!border-0 dark:!bg-neutral-900 dark:!text-neutral-300 dark:hover:!bg-neutral-800 [&>svg]:h-5 [&>svg]:w-5 [&>svg]:text-neutral-700 dark:[&>svg]:text-neutral-300" />
       </div>
@@ -306,18 +419,16 @@ function ViewerLayoutContent({ children }: { children: React.ReactNode }) {
         </div>
       </div>
       <div
-        className={`relative flex flex-1 overflow-hidden transition-all duration-300 ${
-          isPanelOpen ? "gap-4" : "gap-0"
-        }`}
+        className={`relative flex flex-1 gap-0 overflow-hidden transition-all duration-300`}
       >
         <div
           className={`relative flex h-full shrink-0 flex-col transition-all duration-300 ${
             isPanelOpen
-              ? "w-full lg:w-[40%]"
+              ? "mr-4 w-full lg:w-[40%]"
               : "pointer-events-none w-0 overflow-hidden opacity-0"
           }`}
         >
-          <div className="relative h-full w-full overflow-hidden rounded-2xl backdrop-blur-md">
+          <div className="relative h-full w-[calc(100vw-32px)] overflow-hidden rounded-2xl backdrop-blur-md lg:w-[calc((100vw-32px)*0.4)]">
             <ProgressiveBlur
               position="top"
               height="140px"
@@ -365,6 +476,25 @@ function ViewerLayoutContent({ children }: { children: React.ReactNode }) {
             </div>
           </div>
         </section>
+
+        <div
+          className={`relative flex h-full shrink-0 flex-col transition-all duration-300 ${
+            isCustomizerOpen && hasCustomizableProps
+              ? "ml-4 w-full lg:w-[340px] xl:w-[380px]"
+              : "pointer-events-none w-0 overflow-hidden opacity-0"
+          }`}
+        >
+          <div className="relative h-full w-[calc(100vw-32px)] overflow-hidden rounded-2xl bg-white backdrop-blur-md lg:w-[340px] xl:w-[380px] dark:bg-[#0a0a0a]">
+            <ProgressiveBlur
+              position="top"
+              height="140px"
+              className="pointer-events-none z-20 bg-gradient-to-b from-white via-white/90 to-transparent dark:from-[#0a0a0a] dark:via-[#0a0a0a]/90 dark:to-transparent"
+            />
+            <div className="relative z-10 h-full w-full scrollbar-none overflow-y-auto px-6 pt-[25dvh] pb-[10dvh]">
+              <PropsCustomizationPanel component={component} />
+            </div>
+          </div>
+        </div>
       </div>{" "}
       <AnimatePresence>
         {!isPanelOpen && (
@@ -461,9 +591,14 @@ export default function ViewerLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const params = useParams();
+  const slug = (params?.slug as string) || "";
+
   return (
     <ViewerProvider>
-      <ViewerLayoutContent>{children}</ViewerLayoutContent>
+      <PropsProvider slug={slug}>
+        <ViewerLayoutContent>{children}</ViewerLayoutContent>
+      </PropsProvider>
     </ViewerProvider>
   );
 }

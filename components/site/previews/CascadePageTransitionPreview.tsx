@@ -1,4 +1,5 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import { useState, useEffect, useCallback } from "react";
 import CascadePageTransition from "../../ui/CascadePageTransition";
@@ -68,6 +69,8 @@ const ArrowRightIcon = ({ className }: { className?: string }) => (
 );
 
 export default function CascadePageTransitionPreview() {
+  const { props } = useProps();
+
   const [trigger, setTrigger] = useState(0);
   const [activePage, setActivePage] = useState<"home" | "about">("home");
   const [mounted, setMounted] = useState(false);
@@ -154,7 +157,6 @@ export default function CascadePageTransitionPreview() {
         </div>
 
         <div className="mt-8 flex flex-col items-center justify-center">
-          {/* Directional Triggers */}
           <div className="flex items-center gap-3">
             <button
               type="button"
@@ -203,6 +205,7 @@ export default function CascadePageTransitionPreview() {
           showTrailingStroke={false}
           exitOpposite={true}
           columns={8}
+          {...props}
         />
       )}
     </div>

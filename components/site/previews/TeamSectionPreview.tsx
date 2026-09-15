@@ -1,4 +1,5 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import React from "react";
 import TeamSection from "../../ui/TeamSection";
@@ -47,10 +48,12 @@ const mockSpeakers = [
 ];
 
 export default function TeamSectionPreview() {
+  const { props } = useProps();
+
   return (
     <div className="flex h-full w-full flex-col items-center justify-center">
       <div className="h-full w-full max-w-5xl">
-        <TeamSection speakers={mockSpeakers} />
+        <TeamSection speakers={mockSpeakers} {...props} />
       </div>
     </div>
   );

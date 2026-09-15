@@ -1,3 +1,6 @@
+"use client";
+
+import { useProps } from "@/lib/PropsContext";
 import FloatingMenu from "../../ui/FloatingMenu";
 
 const primaryLinks = [
@@ -21,12 +24,17 @@ const socialLinks = [
 ];
 
 export default function FloatingMenuPreview() {
+  const { props } = useProps();
+
   return (
     <div className="relative flex min-h-[800px] w-full items-start justify-center p-6">
       <FloatingMenu
         className="absolute top-12"
         title={
-          <span className="text-base font-bold text-neutral-900 select-none dark:text-white">
+          <span
+            className="text-base font-bold text-neutral-900 select-none dark:text-white"
+            {...props}
+          >
             Great UI
           </span>
         }

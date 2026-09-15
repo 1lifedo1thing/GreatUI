@@ -31,6 +31,8 @@ export default function TerminalLoader({
 
   useEffect(() => {
     let currentDir = 1;
+    const intervalDelay = Math.max(10, 110 - speed);
+
     const interval = setInterval(() => {
       setPosition((prev) => {
         const next = prev + currentDir;
@@ -46,7 +48,7 @@ export default function TerminalLoader({
         }
         return next;
       });
-    }, speed);
+    }, intervalDelay);
 
     return () => clearInterval(interval);
   }, [cols, blockWidth, speed]);
@@ -78,7 +80,7 @@ export default function TerminalLoader({
   return (
     <div
       className={cn(
-        "relative inline-flex flex-col overflow-hidden font-mono text-sm leading-[0.9] tracking-[0.3em]",
+        "relative inline-flex max-w-full flex-col overflow-hidden font-mono text-[10px] leading-[0.9] tracking-[0.3em] sm:text-xs md:text-sm",
         color,
         className,
       )}

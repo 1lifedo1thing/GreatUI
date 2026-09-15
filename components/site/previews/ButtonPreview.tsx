@@ -1,15 +1,26 @@
-import Button from "../../ui/Button";
+"use client";
+
+import Button, { type ButtonVariant, type ButtonSize } from "../../ui/Button";
+import { useProps } from "@/lib/PropsContext";
 
 export default function ButtonPreview() {
+  const { props } = useProps();
+
+  const variant = (props.variant as ButtonVariant) || "primary";
+  const size = (props.size as ButtonSize) || "md";
+  const children = (props.children as React.ReactNode) || "Click Me";
+  const isLoading = Boolean(props.isLoading);
+  const disabled = Boolean(props.disabled);
+
   return (
-    <div className="flex flex-wrap items-center justify-center gap-4 p-6">
-      <Button variant="primary">Primary</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="outline">Outline</Button>
-      <Button variant="ghost">Ghost</Button>
-      <Button variant="destructive">Destructive</Button>
-      <Button variant="primary" isLoading>
-        Loading
+    <div className="flex h-[300px] w-full items-center justify-center p-8 select-none">
+      <Button
+        variant={variant}
+        size={size}
+        isLoading={isLoading}
+        disabled={disabled}
+      >
+        {children}
       </Button>
     </div>
   );
