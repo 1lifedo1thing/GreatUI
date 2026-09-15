@@ -1,4 +1,5 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import React, { useState, useEffect } from "react";
 import CircularThemeProvider, {
@@ -90,7 +91,6 @@ function PreviewInner() {
 
   return (
     <div className="flex h-full w-full flex-col justify-between">
-      {/* Mock Header */}
       <header className="flex w-full items-center justify-between px-6 py-4">
         <div className="flex items-center gap-2">
           <div className="h-6 w-6 rounded-full bg-rose-500" />
@@ -112,7 +112,6 @@ function PreviewInner() {
         </nav>
       </header>
 
-      {/* Page Content */}
       <div className="relative flex flex-1 flex-col items-center justify-center p-4 sm:p-8">
         <div className="flex flex-col items-center justify-center text-center">
           <span className="mb-4 rounded-full bg-rose-100 px-3 py-1 text-xs font-medium text-rose-600 dark:bg-rose-900/30 dark:text-rose-400">
@@ -128,7 +127,6 @@ function PreviewInner() {
           </p>
         </div>
 
-        {/* Dynamic Wipe Origin Triggers */}
         <div className="mt-12 flex items-center justify-center gap-3">
           <button
             disabled={isAnimating}
@@ -179,6 +177,8 @@ function PreviewInner() {
 }
 
 export default function CircularThemeProviderPreview() {
+  const { props } = useProps();
+
   const [mounted, setMounted] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
@@ -189,7 +189,7 @@ export default function CircularThemeProviderPreview() {
   if (!mounted) return null;
 
   return (
-    <CircularThemeProvider theme={theme} onThemeChange={toggleTheme}>
+    <CircularThemeProvider theme={theme} onThemeChange={toggleTheme} {...props}>
       <div className="relative mx-5 flex h-[500px] w-full max-w-3xl flex-col overflow-hidden rounded-2xl bg-white dark:bg-neutral-950">
         <PreviewInner />
       </div>

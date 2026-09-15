@@ -14,6 +14,8 @@ import {
 } from "./Icons";
 import ShikiHighlight from "./ShikiHighlight";
 import ComponentActions from "./ComponentActions";
+import { useViewer } from "@/lib/viewer-context";
+import { getComponentPropsSchema } from "@/lib/propsRegistry";
 
 type PkgManager = "npm" | "pnpm" | "yarn" | "bun";
 
@@ -32,6 +34,11 @@ function getInstallCommand(pm: PkgManager, url: string): string {
 }
 
 export default function DocsPanel({ component }: { component: Component }) {
+  const propsSchema = getComponentPropsSchema(component.slug);
+  const hasCustomizableProps = propsSchema
+    ? propsSchema.schemas.length > 0
+    : false;
+
   const [copiedInstall, setCopiedInstall] = useState(false);
   const [copiedUsage, setCopiedUsage] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -290,6 +297,33 @@ export default function DocsPanel({ component }: { component: Component }) {
           <span>button to view the source code.</span>
         </p>
       </div>
+
+      {hasCustomizableProps && (
+        <div className="flex flex-col gap-2">
+          <p className="text-md text-neutral-450 font-semibold uppercase dark:text-neutral-500">
+            Customization
+          </p>
+          <p className="flex flex-wrap items-center gap-x-2 gap-y-1.5 text-2xl leading-relaxed text-neutral-700 dark:text-neutral-300">
+            <span>Click on the top right</span>
+            <span className="text-neutral-750 dark:text-neutral-250 border-neutral-250 inline-flex h-9 w-9 items-center justify-center rounded-xl border bg-neutral-100 shadow-xs dark:border-neutral-800 dark:bg-neutral-900">
+              <svg
+                className="h-4.5 w-4.5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                />
+              </svg>
+            </span>
+            <span>button to view the customization panel.</span>
+          </p>
+        </div>
+      )}
 
       {component.props.length > 0 && (
         <div className="flex flex-col gap-8">

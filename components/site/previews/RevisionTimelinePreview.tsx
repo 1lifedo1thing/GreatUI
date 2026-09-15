@@ -1,4 +1,5 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import React from "react";
 import RevisionTimeline, { TimelineRevision } from "../../ui/RevisionTimeline";
@@ -61,9 +62,11 @@ const MOCK_REVISIONS: TimelineRevision[] = [
 ];
 
 export default function RevisionTimelinePreview() {
+  const { props } = useProps();
+
   return (
-    <div className="flex w-full items-center justify-center bg-transparent p-6">
-      <RevisionTimeline revisions={MOCK_REVISIONS} />
+    <div className="flex w-full items-center justify-center p-4 sm:p-8">
+      <RevisionTimeline revisions={MOCK_REVISIONS} height={400} {...props} />
     </div>
   );
 }

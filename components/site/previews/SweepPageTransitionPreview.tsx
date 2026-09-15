@@ -1,4 +1,5 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import { useState, useEffect, useCallback } from "react";
 import SweepPageTransition from "../../ui/SweepPageTransition";
@@ -68,6 +69,8 @@ const ArrowRightIcon = ({ className }: { className?: string }) => (
 );
 
 export default function SweepPageTransitionPreview() {
+  const { props } = useProps();
+
   const [trigger, setTrigger] = useState(0);
   const [activePage, setActivePage] = useState<"home" | "work">("home");
   const [mounted, setMounted] = useState(false);
@@ -154,7 +157,6 @@ export default function SweepPageTransitionPreview() {
         </div>
 
         <div className="mt-8 flex flex-col items-center gap-6">
-          {/* Direction Controls */}
           <div className="flex items-center gap-3">
             <button
               type="button"
@@ -199,6 +201,7 @@ export default function SweepPageTransitionPreview() {
           colors={["#fda4af", "#f43f5e", "#be123c"]}
           exitOpposite={true}
           direction={direction}
+          {...props}
         />
       )}
     </div>

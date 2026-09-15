@@ -11,10 +11,10 @@ export interface FlyInLineProps {
   scrollYProgress: MotionValue<number>;
   direction?: "left" | "right" | "alternate";
   itemClassName?: string;
-  flyInDistance?: string;
-  blurStart?: string;
-  wordSpacingStart?: string;
-  wordSpacingEnd?: string;
+  flyInDistance?: number;
+  blurStart?: number;
+  wordSpacingStart?: number;
+  wordSpacingEnd?: number;
   staggerFactor?: number;
   animationDuration?: number;
 }
@@ -26,10 +26,10 @@ function FlyInLine({
   scrollYProgress,
   direction = "alternate",
   itemClassName,
-  flyInDistance = "70vw",
-  blurStart = "12px",
-  wordSpacingStart = "2.5em",
-  wordSpacingEnd = "0.25em",
+  flyInDistance = 70,
+  blurStart = 12,
+  wordSpacingStart = 2.5,
+  wordSpacingEnd = 0.25,
   staggerFactor = 0.6,
   animationDuration = 0.4,
 }: FlyInLineProps) {
@@ -43,7 +43,7 @@ function FlyInLine({
   const x = useTransform(
     scrollYProgress,
     [start, end],
-    [isLeft ? `-${flyInDistance}` : flyInDistance, "0vw"],
+    [isLeft ? `-${flyInDistance}vw` : `${flyInDistance}vw`, "0vw"],
   );
 
   const opacity = useTransform(scrollYProgress, [start, end], [0, 1]);
@@ -51,13 +51,13 @@ function FlyInLine({
   const filter = useTransform(
     scrollYProgress,
     [start, end],
-    [`blur(${blurStart})`, "blur(0px)"],
+    [`blur(${blurStart}px)`, "blur(0px)"],
   );
 
   const wordSpacing = useTransform(
     scrollYProgress,
     [start, end],
-    [wordSpacingStart, wordSpacingEnd],
+    [`${wordSpacingStart}em`, `${wordSpacingEnd}em`],
   );
 
   return (
@@ -84,10 +84,10 @@ export interface SplitLineFlyInProps extends React.HTMLAttributes<HTMLDivElement
   itemClassName?: string;
   scrollContainerRef?: React.RefObject<HTMLElement | null>;
   offset?: NonNullable<Parameters<typeof useScroll>[0]>["offset"];
-  flyInDistance?: string;
-  blurStart?: string;
-  wordSpacingStart?: string;
-  wordSpacingEnd?: string;
+  flyInDistance?: number;
+  blurStart?: number;
+  wordSpacingStart?: number;
+  wordSpacingEnd?: number;
   staggerFactor?: number;
   animationDuration?: number;
 }

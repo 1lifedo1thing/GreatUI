@@ -1,9 +1,12 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import React from "react";
 import TerminalLoader from "../../ui/TerminalLoader";
 
 export default function TerminalLoaderPreview() {
+  const { props } = useProps();
+
   return (
     <div className="flex w-full items-center justify-center p-12 select-none">
       <TerminalLoader
@@ -13,6 +16,7 @@ export default function TerminalLoaderPreview() {
         speed={50}
         color="text-rose-500"
         bgColor="bg-rose-500"
+        {...props}
       />
     </div>
   );

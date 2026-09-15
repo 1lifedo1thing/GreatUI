@@ -1,4 +1,5 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import { useState, useEffect, useCallback } from "react";
 import CurtainPageTransition from "../../ui/CurtainPageTransition";
@@ -38,6 +39,8 @@ const ArrowLeftRightIcon = ({ className }: { className?: string }) => (
 );
 
 export default function CurtainPageTransitionPreview() {
+  const { props } = useProps();
+
   const [trigger, setTrigger] = useState(0);
   const [activePage, setActivePage] = useState<"home" | "about">("home");
   const [mounted, setMounted] = useState(false);
@@ -149,6 +152,7 @@ export default function CurtainPageTransitionPreview() {
           onViewSwap={swapView}
           panelClassName="bg-rose-500 dark:bg-rose-600"
           direction={direction}
+          {...props}
         />
       )}
     </div>

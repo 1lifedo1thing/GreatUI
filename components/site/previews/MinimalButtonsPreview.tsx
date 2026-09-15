@@ -1,24 +1,15 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import React from "react";
 import MinimalButtons from "../../ui/MinimalButtons";
 
 export default function MinimalButtonsPreview() {
+  const { props } = useProps();
+
   return (
-    <div className="flex flex-wrap items-center justify-center gap-6 p-8 select-none">
-      <MinimalButtons variant="primary">Primary</MinimalButtons>
-
-      <MinimalButtons variant="secondary">Secondary</MinimalButtons>
-
-      <MinimalButtons variant="outline">Outline</MinimalButtons>
-
-      <MinimalButtons variant="ghost">Ghost</MinimalButtons>
-
-      <MinimalButtons variant="destructive">Destructive</MinimalButtons>
-
-      <MinimalButtons variant="secondary" isLoading>
-        Loading
-      </MinimalButtons>
+    <div className="flex h-[300px] w-full items-center justify-center p-8 select-none">
+      <MinimalButtons {...props}>Minimal Button</MinimalButtons>
     </div>
   );
 }

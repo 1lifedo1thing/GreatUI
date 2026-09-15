@@ -1,4 +1,5 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import React from "react";
 import AsciiImage from "../../ui/AsciiImage";
@@ -35,10 +36,11 @@ const GlobeIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 export default function AsciiImagePreview() {
+  const { props } = useProps();
+
   return (
     <div className="flex w-full items-center justify-center p-8 select-none">
       <div className="relative flex w-[340px] flex-col overflow-hidden rounded-3xl border border-neutral-200 bg-neutral-950 dark:border-neutral-800/80">
-        {/* Top: Static ASCII / Image Blended Visualizer */}
         <AsciiImage
           src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
           width={340}
@@ -47,9 +49,9 @@ export default function AsciiImagePreview() {
           mask="linear-gradient(to bottom, black 35%, transparent 100%)"
           baseMask="linear-gradient(to bottom, transparent 35%, black 100%)"
           className="bg-neutral-950"
+          {...props}
         />
 
-        {/* Bottom: Team Member Details Card */}
         <div className="flex w-full flex-col gap-4 border-t border-neutral-100 bg-white p-5 dark:border-neutral-800/80 dark:bg-neutral-900">
           <div className="flex flex-col">
             <span className="mb-1 text-[10px] font-bold tracking-widest text-neutral-400 uppercase dark:text-neutral-500">

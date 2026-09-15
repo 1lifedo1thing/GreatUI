@@ -1,24 +1,15 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import React from "react";
 import AceternityButton from "../../ui/AceternityButton";
 
 export default function AceternityButtonPreview() {
+  const { props } = useProps();
+
   return (
-    <div className="flex flex-wrap items-center justify-center gap-6 p-8 select-none">
-      <AceternityButton variant="primary">Primary</AceternityButton>
-
-      <AceternityButton variant="secondary">Secondary</AceternityButton>
-
-      <AceternityButton variant="outline">Outline</AceternityButton>
-
-      <AceternityButton variant="ghost">Ghost</AceternityButton>
-
-      <AceternityButton variant="destructive">Destructive</AceternityButton>
-
-      <AceternityButton variant="secondary" isLoading>
-        Loading
-      </AceternityButton>
+    <div className="flex h-[300px] w-full items-center justify-center p-8 select-none">
+      <AceternityButton {...props}>Aceternity Button</AceternityButton>
     </div>
   );
 }

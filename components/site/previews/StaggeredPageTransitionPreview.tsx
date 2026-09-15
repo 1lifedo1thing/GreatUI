@@ -1,4 +1,5 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import { useState, useEffect, useCallback } from "react";
 import StaggeredPageTransition from "../../ui/StaggeredPageTransition";
@@ -68,6 +69,8 @@ const ArrowRightIcon = ({ className }: { className?: string }) => (
 );
 
 export default function StaggeredPageTransitionPreview() {
+  const { props } = useProps();
+
   const [trigger, setTrigger] = useState(0);
   const [direction, setDirection] = useState<
     "top" | "bottom" | "left" | "right"
@@ -90,7 +93,6 @@ export default function StaggeredPageTransitionPreview() {
 
   return (
     <div className="relative mx-5 flex h-[500px] w-full max-w-3xl flex-col overflow-hidden rounded-2xl bg-white dark:bg-neutral-950">
-      {/* Mock Header */}
       <header className="flex w-full items-center justify-between px-6 py-4">
         <div className="flex items-center gap-2">
           <div className="h-6 w-6 rounded-full bg-rose-500" />
@@ -111,10 +113,8 @@ export default function StaggeredPageTransitionPreview() {
         </nav>
       </header>
 
-      {/* Page Content */}
       <div className="relative flex flex-1 flex-col items-center justify-center p-4 sm:p-8">
         <div className="grid w-full place-items-center">
-          {/* Home State */}
           <div
             className={`col-start-1 row-start-1 flex flex-col items-center justify-center text-center ${
               activePage === "home"
@@ -130,7 +130,6 @@ export default function StaggeredPageTransitionPreview() {
             </h1>
           </div>
 
-          {/* About State */}
           <div
             className={`col-start-1 row-start-1 flex flex-col items-center justify-center text-center ${
               activePage === "about"
@@ -148,7 +147,6 @@ export default function StaggeredPageTransitionPreview() {
           </div>
         </div>
 
-        {/* Persistent Buttons */}
         <div className="mt-12 flex items-center gap-3">
           <button
             onClick={() => handleTransition("top")}
@@ -187,6 +185,7 @@ export default function StaggeredPageTransitionPreview() {
           direction={direction}
           onViewSwap={swapView}
           panelClassName="bg-rose-500 dark:bg-rose-600 border-none"
+          {...props}
         />
       )}
     </div>

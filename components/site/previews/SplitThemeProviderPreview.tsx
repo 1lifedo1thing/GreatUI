@@ -1,9 +1,9 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import React, { useState, useEffect } from "react";
 import SplitThemeProvider, {
   useSplitTheme,
-  SplitMode,
 } from "@/components/ui/SplitThemeProvider";
 
 const HorizontalSplitIcon = ({ className }: { className?: string }) => (
@@ -40,11 +40,9 @@ const VerticalSplitIcon = ({ className }: { className?: string }) => (
 
 function PreviewInner() {
   const { triggerTransition, isAnimating, theme } = useSplitTheme();
-  const [activeMode, setActiveMode] = useState<SplitMode>("in-to-out");
 
   return (
     <div className="flex h-full w-full flex-col justify-between">
-      {/* Mock Header */}
       <header className="flex w-full items-center justify-between px-6 py-4">
         <div className="flex items-center gap-2">
           <div className="h-6 w-6 rounded-full bg-rose-500" />
@@ -66,7 +64,6 @@ function PreviewInner() {
         </nav>
       </header>
 
-      {/* Page Content */}
       <div className="relative flex flex-1 flex-col items-center justify-center p-4 sm:p-8">
         <div className="flex flex-col items-center justify-center text-center">
           <span className="mb-4 rounded-full bg-rose-100 px-3 py-1 text-xs font-medium text-rose-600 dark:bg-rose-900/30 dark:text-rose-400">
@@ -82,35 +79,10 @@ function PreviewInner() {
           </p>
         </div>
 
-        {/* Mode Selector Toggle */}
-        <div className="mt-8 flex items-center rounded-lg bg-neutral-100 p-1 dark:bg-neutral-900">
-          <button
-            onClick={() => setActiveMode("in-to-out")}
-            className={`rounded-md px-3 py-1.5 text-xs font-medium transition-all ${
-              activeMode === "in-to-out"
-                ? "bg-white text-neutral-950 shadow-sm dark:bg-neutral-800 dark:text-white"
-                : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
-            }`}
-          >
-            In to Out
-          </button>
-          <button
-            onClick={() => setActiveMode("out-to-in")}
-            className={`rounded-md px-3 py-1.5 text-xs font-medium transition-all ${
-              activeMode === "out-to-in"
-                ? "bg-white text-neutral-950 shadow-sm dark:bg-neutral-800 dark:text-white"
-                : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
-            }`}
-          >
-            Out to In
-          </button>
-        </div>
-
-        {/* Directional Trigger Buttons */}
         <div className="mt-8 flex items-center justify-center gap-4">
           <button
             disabled={isAnimating}
-            onClick={() => triggerTransition("horizontal", activeMode)}
+            onClick={() => triggerTransition("horizontal")}
             className="group flex h-14 w-14 cursor-pointer items-center justify-center rounded-full border border-neutral-200 bg-white shadow-sm transition-all hover:scale-105 hover:bg-neutral-50 active:scale-95 disabled:opacity-50 dark:border-neutral-800 dark:bg-neutral-900 dark:hover:bg-neutral-800"
             title="Horizontal Split Wipe"
           >
@@ -119,7 +91,7 @@ function PreviewInner() {
 
           <button
             disabled={isAnimating}
-            onClick={() => triggerTransition("vertical", activeMode)}
+            onClick={() => triggerTransition("vertical")}
             className="group flex h-14 w-14 cursor-pointer items-center justify-center rounded-full border border-neutral-200 bg-white shadow-sm transition-all hover:scale-105 hover:bg-neutral-50 active:scale-95 disabled:opacity-50 dark:border-neutral-800 dark:bg-neutral-900 dark:hover:bg-neutral-800"
             title="Vertical Split Wipe"
           >
@@ -134,6 +106,8 @@ function PreviewInner() {
 import { useTheme } from "@/components/site/ThemeProvider";
 
 export default function SplitThemeProviderPreview() {
+  const { props } = useProps();
+
   const [mounted, setMounted] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
@@ -144,7 +118,7 @@ export default function SplitThemeProviderPreview() {
   if (!mounted) return null;
 
   return (
-    <SplitThemeProvider theme={theme} onThemeChange={toggleTheme}>
+    <SplitThemeProvider theme={theme} onThemeChange={toggleTheme} {...props}>
       <div className="relative mx-5 flex h-[500px] w-full max-w-3xl flex-col overflow-hidden rounded-2xl border border-neutral-100 bg-white dark:border-neutral-900 dark:bg-neutral-950">
         <PreviewInner />
       </div>

@@ -1,4 +1,5 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import { useState } from "react";
 import {
@@ -7,6 +8,8 @@ import {
 } from "@/components/ui/ScrambledInstallCommand";
 
 export default function ScrambledInstallCommandPreview() {
+  const { props } = useProps();
+
   const [pkgManager, setPkgManager] = useState<PkgManager>("npm");
 
   const getCommand = (pm: PkgManager) => {
@@ -30,6 +33,7 @@ export default function ScrambledInstallCommandPreview() {
           installCommand={installCommand}
           pkgManager={pkgManager}
           setPkgManager={setPkgManager}
+          {...props}
         />
       </div>
     </div>

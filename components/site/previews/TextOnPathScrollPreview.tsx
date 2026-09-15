@@ -23,7 +23,6 @@ export default function TextOnPathScrollPreview() {
         Scroll down
       </div>
 
-      {/* We pass a custom className to reduce the overall height for the preview window so it's not too long */}
       <TextOnPathScroll
         scrollContainerRef={
           scrollContainerRef as unknown as React.RefObject<HTMLElement>

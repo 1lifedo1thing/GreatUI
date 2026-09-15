@@ -12,7 +12,7 @@ export interface CardItem {
 export interface DiagonalMarqueeCarouselProps {
   cards?: CardItem[];
   angle?: number;
-  baseSpeed?: number;
+  duration?: number;
   alternateDirections?: boolean;
   className?: string;
   cardClassName?: string;
@@ -115,7 +115,7 @@ const MarqueeRow = ({
 export default function DiagonalMarqueeCarousel({
   cards = DEFAULT_CARDS,
   angle = -25,
-  baseSpeed = 120,
+  duration = 120,
   alternateDirections = true,
   className = "",
   cardClassName = "",
@@ -161,31 +161,31 @@ export default function DiagonalMarqueeCarousel({
       >
         <MarqueeRow
           cards={rowCards}
-          speed={baseSpeed}
+          speed={duration}
           direction={-1}
           cardClassName={cardClassName}
         />
         <MarqueeRow
           cards={rowCardsReverse}
-          speed={baseSpeed - 15 > 20 ? baseSpeed - 15 : 30}
+          speed={duration - 15 > 20 ? duration - 15 : 30}
           direction={alternateDirections ? 1 : -1}
           cardClassName={cardClassName}
         />
         <MarqueeRow
           cards={rowCards}
-          speed={baseSpeed + 15}
+          speed={duration + 15}
           direction={-1}
           cardClassName={cardClassName}
         />
         <MarqueeRow
           cards={rowCardsReverse}
-          speed={baseSpeed - 6 > 20 ? baseSpeed - 6 : 35}
+          speed={duration - 6 > 20 ? duration - 6 : 35}
           direction={alternateDirections ? 1 : -1}
           cardClassName={cardClassName}
         />
         <MarqueeRow
           cards={rowCards}
-          speed={baseSpeed + 24}
+          speed={duration + 24}
           direction={-1}
           cardClassName={cardClassName}
         />

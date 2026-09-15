@@ -1,10 +1,13 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import React from "react";
 import BlurScrollReveal from "../../ui/BlurScrollReveal";
 import { useViewer } from "@/lib/viewer-context";
 
 export default function BlurScrollRevealPreview() {
+  const { props } = useProps();
+
   const { previewContainer } = useViewer();
 
   if (!previewContainer) {
@@ -29,6 +32,7 @@ export default function BlurScrollRevealPreview() {
         scrollContainerRef={
           scrollContainerRef as unknown as React.RefObject<HTMLElement>
         }
+        {...props}
       />
 
       <div className="flex h-screen w-full items-center justify-center text-center text-lg font-semibold text-neutral-400">

@@ -1,3 +1,6 @@
+"use client";
+
+import { useProps } from "@/lib/PropsContext";
 import Accordion from "../../ui/Accordion";
 
 const accordionData = [
@@ -29,6 +32,8 @@ const accordionData = [
 ];
 
 export default function AccordionPreview() {
+  const { props } = useProps();
+
   return (
     <div className="flex w-full flex-col items-center justify-center p-6">
       <div className="mb-8 text-center">
@@ -39,7 +44,7 @@ export default function AccordionPreview() {
           Everything you need to know about the product and billing.
         </p>
       </div>
-      <Accordion items={accordionData} />
+      <Accordion items={accordionData} {...props} />
     </div>
   );
 }

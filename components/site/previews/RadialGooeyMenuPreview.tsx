@@ -1,3 +1,6 @@
+"use client";
+
+import { useProps } from "@/lib/PropsContext";
 import RadialGooeyMenu, { RadialGooeyMenuItem } from "../../ui/RadialGooeyMenu";
 
 const items: RadialGooeyMenuItem[] = [
@@ -99,9 +102,11 @@ const items: RadialGooeyMenuItem[] = [
 ];
 
 export default function RadialGooeyMenuPreview() {
+  const { props } = useProps();
+
   return (
     <div className="flex min-h-[350px] w-full items-center justify-center p-6">
-      <RadialGooeyMenu items={items} />
+      <RadialGooeyMenu items={items} {...props} />
     </div>
   );
 }

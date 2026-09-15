@@ -1,3 +1,6 @@
+"use client";
+
+import { useProps } from "@/lib/PropsContext";
 import { MultilingualQuote } from "../../ui/MultilingualQuote";
 
 const sampleQuotes = [
@@ -24,12 +27,15 @@ const sampleQuotes = [
 ];
 
 export default function MultilingualQuotePreview() {
+  const { props } = useProps();
+
   return (
     <div className="flex w-full items-center justify-center p-6">
       <MultilingualQuote
         quotes={sampleQuotes}
         defaultLanguage="en"
         authorName="Nelson Mandela"
+        {...props}
       />
     </div>
   );

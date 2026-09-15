@@ -22,13 +22,11 @@ export interface ScrollFlyingCardsProps {
   descriptionClassName?: string;
   backgroundTextClassName?: string;
   scrollContainerRef?: React.RefObject<HTMLElement | null>;
-  animationConfig?: {
-    direction?: "up" | "down" | "left" | "right";
-    offset?: number;
-    rotation?: number;
-    scale?: number;
-    blur?: string;
-  };
+
+  animationOffset?: number;
+  animationRotation?: number;
+  animationScale?: number;
+  animationBlur?: number;
 }
 
 export const ScrollFlyingCards = ({
@@ -40,7 +38,11 @@ export const ScrollFlyingCards = ({
   descriptionClassName,
   backgroundTextClassName,
   scrollContainerRef,
-  animationConfig,
+
+  animationOffset = 300,
+  animationRotation = 10,
+  animationScale = 0.85,
+  animationBlur = 20,
 }: ScrollFlyingCardsProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -73,7 +75,11 @@ export const ScrollFlyingCards = ({
               cardClassName={cardClassName}
               titleClassName={titleClassName}
               descriptionClassName={descriptionClassName}
-              animationConfig={animationConfig}
+
+              animationOffset={animationOffset}
+              animationRotation={animationRotation}
+              animationScale={animationScale}
+              animationBlur={animationBlur}
             />
           );
         })}
@@ -89,7 +95,11 @@ const CardItem = ({
   cardClassName,
   titleClassName,
   descriptionClassName,
-  animationConfig,
+
+  animationOffset = 300,
+  animationRotation = 10,
+  animationScale = 0.85,
+  animationBlur = 20,
 }: {
   card: FlyingCard;
   index: number;
@@ -98,7 +108,11 @@ const CardItem = ({
   cardClassName?: string;
   titleClassName?: string;
   descriptionClassName?: string;
-  animationConfig?: ScrollFlyingCardsProps["animationConfig"];
+
+  animationOffset?: number;
+  animationRotation?: number;
+  animationScale?: number;
+  animationBlur?: number;
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -110,25 +124,9 @@ const CardItem = ({
 
   const isEven = index % 2 === 0;
 
-  const direction = animationConfig?.direction ?? "up";
-  const offsetAmount = animationConfig?.offset ?? 300;
-  const rotation = animationConfig?.rotation ?? 10;
-  const scaleAmount = animationConfig?.scale ?? 0.85;
-  const blurAmount = animationConfig?.blur ?? "20px";
-
   // Calculate entry and exit values based on direction
   const getTransforms = () => {
-    switch (direction) {
-      case "down":
-        return { x: [0, 0, 0, 0], y: [-offsetAmount, 0, 0, offsetAmount] };
-      case "left":
-        return { x: [offsetAmount, 0, 0, -offsetAmount], y: [0, 0, 0, 0] };
-      case "right":
-        return { x: [-offsetAmount, 0, 0, offsetAmount], y: [0, 0, 0, 0] };
-      case "up":
-      default:
-        return { x: [0, 0, 0, 0], y: [offsetAmount, 0, 0, -offsetAmount] };
-    }
+    return { x: [0, 0, 0, 0], y: [animationOffset, 0, 0, -animationOffset] };
   };
 
   const transforms = getTransforms();
@@ -141,10 +139,10 @@ const CardItem = ({
     scrollYProgress,
     [0, 0.4, 0.6, 1],
     [
-      isEven ? -rotation : rotation,
+      isEven ? -animationRotation : animationRotation,
       0,
       0,
-      isEven ? rotation / 2 : -rotation / 2,
+      isEven ? animationRotation / 2 : -animationRotation / 2,
     ],
   );
 
@@ -159,7 +157,7 @@ const CardItem = ({
   const scale = useTransform(
     scrollYProgress,
     [0, 0.4, 0.6, 1],
-    [scaleAmount, 1, 1, scaleAmount + 0.05],
+    [animationScale, 1, 1, animationScale + 0.05],
   );
 
   // Blur effect for entering/exiting
@@ -167,10 +165,10 @@ const CardItem = ({
     scrollYProgress,
     [0, 0.35, 0.65, 1],
     [
-      `blur(${blurAmount})`,
+      `blur(${animationBlur}px)`,
       "blur(0px)",
       "blur(0px)",
-      `blur(${parseInt(blurAmount) / 2}px)`,
+      `blur(${animationBlur / 2}px)`,
     ],
   );
 

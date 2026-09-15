@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import { TextReveal } from "../../ui/TextReveal";
 import { useViewer } from "@/lib/viewer-context";

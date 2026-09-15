@@ -1,4 +1,5 @@
 "use client";
+import { useProps } from "@/lib/PropsContext";
 
 import { useState, useEffect, useCallback } from "react";
 import SineWavePageTransition from "../../ui/SineWavePageTransition";
@@ -68,6 +69,8 @@ const ArrowRightIcon = ({ className }: { className?: string }) => (
 );
 
 export default function SineWavePageTransitionPreview() {
+  const { props } = useProps();
+
   const [trigger, setTrigger] = useState(0);
   const [activePage, setActivePage] = useState<"home" | "about">("home");
   const [columns] = useState(20);
@@ -156,7 +159,6 @@ export default function SineWavePageTransitionPreview() {
         </div>
 
         <div className="mt-8 flex items-center justify-center">
-          {/* Directional triggers */}
           <div className="flex items-center gap-3">
             <button
               type="button"
@@ -202,6 +204,7 @@ export default function SineWavePageTransitionPreview() {
           exitOpposite={exitOpposite}
           direction={direction}
           panelClassName="bg-rose-500 dark:bg-rose-600"
+          {...props}
         />
       )}
     </div>

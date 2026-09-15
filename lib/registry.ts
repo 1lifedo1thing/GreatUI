@@ -3,6 +3,10 @@ export type Prop = {
   type: string[];
   description: string;
   default?: string;
+  customizable?: boolean;
+  min?: number;
+  max?: number;
+  step?: number;
 };
 
 export type Component = {
@@ -39,53 +43,68 @@ export const components: Component[] = [
         name: "className",
         type: ["string"],
         description: "Optional CSS classes to style the logo wrapper.",
+        customizable: false,
       },
       {
         name: "rawSvg",
         type: ["string"],
         description:
           "Raw SVG string to parse and animate. Overrides paths if provided.",
+        customizable: false,
       },
       {
         name: "paths",
         type: ["string[]"],
         description: "Array of SVG path strings to draw and fill sequentially.",
+        customizable: false,
       },
       {
         name: "viewBox",
         type: ["string"],
         description: "The SVG viewBox attribute.",
         default: "0 0 363 513",
+        customizable: false,
       },
       {
         name: "strokeColor",
         type: ["string"],
         description: "Color of the SVG path strokes.",
         default: "#007F7E",
+        customizable: false,
       },
       {
         name: "strokeWidth",
         type: ["string", "number"],
         description: "Width of the SVG path strokes.",
         default: "3",
+        min: 1,
+        max: 10,
+        step: 1,
       },
       {
         name: "fillColor",
         type: ["string"],
         description: "Color to fill the SVG paths with after drawing.",
         default: "#007F7E",
+        customizable: false,
       },
       {
         name: "pathLengthDuration",
         type: ["number"],
         description: "Duration for the path drawing animation in seconds.",
         default: "1.5",
+        min: 0.2,
+        max: 5,
+        step: 0.1,
       },
       {
         name: "fillDuration",
         type: ["number"],
         description: "Duration for the fill animation in seconds.",
         default: "0.8",
+        min: 0.1,
+        max: 3,
+        step: 0.1,
       },
       {
         name: "pathDelay",
@@ -120,57 +139,67 @@ export const components: Component[] = [
         name: "username",
         type: ["string"],
         description: "The LinkedIn username (handle) of the profile.",
+        customizable: false,
       },
       {
         name: "name",
         type: ["string"],
         description: "The display name of the profile.",
         default: "'LinkedIn User'",
+        customizable: false,
       },
       {
         name: "avatarUrl",
         type: ["string"],
         description: "Optional custom URL for the avatar image.",
+        customizable: false,
       },
       {
         name: "bannerUrl",
         type: ["string"],
         description: "Optional custom URL for the banner image.",
+        customizable: false,
       },
       {
         name: "headline",
         type: ["string"],
         description: "The headline text for the profile.",
         default: "'Software Engineer'",
+        customizable: false,
       },
       {
         name: "connections",
         type: ["number | string"],
         description: "Number of connections to display.",
         default: "'500+'",
+        customizable: false,
       },
       {
         name: "location",
         type: ["string"],
         description: "Location of the user.",
         default: "'San Francisco, CA'",
+        customizable: false,
       },
       {
         name: "text",
         type: ["string"],
         description: "The text shown before the link.",
         default: "'Connect on'",
+        customizable: false,
       },
       {
         name: "linkText",
         type: ["string"],
         description: "The text for the link.",
         default: "'LinkedIn'",
+        customizable: false,
       },
       {
         name: "href",
         type: ["string"],
         description: "Custom URL for the profile link.",
+        customizable: false,
       },
       {
         name: "enableLinkTilt",
@@ -242,17 +271,20 @@ export const components: Component[] = [
         name: "username",
         type: ["string"],
         description: "The X (Twitter) username (handle) of the profile.",
+        customizable: false,
       },
       {
         name: "name",
         type: ["string"],
         description: "The display name of the profile.",
         default: "'Twitter User'",
+        customizable: false,
       },
       {
         name: "avatarUrl",
         type: ["string"],
         description: "Optional custom URL for the avatar image.",
+        customizable: false,
       },
       {
         name: "staticCard",
@@ -260,6 +292,7 @@ export const components: Component[] = [
         description:
           "If true, renders the card statically without the link/popover interaction.",
         default: "false",
+        customizable: false,
       },
       {
         name: "enableLinkTilt",
@@ -329,56 +362,66 @@ export const components: Component[] = [
         name: "username",
         type: ["string"],
         description: "The Facebook username or page handle.",
+        customizable: false,
       },
       {
         name: "name",
         type: ["string"],
         description: "The display name of the profile.",
         default: "'Facebook User'",
+        customizable: false,
       },
       {
         name: "avatarUrl",
         type: ["string"],
         description: "Optional custom URL for the profile avatar.",
+        customizable: false,
       },
       {
         name: "bannerUrl",
         type: ["string"],
         description: "Optional custom URL for the cover banner image.",
+        customizable: false,
       },
       {
         name: "bio",
         type: ["string"],
         description: "Short bio or description of the user/page.",
+        customizable: false,
       },
       {
         name: "friends",
         type: ["number", "string"],
         description: "Number or formatted string of friends.",
         default: "'1.2K'",
+        customizable: false,
       },
       {
         name: "mutualFriends",
         type: ["number", "string"],
         description: "Number or formatted string of mutual friends.",
         default: "'12'",
+        customizable: false,
       },
       {
         name: "text",
         type: ["string"],
         description: "Label text shown before the link.",
         default: "'Connect on'",
+        customizable: false,
       },
       {
         name: "linkText",
         type: ["string"],
         description: "Text for the hoverable link.",
         default: "'Facebook'",
+        customizable: false,
       },
       {
         name: "href",
         type: ["string"],
         description: "Custom URL for the profile link.",
+        customizable: false,
       },
       {
         name: "enableLinkTilt",
@@ -448,57 +491,67 @@ export const components: Component[] = [
         name: "username",
         type: ["string"],
         description: "The Instagram handle of the profile.",
+        customizable: false,
       },
       {
         name: "name",
         type: ["string"],
         description: "The display name of the profile.",
         default: "'Instagram User'",
+        customizable: false,
       },
       {
         name: "avatarUrl",
         type: ["string"],
         description: "Optional custom URL for the profile avatar.",
+        customizable: false,
       },
       {
         name: "bio",
         type: ["string"],
         description: "Short bio or description of the user/account.",
+        customizable: false,
       },
       {
         name: "posts",
         type: ["number", "string"],
         description: "Number or formatted string of posts.",
         default: "'120'",
+        customizable: false,
       },
       {
         name: "followers",
         type: ["number", "string"],
         description: "Number or formatted string of followers.",
         default: "'10K'",
+        customizable: false,
       },
       {
         name: "following",
         type: ["number", "string"],
         description: "Number or formatted string of following accounts.",
         default: "'450'",
+        customizable: false,
       },
       {
         name: "text",
         type: ["string"],
         description: "Label text shown before the link.",
         default: "'Follow me on'",
+        customizable: false,
       },
       {
         name: "linkText",
         type: ["string"],
         description: "Text for the hoverable link.",
         default: "'Instagram'",
+        customizable: false,
       },
       {
         name: "href",
         type: ["string"],
         description: "Custom URL for the profile link.",
+        customizable: false,
       },
       {
         name: "enableLinkTilt",
@@ -569,6 +622,7 @@ export const components: Component[] = [
         type: ["RadialGooeyMenuItem[]"],
         description:
           "Array of menu items containing icon, label, and click handler.",
+        customizable: false,
       },
       {
         name: "radius",
@@ -599,31 +653,37 @@ export const components: Component[] = [
         type: ["boolean"],
         description: "Initial expanded state of the gooey menu.",
         default: "false",
+        customizable: false,
       },
       {
         name: "onToggle",
         type: ["(isOpen: boolean) => void"],
         description: "Callback fired when the menu opens or closes.",
+        customizable: false,
       },
       {
         name: "onItemSelect",
         type: ["(item: RadialGooeyMenuItem, index: number) => void"],
         description: "Callback fired when a child menu item is selected.",
+        customizable: false,
       },
       {
         name: "className",
         type: ["string"],
         description: "Custom classes applied to the outer container.",
+        customizable: false,
       },
       {
         name: "buttonClassName",
         type: ["string"],
         description: "Custom classes applied to the central trigger button.",
+        customizable: false,
       },
       {
         name: "itemClassName",
         type: ["string"],
         description: "Custom classes applied to radial item buttons.",
+        customizable: false,
       },
     ],
   },
@@ -645,45 +705,53 @@ export const components: Component[] = [
         type: ["NavTabItem[]"],
         description:
           "Array of dock tabs with icon, label, and nested menu items.",
+        customizable: false,
       },
       {
         name: "defaultActiveIndex",
         type: ["number", "null"],
         description: "Index of initially active tab, or null for collapsed.",
         default: "null",
+        customizable: false,
       },
       {
         name: "menuWidth",
         type: ["number"],
         description: "Width in pixels of the expanded menu.",
         default: "310",
+        customizable: false,
       },
       {
         name: "showIcons",
         type: ["boolean"],
         description: "Whether to render icons beside menu items.",
         default: "true",
+        customizable: false,
       },
       {
         name: "isFixed",
         type: ["boolean"],
         description: "Position fixed at bottom center of viewport.",
         default: "true",
+        customizable: false,
       },
       {
         name: "onTabChange",
         type: ["(index: number | null) => void"],
         description: "Callback fired when active tab changes.",
+        customizable: false,
       },
       {
         name: "onItemToggle",
         type: ["(tabId: string, itemId: string, enabled: boolean) => void"],
         description: "Callback fired when a switch inside a menu is toggled.",
+        customizable: false,
       },
       {
         name: "className",
         type: ["string"],
         description: "Custom classes applied to the outer dock container.",
+        customizable: false,
       },
     ],
   },
@@ -705,6 +773,7 @@ export const components: Component[] = [
         type: ["AccordionItem[]"],
         description:
           "Array of Accordion items containing title and description.",
+        customizable: false,
       },
     ],
   },
@@ -749,11 +818,13 @@ export const components: Component[] = [
         name: "leftIcon",
         type: ["React.ReactNode"],
         description: "An icon element placed to the left of the button text.",
+        customizable: false,
       },
       {
         name: "rightIcon",
         type: ["React.ReactNode"],
         description: "An icon element placed to the right of the button text.",
+        customizable: false,
       },
       {
         name: "disabled",
@@ -781,29 +852,34 @@ export const components: Component[] = [
         type: ["string"],
         description: "Contact or group name shown in the WhatsApp header bar.",
         default: "'Taylor'",
+        customizable: false,
       },
       {
         name: "headerSubtitle",
         type: ["string"],
         description: "Status or subtitle shown under the header title.",
         default: "'online'",
+        customizable: false,
       },
       {
         name: "avatarUrl",
         type: ["string"],
         description: "Optional URL for the user avatar image.",
+        customizable: false,
       },
       {
         name: "avatarFallback",
         type: ["string"],
         description: "Fallback text or initial if no avatar image is supplied.",
         default: "'T'",
+        customizable: false,
       },
       {
         name: "messages",
         type: ["ChatMessage[]"],
         description:
           "List of chat messages to render inside the mobile screen.",
+        customizable: false,
       },
       {
         name: "autoPlay",
@@ -811,6 +887,7 @@ export const components: Component[] = [
         description:
           "Whether to animate message streaming and typing indicator automatically.",
         default: "true",
+        customizable: false,
       },
     ],
   },
@@ -833,34 +910,40 @@ export const components: Component[] = [
         description:
           "Active chat contact or group name in WhatsApp Web header.",
         default: "'Alex (Design Lead)'",
+        customizable: false,
       },
       {
         name: "headerSubtitle",
         type: ["string"],
         description: "Status or subtitle text in the chat header.",
         default: "'online'",
+        customizable: false,
       },
       {
         name: "avatarUrl",
         type: ["string"],
         description: "Optional URL for the contact profile avatar.",
+        customizable: false,
       },
       {
         name: "avatarFallback",
         type: ["string"],
         description: "Fallback initial for contact avatar.",
         default: "'A'",
+        customizable: false,
       },
       {
         name: "messages",
         type: ["ChatMessage[]"],
         description: "Array of chat messages for the desktop chat stream.",
+        customizable: false,
       },
       {
         name: "autoPlay",
         type: ["boolean"],
         description: "Toggle automated message sequence and typing state loop.",
         default: "true",
+        customizable: false,
       },
     ],
   },
@@ -882,6 +965,7 @@ export const components: Component[] = [
         type: ["Task[]"],
         description:
           "Initial list of pipeline tasks containing id, title, subtitle, status, and info log attributes.",
+        customizable: false,
       },
     ],
   },
@@ -939,12 +1023,14 @@ export const components: Component[] = [
         type: ["string"],
         description: "The name of the song or album track.",
         default: "'Crashing Worlds'",
+        customizable: false,
       },
       {
         name: "artist",
         type: ["string"],
         description: "The name of the performing artist or band.",
         default: "'The Bebos'",
+        customizable: false,
       },
       {
         name: "releaseType",
@@ -952,18 +1038,21 @@ export const components: Component[] = [
         description:
           "The classification of the release (e.g. Single, Album, EP).",
         default: "'Single'",
+        customizable: false,
       },
       {
         name: "year",
         type: ["string"],
         description: "The release calendar year.",
         default: "'2057'",
+        customizable: false,
       },
       {
         name: "coverImage",
         type: ["string"],
         description: "URL or local asset path of the album cover image.",
         default: "'https://ik.imagekit.io/ybq4azred/greatui/album_art.png'",
+        customizable: false,
       },
     ],
   },
@@ -1229,10 +1318,13 @@ export const components: Component[] = [
         name: "href",
         type: ["string"],
         description: "Target URL or path for navigation.",
+        customizable: false,
       },
       {
         name: "variant",
-        type: ["AnimatedLinkVariant"],
+        type: [
+          "'underline' | 'centerUnderline' | 'overline' | 'verticalLines' | 'revealLine' | 'fadeUpLine' | 'dashHover' | 'clipFillY' | 'clipFillX' | 'clipCenter' | 'clipDoodle' | 'wavy' | 'textRise'",
+        ],
         description: "Visual style preset for the hover effect animation.",
         default: "'underline'",
       },
@@ -1348,6 +1440,7 @@ export const components: Component[] = [
         type: ["string"],
         description: "Tailwind CSS class for the character trail text color.",
         default: "'text-rose-500'",
+        customizable: false,
       },
       {
         name: "bgColor",
@@ -1355,12 +1448,14 @@ export const components: Component[] = [
         description:
           "Tailwind CSS class for the solid block cursor background color.",
         default: "'bg-rose-500'",
+        customizable: false,
       },
       {
         name: "charEmpty",
         type: ["string"],
         description: "The background glyph character representing empty space.",
         default: "'.'",
+        customizable: false,
       },
       {
         name: "charTrail",
@@ -1368,11 +1463,13 @@ export const components: Component[] = [
         description:
           "Ordered array of characters forming the fading visual trail.",
         default: "['▓', '▒', '░']",
+        customizable: false,
       },
       {
         name: "className",
         type: ["string"],
         description: "Additional CSS classes to style the container wrapper.",
+        customizable: false,
       },
     ],
   },
@@ -1396,18 +1493,21 @@ export const components: Component[] = [
           "Source URL of the avatar image to be revealed from grayscale to color.",
         default:
           "'https://ik.imagekit.io/ybq4azred/temp_avatar_new_1784920336469.png'",
+        customizable: false,
       },
       {
         name: "overlaySrc",
         type: ["string"],
         description:
           "Optional secondary transition image URL revealed on hover.",
+        customizable: false,
       },
       {
         name: "alt",
         type: ["string"],
         description: "Alt accessibility description for the avatar image.",
         default: "'Avatar Hover'",
+        customizable: false,
       },
       {
         name: "variant",
@@ -1420,6 +1520,7 @@ export const components: Component[] = [
         name: "className",
         type: ["string"],
         description: "Additional CSS classes to style the card boundary.",
+        customizable: false,
       },
     ],
   },
@@ -1441,6 +1542,7 @@ export const components: Component[] = [
         type: ["string"],
         description:
           "Optional URL navigation path. If provided, renders an anchor tag using Next Link.",
+        customizable: false,
       },
       {
         name: "variant",
@@ -1459,6 +1561,7 @@ export const components: Component[] = [
         name: "className",
         type: ["string"],
         description: "Additional CSS classes to style the button wrapper.",
+        customizable: false,
       },
     ],
   },
@@ -1480,6 +1583,7 @@ export const components: Component[] = [
         type: ["string"],
         description:
           "Optional URL path. If provided, renders an anchor tag using Next Link.",
+        customizable: false,
       },
       {
         name: "variant",
@@ -1503,6 +1607,7 @@ export const components: Component[] = [
         name: "className",
         type: ["string"],
         description: "Additional CSS classes to style the button container.",
+        customizable: false,
       },
     ],
   },
@@ -1524,6 +1629,7 @@ export const components: Component[] = [
         type: ["User[]"],
         description:
           "Custom list of avatar users with names and portrait URLs.",
+        customizable: false,
       },
       {
         name: "variant",
@@ -1543,16 +1649,19 @@ export const components: Component[] = [
         type: ["string"],
         description:
           "Additional CSS classes to style the avatar wrapper stack.",
+        customizable: false,
       },
       {
         name: "avatarClassName",
         type: ["string"],
         description: "Custom styles for individual avatar images.",
+        customizable: false,
       },
       {
         name: "tooltipClassName",
         type: ["string"],
         description: "Custom styles for the hover tooltip blocks.",
+        customizable: false,
       },
     ],
   },
@@ -1574,18 +1683,26 @@ export const components: Component[] = [
         type: ["CardItem[]"],
         description:
           "Custom array of card items containing urls, titles, and IDs.",
+        customizable: false,
       },
       {
         name: "angle",
         type: ["number"],
         description: "Rotation angle offset in degrees.",
         default: "-25",
+        min: -90,
+        max: 90,
+        step: 1,
       },
       {
-        name: "baseSpeed",
+        name: "duration",
         type: ["number"],
-        description: "Standard scroll duration in seconds per loop cycle.",
+        description:
+          "Standard scroll duration in seconds per loop cycle (higher is slower).",
         default: "40",
+        min: 10,
+        max: 120,
+        step: 1,
       },
       {
         name: "alternateDirections",
@@ -1597,16 +1714,19 @@ export const components: Component[] = [
         name: "className",
         type: ["string"],
         description: "Custom class name for the wrapper frame.",
+        customizable: false,
       },
       {
         name: "cardClassName",
         type: ["string"],
         description: "Custom class name for individual marquee cards.",
+        customizable: false,
       },
       {
         name: "fadeClassName",
         type: ["string"],
         description: "Custom class name for top and bottom gradient fades.",
+        customizable: false,
       },
     ],
   },
@@ -1628,16 +1748,19 @@ export const components: Component[] = [
         type: ["TimelineRevision[]"],
         description:
           "List of document history revision items containing date, time, title, author, and markdown content log.",
+        customizable: false,
       },
       {
         name: "defaultActiveId",
         type: ["string"],
         description: "Optional ID of the revision log active by default.",
+        customizable: false,
       },
       {
         name: "className",
         type: ["string"],
         description: "Optional class name for the root wrapper container.",
+        customizable: false,
       },
       {
         name: "showNavigation",
@@ -1655,24 +1778,34 @@ export const components: Component[] = [
         type: ["number"],
         description:
           "Number of past placeholder days to pad before the active revisions.",
+        default: "30",
+        min: 0,
+        max: 100,
+        step: 1,
       },
       {
         name: "futurePaddingDays",
         type: ["number"],
         description:
           "Number of future placeholder days to pad after the active revisions.",
+        default: "30",
+        min: 0,
+        max: 100,
+        step: 1,
       },
       {
         name: "height",
         type: ["string", "number"],
         description:
           "Optional height for the revision log content area, accepts CSS units or pixel numbers.",
+        customizable: false,
       },
       {
         name: "onActiveIdChange",
         type: ["(activeId: string) => void"],
         description:
           "Callback fired when the active revision selection changes.",
+        customizable: false,
       },
     ],
   },
@@ -1731,43 +1864,51 @@ export const components: Component[] = [
         name: "title",
         type: ["string"],
         description: "Title heading of the card.",
+        customizable: false,
       },
       {
         name: "src",
         type: ["string"],
         description: "Source URL of the image card.",
+        customizable: false,
       },
       {
         name: "date",
         type: ["string"],
         description: "Date string label displayed on the right of the card.",
+        customizable: false,
       },
       {
         name: "className",
         type: ["string"],
         description: "Additional CSS classes to style the card container.",
+        customizable: false,
       },
       {
         name: "imgClassName",
         type: ["string"],
         description: "Additional CSS classes to style the card image element.",
+        customizable: false,
       },
       {
         name: "titleClassName",
         type: ["string"],
         description:
           "Additional CSS classes to style the title heading element.",
+        customizable: false,
       },
       {
         name: "dateClassName",
         type: ["string"],
         description: "Additional CSS classes to style the date label element.",
+        customizable: false,
       },
       {
         name: "dividerClassName",
         type: ["string"],
         description:
           "Additional CSS classes to style the animated border divider elements.",
+        customizable: false,
       },
     ],
   },
@@ -1789,48 +1930,56 @@ export const components: Component[] = [
         type: ["string[]"],
         description:
           "An array of text paragraphs to scroll through and animate.",
+        customizable: false,
       },
       {
         name: "className",
         type: ["string"],
         description:
           "Additional CSS classes to style the text container wrapper.",
+        customizable: false,
       },
       {
         name: "paragraphClassName",
         type: ["string"],
         description:
           "Additional CSS classes to style each individual paragraph element.",
+        customizable: false,
       },
       {
         name: "highlightColor",
         type: ["string"],
         description:
           "Text reveal progress highlight color (RGB values format recommended).",
+        customizable: false,
       },
       {
         name: "lightWatermarkColor",
         type: ["string"],
         description:
           "Watermark color in light theme mode (RGB values format recommended).",
+        customizable: false,
       },
       {
         name: "darkWatermarkColor",
         type: ["string"],
         description:
           "Watermark color in dark theme mode (RGB values format recommended).",
+        customizable: false,
       },
       {
         name: "lightTextColor",
         type: ["string"],
         description:
           "Final revealed text color in light theme mode (RGB values format recommended).",
+        customizable: false,
       },
       {
         name: "darkTextColor",
         type: ["string"],
         description:
           "Final revealed text color in dark theme mode (RGB values format recommended).",
+        customizable: false,
       },
     ],
   },
@@ -1854,18 +2003,21 @@ export const components: Component[] = [
         type: ["string"],
         description:
           "The target GitHub username to display and seed the contributions map.",
+        customizable: false,
       },
       {
         name: "name",
         type: ["string"],
         description: "The full display name inside the profile card header.",
         default: "'GitHub User'",
+        customizable: false,
       },
       {
         name: "avatarUrl",
         type: ["string"],
         description:
           "Custom URL for the profile avatar image (defaults to GitHub profile avatar).",
+        customizable: false,
       },
       {
         name: "year",
@@ -1873,23 +2025,27 @@ export const components: Component[] = [
         description:
           "The calendar year displayed in the contribution count details.",
         default: "2026",
+        customizable: false,
       },
       {
         name: "text",
         type: ["string"],
         description: "Preceding label text for the hover link wrapper.",
         default: "'Follow me on'",
+        customizable: false,
       },
       {
         name: "linkText",
         type: ["string"],
         description: "The clickable anchor text triggering the popover card.",
         default: "'GitHub'",
+        customizable: false,
       },
       {
         name: "href",
         type: ["string"],
         description: "Custom target URL for the profile anchor link.",
+        customizable: false,
       },
       {
         name: "themeScheme",
@@ -1898,14 +2054,14 @@ export const components: Component[] = [
         default: "'monochrome'",
       },
       {
-        name: "enableTilt",
+        name: "enableCardTilt",
         type: ["boolean"],
         description:
           "Whether to enable mouse tracking 3D tilt effect on hover.",
         default: "true",
       },
       {
-        name: "tiltMaxRotate",
+        name: "cardTiltMaxRotate",
         type: ["number"],
         description: "Maximum tilt angle in degrees for the 3D card rotation.",
         default: "5",
@@ -1953,6 +2109,7 @@ export const components: Component[] = [
         type: ["Speaker[]"],
         description:
           "An array of speaker details: name, position, company, image, and optional social URL.",
+        customizable: false,
       },
       {
         name: "grayscale",
@@ -1972,25 +2129,31 @@ export const components: Component[] = [
         name: "slideDistance",
         type: ["number"],
         description:
-          "The transition offset distance in pixels for the slide animations.",
+          "The transition offset distance in pixels (px) for the slide animations.",
         default: "20",
+        min: 0,
+        max: 100,
+        step: 1,
       },
       {
         name: "activeImageClassName",
         type: ["string"],
         description:
           "Additional CSS classes to style the floating active speaker image container.",
+        customizable: false,
       },
       {
         name: "rowClassName",
         type: ["string"],
         description:
           "Additional CSS classes to style the individual desktop rows.",
+        customizable: false,
       },
       {
         name: "className",
         type: ["string"],
         description: "Additional CSS classes to style the speakers container.",
+        customizable: false,
       },
     ],
   },
@@ -2011,16 +2174,19 @@ export const components: Component[] = [
         name: "installCommand",
         type: ["string"],
         description: "The base command to be displayed and copied.",
+        customizable: false,
       },
       {
         name: "pkgManager",
         type: ["PkgManager"],
         description: "The currently selected package manager.",
+        customizable: false,
       },
       {
         name: "setPkgManager",
         type: ["(pm: PkgManager) => void"],
         description: "State setter for changing package manager.",
+        customizable: false,
       },
       {
         name: "animationVariant",
@@ -2033,63 +2199,77 @@ export const components: Component[] = [
         name: "className",
         type: ["string"],
         description: "Additional CSS classes to style the main container.",
+        customizable: false,
       },
       {
         name: "headerClassName",
         type: ["string"],
         description: "Additional CSS classes to style the header bar.",
+        customizable: false,
       },
       {
         name: "codeClassName",
         type: ["string"],
         description: "Additional CSS classes to style the code block area.",
+        customizable: false,
       },
       {
         name: "buttonContainerClassName",
         type: ["string"],
         description:
           "Additional CSS classes to style the package manager buttons container.",
+        customizable: false,
       },
       {
         name: "buttonClassName",
         type: ["string"],
         description:
           "Additional CSS classes applied to all package manager buttons.",
+        customizable: false,
       },
       {
         name: "activeButtonClassName",
         type: ["string"],
         description:
           "Additional CSS classes applied to the active package manager button.",
+        customizable: false,
       },
       {
         name: "inactiveButtonClassName",
         type: ["string"],
         description:
           "Additional CSS classes applied to inactive package manager buttons.",
+        customizable: false,
       },
       {
         name: "copyButtonClassName",
         type: ["string"],
         description: "Additional CSS classes applied to the copy button.",
+        customizable: false,
       },
       {
         name: "terminalIcon",
         type: ["React.ReactNode"],
         description:
           "Custom SVG icon element to replace the default terminal icon.",
+        customizable: false,
       },
       {
         name: "availableManagers",
         type: ["PkgManager[]"],
         description: "Array of available package managers to display.",
         default: "['pnpm', 'npm', 'yarn', 'bun']",
+        customizable: false,
       },
       {
         name: "scrambleIntervalMs",
         type: ["number"],
-        description: "Interval in milliseconds between each scramble frame.",
+        description:
+          "Interval in milliseconds between each scramble frame (ms).",
         default: "32",
+        min: 10,
+        max: 200,
+        step: 1,
       },
     ],
   },
@@ -2112,29 +2292,34 @@ export const components: Component[] = [
           "The text to display on the path. Recommend appending special characters like • or · between repetitions.",
         default:
           "'CRAFTING BEAUTIFUL DIGITAL EXPERIENCES • PUSHING THE BOUNDARIES OF WEB DESIGN • WRITING CLEAN CODE • BUILDING EXCEPTIONAL INTERFACES • '",
+        customizable: false,
       },
       {
         name: "className",
         type: ["string"],
         description: "Additional CSS classes to apply to the container.",
+        customizable: false,
       },
       {
         name: "scrollContainerRef",
         type: ["React.RefObject<HTMLElement | null>"],
         description:
           "Optional ref for a custom scroll container (e.g. for preview panels).",
+        customizable: false,
       },
       {
         name: "path",
         type: ["React.ReactNode"],
         description:
           'The SVG element containing the path. Must include a <path id="scroll-path" />.',
+        customizable: false,
       },
       {
         name: "textProps",
         type: ["React.SVGProps<SVGTextElement>"],
         description:
           "Additional props to pass to the `<text>` SVG element. Useful for changing fontSize.",
+        customizable: false,
       },
     ],
   },
@@ -2154,31 +2339,37 @@ export const components: Component[] = [
         name: "quotes",
         type: ["Quote[]"],
         description: "Array of quote objects containing id, label, and text.",
+        customizable: false,
       },
       {
         name: "defaultLanguage",
         type: ["string"],
         description: "The id of the language quote to show by default.",
+        customizable: false,
       },
       {
         name: "authorName",
         type: ["string"],
         description: "The name of the quote author.",
+        customizable: false,
       },
       {
         name: "authorLink",
         type: ["string"],
         description: "Optional URL for the author's link.",
+        customizable: false,
       },
       {
         name: "className",
         type: ["string"],
         description: "Optional CSS classes to apply to the container.",
+        customizable: false,
       },
       {
         name: "quoteClassName",
         type: ["string"],
         description: "Optional CSS classes to apply to the quote text.",
+        customizable: false,
       },
     ],
   },
@@ -2199,6 +2390,7 @@ export const components: Component[] = [
         name: "src",
         type: ["string"],
         description: "The source URL of the image.",
+        customizable: false,
       },
       {
         name: "ease",
@@ -2211,12 +2403,18 @@ export const components: Component[] = [
         type: ["number"],
         description: "The width of the canvas.",
         default: "500",
+        min: 100,
+        max: 1200,
+        step: 10,
       },
       {
         name: "height",
         type: ["number"],
         description: "The height of the canvas.",
         default: "500",
+        min: 100,
+        max: 1200,
+        step: 10,
       },
       {
         name: "className",
@@ -2228,6 +2426,9 @@ export const components: Component[] = [
         type: ["number"],
         description: "The size of the ASCII characters in pixels.",
         default: "10",
+        min: 8,
+        max: 64,
+        step: 1,
       },
     ],
   },
@@ -2249,41 +2450,55 @@ export const components: Component[] = [
         description:
           "Value key to programmatically trigger the transition overlay.",
         default: "0",
+        customizable: false,
       },
       {
         name: "onViewSwap",
         type: ["() => void"],
         description:
           "Callback fired at mid-transition to perform state/view swaps.",
+        customizable: false,
       },
       {
         name: "className",
         type: ["string"],
         description: "Additional CSS classes to style the container wrapper.",
+        customizable: false,
       },
       {
         name: "panelClassName",
         type: ["string"],
         description:
           "Additional CSS classes to style the individual transitioning panels.",
+        customizable: false,
       },
       {
         name: "columns",
         type: ["number"],
         description: "The number of vertical columns the curtain splits into.",
         default: "5",
+        min: 1,
+        max: 50,
+        step: 1,
       },
       {
         name: "duration",
         type: ["number"],
-        description: "The duration of the animation for each panel in seconds.",
+        description:
+          "The duration of the animation for each panel in seconds (s).",
         default: "0.75",
+        min: 0.1,
+        max: 2,
+        step: 0.05,
       },
       {
         name: "staggerDelay",
         type: ["number"],
-        description: "The delay between each panel's animation in seconds.",
+        description: "The delay between each panel's animation in seconds (s).",
         default: "0.075",
+        min: 0,
+        max: 0.5,
+        step: 0.005,
       },
       {
         name: "ease",
@@ -2291,6 +2506,7 @@ export const components: Component[] = [
         description:
           "The bezier curve easing array or string for the animation.",
         default: "[0.85, 0, 0.15, 1]",
+        customizable: false,
       },
       {
         name: "direction",
@@ -2298,6 +2514,7 @@ export const components: Component[] = [
         description:
           "The direction the curtain enters from. Also determines if panels are vertical or horizontal.",
         default: '"top"',
+        customizable: false,
       },
       {
         name: "exitOpposite",
@@ -2384,18 +2601,21 @@ export function AppShell() {
         description:
           "Value key to programmatically trigger the transition overlay.",
         default: "0",
+        customizable: false,
       },
       {
         name: "onViewSwap",
         type: ["() => void"],
         description:
           "Callback fired at mid-transition to perform state/view swaps.",
+        customizable: false,
       },
       {
         name: "panelColor",
         type: ["string"],
         description:
           "An optional hex code or CSS color string to override the default background color of the transitioning panels.",
+        customizable: false,
       },
       {
         name: "columns",
@@ -2403,18 +2623,28 @@ export function AppShell() {
         description:
           "The number of vertical/horizontal bands the screen splits into.",
         default: "10",
+        min: 1,
+        max: 50,
+        step: 1,
       },
       {
         name: "duration",
         type: ["number"],
-        description: "The duration of the animation for each band in seconds.",
+        description:
+          "The duration of the animation for each band in seconds (s).",
         default: "0.45",
+        min: 0.1,
+        max: 2,
+        step: 0.05,
       },
       {
         name: "staggerDelay",
         type: ["number"],
-        description: "The delay between each band's animation in seconds.",
+        description: "The delay between each band's animation in seconds (s).",
         default: "0.03",
+        min: 0,
+        max: 0.5,
+        step: 0.01,
       },
       {
         name: "ease",
@@ -2422,6 +2652,7 @@ export function AppShell() {
         description:
           "The bezier curve easing array or string for the animation.",
         default: "[0.85, 0, 0.15, 1]",
+        customizable: false,
       },
       {
         name: "direction",
@@ -2429,6 +2660,7 @@ export function AppShell() {
         description:
           "The direction the curtain enters from. Also determines if bands are vertical or horizontal.",
         default: '"left"',
+        customizable: false,
       },
       {
         name: "exitOpposite",
@@ -2455,8 +2687,11 @@ export function AppShell() {
         name: "strokeWidth",
         type: ["number"],
         description:
-          "The width (or height for vertical directions) of the colorful doodle stroke in pixels.",
+          "The width (or height for vertical directions) of the colorful doodle stroke in pixels (px).",
         default: "10",
+        min: 0,
+        max: 50,
+        step: 1,
       },
       {
         name: "leadingStrokeColors",
@@ -2464,6 +2699,7 @@ export function AppShell() {
         description:
           "Array of hex colors to use for the colorful doodle accents on the leading edge of the wipe.",
         default: '["#facc15", "#ec4899", "#38bdf8", ...]',
+        customizable: false,
       },
       {
         name: "trailingStrokeColors",
@@ -2471,6 +2707,7 @@ export function AppShell() {
         description:
           "Array of hex colors to use for the colorful doodle accents on the trailing edge of the wipe.",
         default: '["#facc15", "#ec4899", "#38bdf8", ...]',
+        customizable: false,
       },
     ],
     usageCode: `// 1. General Setup (All React Frameworks)
@@ -2545,12 +2782,14 @@ export function AppShell() {
         type: ["string"],
         description:
           "The paragraph text to automatically measure and split into visual lines.",
+        customizable: false,
       },
       {
         name: "lines",
         type: ["string[]"],
         description:
           "An explicit array of lines to animate, bypassing dynamic layout detection.",
+        customizable: false,
       },
       {
         name: "direction",
@@ -2562,11 +2801,13 @@ export function AppShell() {
         name: "itemClassName",
         type: ["string"],
         description: "Additional CSS classes to apply to each line element.",
+        customizable: false,
       },
       {
         name: "scrollContainerRef",
         type: ["React.RefObject<HTMLElement | null>"],
         description: "Optional ref for a custom scroll container.",
+        customizable: false,
       },
       {
         name: "offset",
@@ -2574,30 +2815,43 @@ export function AppShell() {
         description:
           "Scroll container offsets defining animation start and end points.",
         default: '["start end", "end 60%"]',
+        customizable: false,
       },
       {
         name: "flyInDistance",
-        type: ["string"],
-        description: "Horizontal translation starting distance (e.g., '70vw').",
-        default: '"70vw"',
+        type: ["number"],
+        description: "Horizontal translation starting distance (vw).",
+        default: "70",
+        min: 0,
+        max: 100,
+        step: 1,
       },
       {
         name: "blurStart",
-        type: ["string"],
-        description: "Initial CSS blur filter intensity (e.g., '12px').",
-        default: '"12px"',
+        type: ["number"],
+        description: "Initial CSS blur filter intensity (px).",
+        default: "12",
+        min: 0,
+        max: 40,
+        step: 1,
       },
       {
         name: "wordSpacingStart",
-        type: ["string"],
-        description: "Initial word spacing value (e.g., '2.5em').",
-        default: '"2.5em"',
+        type: ["number"],
+        description: "Initial word spacing value (em).",
+        default: "2.5",
+        min: 0,
+        max: 10,
+        step: 0.1,
       },
       {
         name: "wordSpacingEnd",
-        type: ["string"],
-        description: "Final word spacing value (e.g., '0.25em').",
-        default: '"0.25em"',
+        type: ["number"],
+        description: "Final word spacing value (em).",
+        default: "0.25",
+        min: 0,
+        max: 10,
+        step: 0.05,
       },
       {
         name: "staggerFactor",
@@ -2630,6 +2884,7 @@ export function AppShell() {
         type: ["string"],
         description: "The text content to animate.",
         default: '"Grinding Hard"',
+        customizable: false,
       },
       {
         name: "variant",
@@ -2641,11 +2896,13 @@ export function AppShell() {
         name: "itemClassName",
         type: ["string"],
         description: "Additional CSS classes to apply to each text element.",
+        customizable: false,
       },
       {
         name: "scrollContainerRef",
         type: ["React.RefObject<HTMLElement | null>"],
         description: "Optional ref for a custom scroll container.",
+        customizable: false,
       },
       {
         name: "offset",
@@ -2653,6 +2910,7 @@ export function AppShell() {
         description:
           "Scroll container offsets defining animation start and end points.",
         default: '["start end", "end 60%"]',
+        customizable: false,
       },
       {
         name: "opacity",
@@ -2660,6 +2918,7 @@ export function AppShell() {
         description:
           "An array defining start and end opacity values (e.g., [0, 1]).",
         default: "[0, 1]",
+        customizable: false,
       },
       {
         name: "blur",
@@ -2667,6 +2926,7 @@ export function AppShell() {
         description:
           "An array defining start and end blur intensity values (e.g., ['12px', '0px']).",
         default: '["12px", "0px"]',
+        customizable: false,
       },
       {
         name: "y",
@@ -2674,6 +2934,7 @@ export function AppShell() {
         description:
           "An array defining start and end vertical translation values (e.g., ['10px', '0px']).",
         default: '["10px", "0px"]',
+        customizable: false,
       },
       {
         name: "scale",
@@ -2681,12 +2942,14 @@ export function AppShell() {
         description:
           "An array defining start and end scale values (e.g., [1, 1]).",
         default: "[1, 1]",
+        customizable: false,
       },
       {
         name: "containerClassName",
         type: ["string"],
         description:
           "Additional CSS classes to apply to the inner wrapper container.",
+        customizable: false,
       },
       {
         name: "staggerFactor",
@@ -2718,6 +2981,7 @@ export function AppShell() {
         name: "text",
         type: ["string"],
         description: "The paragraph text to animate.",
+        customizable: false,
       },
       {
         name: "minScale",
@@ -2757,11 +3021,13 @@ export function AppShell() {
         name: "itemClassName",
         type: ["string"],
         description: "Additional CSS classes to style the text elements.",
+        customizable: false,
       },
       {
         name: "scrollContainerRef",
         type: ["React.RefObject<HTMLElement | null>"],
         description: "Optional ref for a custom scroll container.",
+        customizable: false,
       },
       {
         name: "offset",
@@ -2769,6 +3035,7 @@ export function AppShell() {
         description:
           "Scroll container offsets defining the active viewport focus window.",
         default: '["start 90%", "end 60%"]',
+        customizable: false,
       },
     ],
   },
@@ -2787,36 +3054,44 @@ export function AppShell() {
       {
         name: "duration",
         type: ["number"],
-        description: "Duration of the swipe transition in milliseconds.",
+        description: "Duration of the swipe transition in milliseconds (ms).",
         default: "650",
+        min: 100,
+        max: 2000,
+        step: 50,
       },
       {
         name: "easing",
         type: ["string"],
         description: "The CSS transition easing function.",
         default: "'ease-in-out'",
+        customizable: false,
       },
       {
         name: "onSwipe",
         type: ["() => void"],
         description:
           "An optional callback triggered during the view transition update phase.",
+        customizable: false,
       },
       {
         name: "theme",
         type: ["'light' | 'dark'"],
         description: "Optional controlled theme state parameter.",
+        customizable: false,
       },
       {
         name: "onThemeChange",
         type: ["(theme: 'light' | 'dark') => void"],
         description: "An optional callback triggered when the theme toggles.",
+        customizable: false,
       },
       {
         name: "getKeyframes",
         type: ["(dir: SwipeDirection) => Keyframe[]"],
         description:
           "Optional callback function returning custom animation keyframes based on swipe direction.",
+        customizable: false,
       },
       {
         name: "direction",
@@ -2824,12 +3099,16 @@ export function AppShell() {
         description:
           "The default transition direction: short presets ('left', 'right', 'top', 'bottom'), corner presets ('top-left', 'top-right', 'bottom-left', 'bottom-right'), or long names.",
         default: "'left'",
+        customizable: false,
       },
       {
         name: "angle",
         type: ["number"],
         description: "Relative slant offset in degrees to angle linear swipes.",
         default: "0",
+        min: -90,
+        max: 90,
+        step: 1,
       },
     ],
     usageCode: `// 1. Wrap your application root (e.g. app/layout.tsx in Next.js or App.tsx in Vite)
@@ -2875,36 +3154,45 @@ export function CustomThemeToggle() {
       {
         name: "duration",
         type: ["number"],
-        description: "Duration of the circle-wipe transition in milliseconds.",
+        description:
+          "Duration of the circle-wipe transition in milliseconds (ms).",
         default: "500",
+        min: 100,
+        max: 2000,
+        step: 100,
       },
       {
         name: "easing",
         type: ["string"],
         description: "The CSS transition easing function.",
         default: "'ease-in-out'",
+        customizable: false,
       },
       {
         name: "onTransition",
         type: ["() => void"],
         description:
           "An optional callback triggered during the view transition update phase.",
+        customizable: false,
       },
       {
         name: "theme",
         type: ["'light' | 'dark'"],
         description: "Optional controlled theme state parameter.",
+        customizable: false,
       },
       {
         name: "onThemeChange",
         type: ["(theme: 'light' | 'dark') => void"],
         description: "An optional callback triggered when the theme toggles.",
+        customizable: false,
       },
       {
         name: "defaultCenter",
         type: ["TransitionOrigin"],
         description:
           "Default center origin: presets ('top-left', 'top-right', 'bottom-left', 'bottom-right', 'center'), coordinate object ({x, y}), mouse event, or HTMLElement.",
+        customizable: false,
       },
     ],
     usageCode: `// 1. Wrap your application root (e.g. app/layout.tsx in Next.js or App.tsx in Vite)
@@ -2950,36 +3238,44 @@ export function CustomThemeToggle() {
       {
         name: "duration",
         type: ["number"],
-        description: "Duration of the split transition in milliseconds.",
+        description: "Duration of the split transition in milliseconds (ms).",
         default: "600",
+        min: 100,
+        max: 2000,
+        step: 100,
       },
       {
         name: "easing",
         type: ["string"],
         description: "The CSS transition easing function.",
         default: "'ease-in-out'",
+        customizable: false,
       },
       {
         name: "onTransition",
         type: ["() => void"],
         description:
           "An optional callback triggered during the view transition update phase.",
+        customizable: false,
       },
       {
         name: "theme",
         type: ["'light' | 'dark'"],
         description: "Optional controlled theme state parameter.",
+        customizable: false,
       },
       {
         name: "onThemeChange",
         type: ["(theme: 'light' | 'dark') => void"],
         description: "An optional callback triggered when the theme toggles.",
+        customizable: false,
       },
       {
         name: "direction",
         type: ["'horizontal' | 'vertical'"],
         description: "The default split transition direction.",
         default: "'horizontal'",
+        customizable: false,
       },
       {
         name: "mode",
@@ -3035,29 +3331,37 @@ export function CustomThemeToggle() {
         description:
           "Value key to programmatically trigger the transition overlay.",
         default: "0",
+        customizable: false,
       },
       {
         name: "onViewSwap",
         type: ["() => void"],
         description:
           "Callback fired at mid-transition to perform state/view swaps.",
+        customizable: false,
       },
       {
         name: "className",
         type: ["string"],
         description: "Additional CSS classes to style the container wrapper.",
+        customizable: false,
       },
       {
         name: "panelClassName",
         type: ["string"],
         description:
           "Additional CSS classes to style the individual curtain halves.",
+        customizable: false,
       },
       {
         name: "duration",
         type: ["number"],
-        description: "The duration of the animation for each half in seconds.",
+        description:
+          "The duration of the animation for each half in seconds (s).",
         default: "0.8",
+        min: 0.1,
+        max: 2,
+        step: 0.1,
       },
       {
         name: "ease",
@@ -3065,6 +3369,7 @@ export function CustomThemeToggle() {
         description:
           "The bezier curve easing array or string for the animation.",
         default: "[0.76, 0, 0.24, 1]",
+        customizable: false,
       },
       {
         name: "direction",
@@ -3072,6 +3377,7 @@ export function CustomThemeToggle() {
         description:
           "The axis along which the curtain splits. Vertical splits horizontally (slides up/down), Horizontal splits vertically (slides left/right).",
         default: "'horizontal'",
+        customizable: false,
       },
     ],
     usageCode: `// 1. General Setup (All React Frameworks)
@@ -3138,29 +3444,37 @@ export function AppShell() {
         description:
           "Value key to programmatically trigger the transition overlay.",
         default: "0",
+        customizable: false,
       },
       {
         name: "onViewSwap",
         type: ["() => void"],
         description:
           "Callback fired when the screen is fully covered mid-transition to perform state/view swaps.",
+        customizable: false,
       },
       {
         name: "className",
         type: ["string"],
         description: "Additional CSS classes to style the container wrapper.",
+        customizable: false,
       },
       {
         name: "panelClassName",
         type: ["string"],
         description:
           "Additional CSS classes to style the individual interlocking panels.",
+        customizable: false,
       },
       {
         name: "duration",
         type: ["number"],
-        description: "The duration of the column slide animation in seconds.",
+        description:
+          "The duration of the column slide animation in seconds (s).",
         default: "0.8",
+        min: 0.1,
+        max: 2,
+        step: 0.1,
       },
       {
         name: "ease",
@@ -3168,12 +3482,16 @@ export function AppShell() {
         description:
           "The bezier curve easing array or string for the animation.",
         default: "[0.76, 0, 0.24, 1]",
+        customizable: false,
       },
       {
         name: "columns",
         type: ["number"],
         description: "The number of interlocking columns or rows to render.",
         default: "4",
+        min: 2,
+        max: 20,
+        step: 1,
       },
       {
         name: "direction",
@@ -3181,6 +3499,7 @@ export function AppShell() {
         description:
           "The layout and movement orientation of the interlocking columns.",
         default: "'vertical'",
+        customizable: false,
       },
     ],
     usageCode: `// 1. General Setup (All React Frameworks)
@@ -3246,17 +3565,20 @@ export function AppShell() {
         description:
           "Value key to programmatically trigger the transition overlay.",
         default: "0",
+        customizable: false,
       },
       {
         name: "onViewSwap",
         type: ["() => void"],
         description:
           "Callback fired when the screen is fully covered mid-transition to perform state/view swaps.",
+        customizable: false,
       },
       {
         name: "className",
         type: ["string"],
         description: "Additional CSS classes to style the container wrapper.",
+        customizable: false,
       },
       {
         name: "colors",
@@ -3264,19 +3586,27 @@ export function AppShell() {
         description:
           "An array of hex or CSS colors mapping to sequential wipe layers.",
         default: `["#e2e8f0", "#cbd5e1", "#94a3b8"]`,
+        customizable: false,
       },
       {
         name: "duration",
         type: ["number"],
         description:
-          "The duration of the sweep animation for each layer in seconds.",
+          "The duration of the sweep animation for each layer in seconds (s).",
         default: "0.7",
+        min: 0.1,
+        max: 2,
+        step: 0.1,
       },
       {
         name: "staggerDelay",
         type: ["number"],
-        description: "The delay between successive sweep layers in seconds.",
+        description:
+          "The delay between successive sweep layers in seconds (s).",
         default: "0.1",
+        min: 0,
+        max: 0.5,
+        step: 0.05,
       },
       {
         name: "ease",
@@ -3284,12 +3614,14 @@ export function AppShell() {
         description:
           "The bezier curve easing array or string for the animation.",
         default: "[0.76, 0, 0.24, 1]",
+        customizable: false,
       },
       {
         name: "direction",
         type: ["'top'", "'bottom'", "'left'", "'right'"],
         description: "The sweep wipe starting direction.",
         default: "'left'",
+        customizable: false,
       },
       {
         name: "exitOpposite",
@@ -3362,43 +3694,56 @@ export function AppShell() {
         description:
           "Value key to programmatically trigger the transition overlay.",
         default: "0",
+        customizable: false,
       },
       {
         name: "onViewSwap",
         type: ["() => void"],
         description:
           "Callback fired when the screen is fully covered mid-transition to perform state/view swaps.",
+        customizable: false,
       },
       {
         name: "className",
         type: ["string"],
         description: "Additional CSS classes to style the grid wrapper.",
+        customizable: false,
       },
       {
         name: "panelClassName",
         type: ["string"],
         description:
           "Additional CSS classes to style the individual grid pixels.",
+        customizable: false,
       },
       {
         name: "pixelSize",
         type: ["number"],
-        description: "Target base size of each pixel grid cell in pixels.",
+        description: "Target base size of each pixel grid cell in pixels (px).",
         default: "40",
+        min: 10,
+        max: 200,
+        step: 5,
       },
       {
         name: "duration",
         type: ["number"],
         description:
-          "The scale/fade transition duration of individual cells in seconds.",
+          "The scale/fade transition duration of individual cells in seconds (s).",
         default: "0.2",
+        min: 0.1,
+        max: 2,
+        step: 0.1,
       },
       {
         name: "staggerDuration",
         type: ["number"],
         description:
-          "The maximum delay stagger range for shuffled pixel animations in seconds.",
+          "The maximum delay stagger range for shuffled pixel animations in seconds (s).",
         default: "0.4",
+        min: 0,
+        max: 2,
+        step: 0.1,
       },
     ],
     usageCode: `// 1. General Setup (All React Frameworks)
@@ -3465,23 +3810,27 @@ export function AppShell() {
         description:
           "Value key to programmatically trigger the transition overlay.",
         default: "0",
+        customizable: false,
       },
       {
         name: "onViewSwap",
         type: ["() => void"],
         description:
           "Callback fired when the screen is fully covered mid-transition to perform state/view swaps.",
+        customizable: false,
       },
       {
         name: "className",
         type: ["string"],
         description: "Additional CSS classes to style the container wrapper.",
+        customizable: false,
       },
       {
         name: "panelClassName",
         type: ["string"],
         description:
           "Additional CSS classes to style the individual wave panels.",
+        customizable: false,
       },
       {
         name: "columns",
@@ -3489,20 +3838,29 @@ export function AppShell() {
         description:
           "The number of vertical columns or horizontal rows forming the wave.",
         default: "20",
+        min: 1,
+        max: 50,
+        step: 1,
       },
       {
         name: "duration",
         type: ["number"],
         description:
-          "The duration of each column/row slide animation in seconds.",
+          "The duration of each column/row slide animation in seconds (s).",
         default: "0.5",
+        min: 0.1,
+        max: 2,
+        step: 0.1,
       },
       {
         name: "maxDelay",
         type: ["number"],
         description:
-          "The maximum stagger delay amplitude added by the normalized sine wave in seconds.",
+          "The maximum stagger delay amplitude added by the normalized sine wave in seconds (s).",
         default: "0.4",
+        min: 0,
+        max: 1,
+        step: 0.05,
       },
       {
         name: "ease",
@@ -3510,6 +3868,7 @@ export function AppShell() {
         description:
           "The bezier curve easing array or string for the animation.",
         default: "[0.76, 0, 0.24, 1]",
+        customizable: false,
       },
       {
         name: "direction",
@@ -3517,6 +3876,7 @@ export function AppShell() {
         description:
           "The entry direction of the wave panels (also determines orientation).",
         default: "'top'",
+        customizable: false,
       },
       {
         name: "exitOpposite",
@@ -3589,23 +3949,27 @@ export function AppShell() {
         description:
           "Value key to programmatically trigger the transition overlay.",
         default: "0",
+        customizable: false,
       },
       {
         name: "onViewSwap",
         type: ["() => void"],
         description:
           "Callback fired when the screen is fully covered mid-transition to perform state/view swaps.",
+        customizable: false,
       },
       {
         name: "className",
         type: ["string"],
         description: "Additional CSS classes to style the container wrapper.",
+        customizable: false,
       },
       {
         name: "panelClassName",
         type: ["string"],
         description:
           "Additional CSS classes to style the individual colored stripes.",
+        customizable: false,
       },
       {
         name: "columns",
@@ -3613,23 +3977,34 @@ export function AppShell() {
         description:
           "The number of vertical columns or horizontal rows to render.",
         default: "14",
+        min: 1,
+        max: 50,
+        step: 1,
       },
       {
         name: "colors",
         type: ["string[]"],
         description: "Array of colors forming the solid stripe sequence.",
+        customizable: false,
       },
       {
         name: "duration",
         type: ["number"],
-        description: "The slide animation duration of each panel in seconds.",
+        description:
+          "The slide animation duration of each panel in seconds (s).",
         default: "0.55",
+        min: 0.1,
+        max: 2,
+        step: 0.1,
       },
       {
         name: "staggerDelay",
         type: ["number"],
-        description: "Symmetrical cascade delay increment in seconds.",
+        description: "Symmetrical cascade delay increment in seconds (s).",
         default: "0.035",
+        min: 0,
+        max: 0.2,
+        step: 0.005,
       },
       {
         name: "ease",
@@ -3637,6 +4012,7 @@ export function AppShell() {
         description:
           "The bezier curve easing array or string for the animation.",
         default: "[0.76, 0, 0.24, 1]",
+        customizable: false,
       },
       {
         name: "direction",
@@ -3644,6 +4020,7 @@ export function AppShell() {
         description:
           "The entry direction of the solid stripes (also determines orientation).",
         default: "'top'",
+        customizable: false,
       },
       {
         name: "exitOpposite",
@@ -3676,18 +4053,23 @@ export function AppShell() {
       {
         name: "strokeWidth",
         type: ["number"],
-        description: "Stroke border thickness in pixels.",
+        description: "Stroke border thickness in pixels (px).",
         default: "10",
+        min: 0,
+        max: 50,
+        step: 1,
       },
       {
         name: "leadingStrokeColors",
         type: ["string[]"],
         description: "Array of colors forming the leading edge strokes.",
+        customizable: false,
       },
       {
         name: "trailingStrokeColors",
         type: ["string[]"],
         description: "Array of colors forming the trailing edge strokes.",
+        customizable: false,
       },
     ],
     usageCode: `// 1. General Setup (All React Frameworks)
@@ -3754,43 +4136,56 @@ export function AppShell() {
         description:
           "Value key to programmatically trigger the transition overlay.",
         default: "0",
+        customizable: false,
       },
       {
         name: "onViewSwap",
         type: ["() => void"],
         description:
           "Callback fired when the screen is fully covered mid-transition to perform state/view swaps.",
+        customizable: false,
       },
       {
         name: "className",
         type: ["string"],
         description: "Additional CSS classes to style the container wrapper.",
+        customizable: false,
       },
       {
         name: "panelClassName",
         type: ["string"],
         description:
           "Additional CSS classes to style the individual blinds panels.",
+        customizable: false,
       },
       {
         name: "columns",
         type: ["number"],
         description: "The number of shutter flap columns or rows.",
         default: "20",
+        min: 1,
+        max: 50,
+        step: 1,
       },
       {
         name: "duration",
         type: ["number"],
         description:
-          "The flip/scale transition duration of each panel in seconds.",
+          "The flip/scale transition duration of each panel in seconds (s).",
         default: "0.5",
+        min: 0.1,
+        max: 2,
+        step: 0.1,
       },
       {
         name: "staggerDelay",
         type: ["number"],
         description:
-          "Stagger delay increment between adjacent shutters in seconds.",
+          "Stagger delay increment between adjacent shutters in seconds (s).",
         default: "0.02",
+        min: 0,
+        max: 0.2,
+        step: 0.01,
       },
       {
         name: "staggerType",
@@ -3805,6 +4200,7 @@ export function AppShell() {
         description:
           "The bezier curve easing array or string for the animation.",
         default: "[0.76, 0, 0.24, 1]",
+        customizable: false,
       },
       {
         name: "direction",
@@ -3812,6 +4208,7 @@ export function AppShell() {
         description:
           "Orientation layout (horizontal rows scaleY or vertical columns scaleX).",
         default: "'horizontal'",
+        customizable: false,
       },
       {
         name: "origin",
@@ -3881,24 +4278,33 @@ export function AppShell() {
       {
         name: "duration",
         type: ["number"],
-        description: "Duration of the blur transition in milliseconds.",
+        description: "Duration of the blur transition in milliseconds (ms).",
         default: "500",
+        min: 100,
+        max: 2000,
+        step: 50,
       },
       {
         name: "maxBlur",
         type: ["number"],
-        description: "Maximum blur applied during the transition (in px).",
+        description:
+          "Maximum blur applied during the transition in pixels (px).",
         default: "16",
+        min: 0,
+        max: 100,
+        step: 1,
       },
       {
         name: "theme",
         type: ["'light' | 'dark'"],
         description: "Optional controlled theme state parameter.",
+        customizable: false,
       },
       {
         name: "onThemeChange",
         type: ["(theme: 'light' | 'dark') => void"],
         description: "An optional callback triggered when the theme toggles.",
+        customizable: false,
       },
     ],
     usageCode: `// 1. Wrap your application root (e.g. app/layout.tsx in Next.js or App.tsx in Vite)
@@ -3948,24 +4354,32 @@ export function CustomThemeToggle() {
         description:
           "Value key to programmatically trigger the transition overlay.",
         default: "0",
+        customizable: false,
       },
       {
         name: "onViewSwap",
         type: ["() => void"],
         description:
           "Callback fired at mid-transition to perform state/view swaps.",
+        customizable: false,
       },
       {
         name: "duration",
         type: ["number"],
-        description: "The duration of the animation in seconds.",
+        description: "The duration of the animation in seconds (s).",
         default: "0.6",
+        min: 0.1,
+        max: 2,
+        step: 0.1,
       },
       {
         name: "maxBlur",
         type: ["number"],
-        description: "Maximum blur amount applied (in px).",
+        description: "Maximum blur amount applied (px).",
         default: "20",
+        min: 0,
+        max: 40,
+        step: 1,
       },
     ],
     usageCode: `// Example Usage
@@ -4000,6 +4414,7 @@ export default function PageTransitionWrapper() {
         type: ["FlyingCard[]"],
         description:
           "Array of card objects containing id, title, description, and optional icon, imageUrl, or className.",
+        customizable: false,
       },
       {
         name: "backgroundText",
@@ -4007,43 +4422,69 @@ export default function PageTransitionWrapper() {
         description:
           "Background sticky text displayed behind the flying cards.",
         default: '"GREAT UI"',
+        customizable: false,
       },
       {
         name: "className",
         type: ["string"],
         description: "Class name for the main container.",
+        customizable: false,
       },
       {
         name: "cardClassName",
         type: ["string"],
         description: "Class name for each flying card element.",
+        customizable: false,
       },
       {
         name: "titleClassName",
         type: ["string"],
         description: "Class name for card titles.",
+        customizable: false,
       },
       {
         name: "descriptionClassName",
         type: ["string"],
         description: "Class name for card descriptions.",
+        customizable: false,
       },
       {
         name: "backgroundTextClassName",
         type: ["string"],
         description: "Class name for the background sticky text.",
+        customizable: false,
       },
       {
         name: "scrollContainerRef",
         type: ["React.RefObject<HTMLElement | null>"],
         description:
           "Optional custom scroll container reference for scroll progress tracking.",
+        customizable: false,
+      },
+
+      {
+        name: "animationOffset",
+        type: ["number"],
+        description: "Pixel offset distance for entry and exit animations.",
+        default: "300",
       },
       {
-        name: "animationConfig",
-        type: ["object"],
-        description:
-          "Custom animation configurations including direction ('up' | 'down' | 'left' | 'right'), offset, rotation, scale, and blur.",
+        name: "animationRotation",
+        type: ["number"],
+        description: "Rotation degree for entry and exit animations.",
+        default: "10",
+      },
+      {
+        name: "animationScale",
+        type: ["number"],
+        description: "Scale multiplier during the animation.",
+        default: "0.85",
+      },
+      {
+        name: "animationBlur",
+        type: ["number"],
+        description: "CSS blur value applied during entry and exit.",
+        default: "20",
       },
     ],
     usageCode: `import { ScrollFlyingCards } from "@/components/ui/ScrollFlyingCards";
