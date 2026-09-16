@@ -20,10 +20,22 @@ export type Component = {
   props: Prop[];
   previewFile?: string;
   preview?: string;
+  fallbackPreview?: string;
   code?: string;
   usageCode?: string;
   inspiration?: string;
 };
+
+export function getPreviewFallback(component: {
+  preview?: string;
+  fallbackPreview?: string;
+}): string | null {
+  if (component.fallbackPreview) return component.fallbackPreview;
+  if (!component.preview) return null;
+  if (component.preview.startsWith("/previews/")) return component.preview;
+  const fileName = component.preview.split("/").pop()?.split("?")[0];
+  return fileName ? `/previews/${fileName}` : null;
+}
 
 export const components: Component[] = [
   {
@@ -126,7 +138,7 @@ export const components: Component[] = [
     slug: "linkedin-card",
     category: "Social Cards",
     inspiration: "",
-    preview: "https://ik.imagekit.io/niqgaoeg3/GUI-linkedin-Card.mp4",
+    preview: "https://ik.imagekit.io/j65jb9u8q/GUI-linkedin-Card.mp4",
     name: "LinkedIn Card",
     description:
       "An interactive LinkedIn profile card component that supports both static and animated 3D tilt effects.",
@@ -256,7 +268,7 @@ export const components: Component[] = [
     slug: "twitter-card",
     category: "Social Cards",
     inspiration: "",
-    preview: "https://ik.imagekit.io/niqgaoeg3/GUI-x-Card.mp4",
+    preview: "https://ik.imagekit.io/j65jb9u8q/GUI-x-Card.mp4",
     name: "Twitter(X) Card",
     description:
       "An interactive Twitter profile card component that supports both static and animated 3D tilt effects.",
@@ -349,7 +361,7 @@ export const components: Component[] = [
     slug: "facebook-card",
     category: "Social Cards",
     inspiration: "",
-    preview: "https://ik.imagekit.io/niqgaoeg3/GUI-Facebook-Card.mp4",
+    preview: "https://ik.imagekit.io/j65jb9u8q/GUI-Facebook-Card.mp4",
     name: "Facebook Card",
     description:
       "An interactive Facebook profile card component with magnetic 3D tilt effects on hover.",
@@ -478,7 +490,7 @@ export const components: Component[] = [
     slug: "instagram-card",
     category: "Social Cards",
     inspiration: "",
-    preview: "https://ik.imagekit.io/niqgaoeg3/GUI-Instagram-Card.mp4",
+    preview: "https://ik.imagekit.io/j65jb9u8q/GUI-Instagram-Card.mp4",
     name: "Instagram Card",
     description:
       "An interactive Instagram profile card component featuring gradient avatar border and 3D tilt effects on hover.",
@@ -2161,7 +2173,7 @@ export const components: Component[] = [
     slug: "scrambled-install-command",
     category: "Typography",
     inspiration: "",
-    preview: "https://ik.imagekit.io/niqgaoeg3/cyberglitch.mp4",
+    preview: "https://ik.imagekit.io/j65jb9u8q/command-copy-scramble-text.mp4",
     name: "Scrambled Install Command",
     description:
       "A copy-to-clipboard command installation component featuring an animated scramble text effect.",
@@ -3047,7 +3059,7 @@ export function AppShell() {
       "A transition manager that switches between light and dark themes using a directional wipe/swipe transition via the Web View Transition API.",
     interactionType:
       "Triggered programmatically or using directional controls. Wipes the screen in the selected direction.",
-    preview: "https://ik.imagekit.io/niqgaoeg3/GUI-SwipeThemeProviders.mp4",
+    preview: "https://ik.imagekit.io/j65jb9u8q/GUI-SwipeThemeProviders.mp4",
     dependencies: [],
     previewFile: "SwipeThemeChangePreview",
     props: [
@@ -3147,7 +3159,7 @@ export function CustomThemeToggle() {
       "A transition manager that switches between light and dark themes using a custom circular clip-path view transition centered at the user's cursor position or specified coordinates.",
     interactionType:
       "Triggered by user clicks or programmatically. Wipes the screen outward in an expanding circle.",
-    preview: "https://ik.imagekit.io/niqgaoeg3/GUI-CircularThemeProvider.mp4",
+    preview: "https://ik.imagekit.io/j65jb9u8q/GUI-CircularThemeProvider.mp4",
     dependencies: [],
     previewFile: "CircularThemeProviderPreview",
     props: [
@@ -3231,7 +3243,7 @@ export function CustomThemeToggle() {
       "A transition manager that switches between light and dark themes using a vertical or horizontal split transition starting from the center (in-to-out) or edges (out-to-in).",
     interactionType:
       "Triggered programmatically or using control buttons. Splits the viewport outward from the center, or inward from the edges.",
-    preview: "https://ik.imagekit.io/niqgaoeg3/GUI-SplitThemeProvider.mp4",
+    preview: "https://ik.imagekit.io/j65jb9u8q/GUI-SplitThemeProvider.mp4",
     dependencies: [],
     previewFile: "SplitThemeProviderPreview",
     props: [
@@ -4271,7 +4283,7 @@ export function AppShell() {
     interactionType:
       "Triggered programmatically. Smoothly cross-fades and blurs the screen during theme changes.",
     preview:
-      "https://ik.imagekit.io/niqgaoeg3/GUI-blur-fade-theme-transition.mp4",
+      "https://ik.imagekit.io/j65jb9u8q/GUI-blur-fade-theme-transition.mp4",
     dependencies: [],
     previewFile: "BlurFadeThemeTransitionPreview",
     props: [

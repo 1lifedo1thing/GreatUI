@@ -3,17 +3,21 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { changelogData, type ChangelogItem } from "@/lib/changelog";
-import { components } from "@/lib/registry";
+import { components, getPreviewFallback } from "@/lib/registry";
 import { ViewerProvider } from "@/lib/viewer-context";
 import ComponentPreviewRenderer from "./ComponentPreviewRenderer";
 
-function ChangelogPreviewCard({
+function ChangelogMedia({
   component,
+  isHovered,
 }: {
   component: (typeof components)[0];
+  isHovered: boolean;
 }) {
-  const [isHovered, setIsHovered] = useState(false);
+  const [currentSrc, setCurrentSrc] = useState(component.preview);
+  const [hasError, setHasError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const fallback = getPreviewFallback(component);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -23,7 +27,54 @@ function ChangelogPreviewCard({
         videoRef.current.pause();
       }
     }
-  }, [isHovered]);
+  }, [isHovered, currentSrc]);
+
+  const handleMediaError = () => {
+    if (fallback && currentSrc !== fallback) {
+      setCurrentSrc(fallback);
+    } else {
+      setHasError(true);
+    }
+  };
+
+  if (!currentSrc || hasError) {
+    return (
+      <div className="pointer-events-none relative z-10 flex h-full w-full scale-90 items-center justify-center transition-transform duration-700 ease-out group-hover:scale-100">
+        <ViewerProvider>
+          <ComponentPreviewRenderer slug={component.slug} />
+        </ViewerProvider>
+      </div>
+    );
+  }
+
+  return currentSrc.includes(".mp4") ? (
+    <video
+      key={currentSrc}
+      ref={videoRef}
+      src={currentSrc}
+      loop
+      muted
+      playsInline
+      onError={handleMediaError}
+      className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
+    />
+  ) : (
+    <img
+      key={currentSrc}
+      src={currentSrc}
+      alt={component.name}
+      onError={handleMediaError}
+      className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
+    />
+  );
+}
+
+function ChangelogPreviewCard({
+  component,
+}: {
+  component: (typeof components)[0];
+}) {
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
@@ -46,30 +97,11 @@ function ChangelogPreviewCard({
         }}
       />
       <div className="relative z-10 flex h-full w-full items-center justify-center overflow-hidden bg-neutral-50 dark:bg-neutral-950/80">
-        {component.preview ? (
-          component.preview.includes(".mp4") ? (
-            <video
-              ref={videoRef}
-              src={component.preview}
-              loop
-              muted
-              playsInline
-              className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
-            />
-          ) : (
-            <img
-              src={component.preview}
-              alt={component.name}
-              className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
-            />
-          )
-        ) : (
-          <div className="pointer-events-none relative z-10 flex h-full w-full scale-90 items-center justify-center transition-transform duration-700 ease-out group-hover:scale-100">
-            <ViewerProvider>
-              <ComponentPreviewRenderer slug={component.slug} />
-            </ViewerProvider>
-          </div>
-        )}
+        <ChangelogMedia
+          key={component.slug}
+          component={component}
+          isHovered={isHovered}
+        />
       </div>
     </div>
   );

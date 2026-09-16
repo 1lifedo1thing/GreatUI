@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import posthog from "posthog-js";
 import { motion } from "motion/react";
 import ComponentPreviewRenderer from "./ComponentPreviewRenderer";
-import { type Component } from "@/lib/registry";
+import { type Component, getPreviewFallback } from "@/lib/registry";
 import { ViewerProvider } from "@/lib/viewer-context";
 
 interface ComponentCardProps {
@@ -12,12 +12,17 @@ interface ComponentCardProps {
   isFeatured?: boolean;
 }
 
-export default function ComponentCard({
+function CardMedia({
   component,
-  isFeatured,
-}: ComponentCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
+  isHovered,
+}: {
+  component: Component;
+  isHovered: boolean;
+}) {
+  const [currentSrc, setCurrentSrc] = useState(component.preview);
+  const [hasError, setHasError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const fallback = getPreviewFallback(component);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -30,7 +35,64 @@ export default function ComponentCard({
     } else {
       video.pause();
     }
-  }, [isHovered]);
+  }, [isHovered, currentSrc]);
+
+  const handleMediaError = () => {
+    if (fallback && currentSrc !== fallback) {
+      setCurrentSrc(fallback);
+    } else {
+      setHasError(true);
+    }
+  };
+
+  if (!currentSrc || hasError) {
+    return (
+      <div className="pointer-events-none relative z-10 flex w-full items-center justify-center">
+        <ViewerProvider>
+          <ComponentPreviewRenderer slug={component.slug} />
+        </ViewerProvider>
+      </div>
+    );
+  }
+
+  return (
+    <motion.div
+      animate={{
+        borderTopLeftRadius: isHovered ? "0px" : "16px",
+        borderTopRightRadius: isHovered ? "0px" : "16px",
+      }}
+      transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
+      className="relative z-10 flex h-full w-full items-center justify-center overflow-hidden bg-neutral-50 transition-colors duration-300 group-hover:border-transparent dark:bg-neutral-950/80"
+    >
+      {currentSrc.includes(".mp4") ? (
+        <video
+          key={currentSrc}
+          ref={videoRef}
+          src={currentSrc}
+          loop
+          muted
+          playsInline
+          onError={handleMediaError}
+          className="relative z-10 h-full w-full object-cover"
+        />
+      ) : (
+        <img
+          key={currentSrc}
+          src={currentSrc}
+          alt={component.name}
+          onError={handleMediaError}
+          className="relative z-10 h-full w-full scale-120 object-cover"
+        />
+      )}
+    </motion.div>
+  );
+}
+
+export default function ComponentCard({
+  component,
+  isFeatured,
+}: ComponentCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleClick = () => {
     posthog.capture("component_card_clicked", {
@@ -70,39 +132,11 @@ export default function ComponentCard({
           }}
         />
 
-        {component.preview ? (
-          <motion.div
-            animate={{
-              borderTopLeftRadius: isHovered ? "0px" : "16px",
-              borderTopRightRadius: isHovered ? "0px" : "16px",
-            }}
-            transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
-            className="relative z-10 flex h-full w-full items-center justify-center overflow-hidden bg-neutral-50 transition-colors duration-300 group-hover:border-transparent dark:bg-neutral-950/80"
-          >
-            {component.preview.includes(".mp4") ? (
-              <video
-                ref={videoRef}
-                src={component.preview}
-                loop
-                muted
-                playsInline
-                className="relative z-10 h-full w-full object-cover"
-              />
-            ) : (
-              <img
-                src={component.preview}
-                alt={component.name}
-                className="relative z-10 h-full w-full scale-120 object-cover"
-              />
-            )}
-          </motion.div>
-        ) : (
-          <div className="pointer-events-none relative z-10 flex w-full items-center justify-center">
-            <ViewerProvider>
-              <ComponentPreviewRenderer slug={component.slug} />
-            </ViewerProvider>
-          </div>
-        )}
+        <CardMedia
+          key={component.slug}
+          component={component}
+          isHovered={isHovered}
+        />
       </motion.div>
 
       <div className="flex flex-col px-4 pt-3 pb-2">

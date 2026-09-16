@@ -89,7 +89,8 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
     id: "scrambled-install-command",
     title: "Scrambled Install Command",
-    videoLink: "https://ik.imagekit.io/niqgaoeg3/cyberglitch.mp4",
+    videoLink:
+      "https://ik.imagekit.io/j65jb9u8q/command-copy-scramble-text.mp4",
     icon: (
       <svg
         width="24"
@@ -146,6 +147,30 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
     ),
   },
 ];
+
+function ShowcaseVideo({ videoLink }: { videoLink: string }) {
+  const [currentSrc, setCurrentSrc] = useState(videoLink);
+  const fallbackVideoLink = videoLink.startsWith("/previews/")
+    ? videoLink
+    : `/previews/${videoLink.split("/").pop()?.split("?")[0]}`;
+
+  return (
+    <video
+      key={currentSrc}
+      src={currentSrc}
+      autoPlay
+      loop
+      muted
+      playsInline
+      onError={() => {
+        if (currentSrc !== fallbackVideoLink) {
+          setCurrentSrc(fallbackVideoLink);
+        }
+      }}
+      className="block h-full w-full object-cover"
+    />
+  );
+}
 
 export function ComponentShowcase() {
   const [activeTabIdx, setActiveTabIdx] = useState(0);
@@ -296,13 +321,9 @@ export function ComponentShowcase() {
                     href={`/components/${activeTab.id}`}
                     className="block aspect-video w-full cursor-alias overflow-hidden border border-neutral-200/30 bg-neutral-50 dark:border-neutral-800/50 dark:bg-neutral-950/80"
                   >
-                    <video
-                      src={activeTab.videoLink}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="block h-full w-full object-cover"
+                    <ShowcaseVideo
+                      key={activeTab.id}
+                      videoLink={activeTab.videoLink}
                     />
                   </Link>
                 </motion.div>
