@@ -39,6 +39,72 @@ export function getPreviewFallback(component: {
 
 export const components: Component[] = [
   {
+    slug: "pixel-swipe-text",
+    category: "Typography",
+    name: "Pixel Swipe Text ",
+    description:
+      "A pixel-noise stylized dual-band canvas wipe reveal animation for text headlines and hero statements.",
+    interactionType:
+      "On mount or click, dual cubic-bezier animated sweep bands with dynamic randomized pixel-dithered edges wipe across the text to reveal it with an accent color trail.",
+    dependencies: ["motion"],
+    previewFile: "PixelSwipeTextPreview",
+    preview: "https://ik.imagekit.io/j65jb9u8q/GUI-Pixel-Swipe-Text.mp4",
+    props: [
+      {
+        name: "children",
+        type: ["ReactNode"],
+        description:
+          "The text or React nodes to be revealed by the swipe animation.",
+        default: "Pixel Swipe Text Animation",
+        customizable: false,
+      },
+      {
+        name: "wipeColor",
+        type: ["string"],
+        description:
+          "The color of the primary leading wipe band. Accepts any valid CSS color string.",
+        default: "#46c610ff",
+        customizable: false,
+      },
+      {
+        name: "trailWipeColor",
+        type: ["string"],
+        description:
+          "The color of the secondary trailing wipe band that follows the lead band.",
+        default: "#fb7185",
+        customizable: false,
+      },
+      {
+        name: "speed",
+        type: ["number"],
+        description: "Animation speed multiplier (lower is faster).",
+        default: "0.7",
+        min: 0.1,
+        max: 2,
+        step: 0.05,
+      },
+      {
+        name: "playOnce",
+        type: ["boolean"],
+        description:
+          "Whether the animation should only play once when scrolled into view.",
+        default: "false",
+      },
+      {
+        name: "className",
+        type: ["string"],
+        description: "Optional CSS classes to style the outer container.",
+        customizable: false,
+      },
+      {
+        name: "textClassName",
+        type: ["string"],
+        description: "Optional CSS classes to style the inner text.",
+        customizable: false,
+      },
+    ],
+  },
+  {
     slug: "animated-path",
     category: "Visuals",
     inspiration: "",

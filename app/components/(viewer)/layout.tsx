@@ -317,16 +317,19 @@ function ViewerLayoutContent({ children }: { children: React.ReactNode }) {
             aria-label="Toggle prop customizer panel"
           >
             <AnimatePresence>
-              {!isCustomizerOpen && !isPanelOpen && !isCodeOpen && (
-                <motion.div
-                  initial={{ opacity: 0, filter: "blur(4px)", y: -6 }}
-                  animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-                  exit={{ opacity: 0, filter: "blur(4px)", y: -6 }}
-                  transition={{ duration: 0.25, ease: "easeOut" }}
-                  className="pointer-events-none absolute top-full right-0 mt-2 hidden w-max items-center justify-end gap-1.5 md:flex"
-                >
-                  <style>
-                    {`
+              {!isCustomizerOpen &&
+                !isPanelOpen &&
+                !isCodeOpen &&
+                process.env.NODE_ENV !== "development" && (
+                  <motion.div
+                    initial={{ opacity: 0, filter: "blur(4px)", y: -6 }}
+                    animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                    exit={{ opacity: 0, filter: "blur(4px)", y: -6 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    className="pointer-events-none absolute top-full right-0 mt-2 hidden w-max items-center justify-end gap-1.5 md:flex"
+                  >
+                    <style>
+                      {`
                     @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap');
                     @keyframes text-shimmer {
                       0% { -webkit-mask-position: 200% center; mask-position: 200% center; }
@@ -340,39 +343,39 @@ function ViewerLayoutContent({ children }: { children: React.ReactNode }) {
                       animation: text-shimmer 2.5s linear infinite;
                     }
                   `}
-                  </style>
-                  <div
-                    style={{ fontFamily: "Caveat, cursive" }}
-                    className="animate-text-shimmer mt-2 -rotate-2 pr-2 text-right text-2xl leading-[0.85] font-medium whitespace-nowrap text-neutral-500 select-none dark:text-neutral-400"
-                  >
-                    Click here to customize the preview <br /> or view all the
-                    variants!
-                  </div>
-                  <svg
-                    className="h-16 w-16 shrink-0 text-neutral-400 dark:text-neutral-500"
-                    viewBox="0 0 100 100"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    {/* Clean sweeping curved shaft */}
-                    <path
-                      d="M 12 72 C 32 72, 54 54, 68 18"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    {/* Balanced hand-drawn arrowhead */}
-                    <path
-                      d="M 50 28 Q 60 21 68 18 Q 74 27 78 36"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </motion.div>
-              )}
+                    </style>
+                    <div
+                      style={{ fontFamily: "Caveat, cursive" }}
+                      className="animate-text-shimmer mt-2 -rotate-2 pr-2 text-right text-2xl leading-[0.85] font-medium whitespace-nowrap text-neutral-500 select-none dark:text-neutral-400"
+                    >
+                      Click here to customize the preview <br /> or view all the
+                      variants!
+                    </div>
+                    <svg
+                      className="h-16 w-16 shrink-0 text-neutral-400 dark:text-neutral-500"
+                      viewBox="0 0 100 100"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      {/* Clean sweeping curved shaft */}
+                      <path
+                        d="M 12 72 C 32 72, 54 54, 68 18"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      {/* Balanced hand-drawn arrowhead */}
+                      <path
+                        d="M 50 28 Q 60 21 68 18 Q 74 27 78 36"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </motion.div>
+                )}
             </AnimatePresence>
 
             <svg

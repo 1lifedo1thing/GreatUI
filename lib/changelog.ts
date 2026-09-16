@@ -5,6 +5,12 @@ export type ChangelogItem = {
 
 export const changelogData: ChangelogItem[] = [
   {
+    date: "September 17, 2026",
+    features: [
+      "Added [Pixel Swipe Text Animation](/components/pixel-swipe-text) component featuring a pixel-dithered dual-band canvas wipe reveal animation.",
+    ],
+  },
+  {
     date: "September 16, 2026",
     features: [
       "Added interactive schema-driven Prop Customizer pipeline allowing real-time prop tweaking and live JSX code generation across component previews.",
