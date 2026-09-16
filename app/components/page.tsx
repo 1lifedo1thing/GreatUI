@@ -36,7 +36,12 @@ export const metadata: Metadata = {
   },
 };
 
-const FEATURED_SLUGS = ["scroll-flying-cards", "animated-path", "twitter-card"];
+const FEATURED_SLUGS = [
+  "pixel-swipe-text",
+  "scroll-flying-cards",
+  "animated-path",
+  "twitter-card",
+];
 
 export default function ComponentsPage() {
   const featuredComponents = FEATURED_SLUGS.map((slug) =>
