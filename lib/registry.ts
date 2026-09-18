@@ -48,7 +48,8 @@ export const components: Component[] = [
       "On mount or click, dual cubic-bezier animated sweep bands with dynamic randomized pixel-dithered edges wipe across the text to reveal it with an accent color trail.",
     dependencies: ["motion"],
     previewFile: "PixelSwipeTextPreview",
-    preview: "https://ik.imagekit.io/j65jb9u8q/GUI-Pixel-Swipe-Text.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-Pixel-Swipe-Text.mp4",
     props: [
       {
         name: "children",
@@ -108,7 +109,8 @@ export const components: Component[] = [
     slug: "animated-path",
     category: "Visuals",
     inspiration: "",
-    preview: "https://ik.imagekit.io/niqgaoeg3/GUI-Animated-Path.mp4?v=2",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-Animated-Path.mp4?v=2",
     name: "Animated Path",
     description:
       "An animated logo component that draws the paths smoothly using Framer Motion.",
@@ -204,7 +206,8 @@ export const components: Component[] = [
     slug: "linkedin-card",
     category: "Social Cards",
     inspiration: "",
-    preview: "https://ik.imagekit.io/j65jb9u8q/GUI-linkedin-Card.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-linkedin-Card.mp4",
     name: "LinkedIn Card",
     description:
       "An interactive LinkedIn profile card component that supports both static and animated 3D tilt effects.",
@@ -334,7 +337,8 @@ export const components: Component[] = [
     slug: "twitter-card",
     category: "Social Cards",
     inspiration: "",
-    preview: "https://ik.imagekit.io/j65jb9u8q/GUI-x-Card.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-x-Card.mp4",
     name: "Twitter(X) Card",
     description:
       "An interactive Twitter profile card component that supports both static and animated 3D tilt effects.",
@@ -427,7 +431,8 @@ export const components: Component[] = [
     slug: "facebook-card",
     category: "Social Cards",
     inspiration: "",
-    preview: "https://ik.imagekit.io/j65jb9u8q/GUI-Facebook-Card.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-Facebook-Card.mp4",
     name: "Facebook Card",
     description:
       "An interactive Facebook profile card component with magnetic 3D tilt effects on hover.",
@@ -556,7 +561,8 @@ export const components: Component[] = [
     slug: "instagram-card",
     category: "Social Cards",
     inspiration: "",
-    preview: "https://ik.imagekit.io/j65jb9u8q/GUI-Instagram-Card.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-Instagram-Card.mp4",
     name: "Instagram Card",
     description:
       "An interactive Instagram profile card component featuring gradient avatar border and 3D tilt effects on hover.",
@@ -686,7 +692,8 @@ export const components: Component[] = [
     slug: "radial-gooey-menu",
     category: "Visuals",
     inspiration: "",
-    preview: "https://ik.imagekit.io/niqgaoeg3/GUI-gooey-menu.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-gooey-menu.mp4",
     name: "Radial Gooey Menu",
     description:
       "A liquid radial gooey menu component with spring-physics magnetic hover effects and smooth SVG blob matrix filtering.",
@@ -769,7 +776,8 @@ export const components: Component[] = [
     slug: "floating-dock-menu",
     category: "Visuals",
     inspiration: "",
-    preview: "https://ik.imagekit.io/niqgaoeg3/GUI-Floating-Dock-Menu.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-Floating-Dock-Menu.mp4",
     name: "Floating Dock Menu",
     description:
       "An expandable floating dock menu with smooth layout morphing, active pill indicator, toggle switches, and submenus.",
@@ -837,7 +845,8 @@ export const components: Component[] = [
     slug: "accordion",
     category: "Layout & Cards",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/accordian.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/accordian.mp4",
     name: "Accordion",
     description:
       "An interactive Accordion component with smooth expand/collapse animations.",
@@ -859,7 +868,8 @@ export const components: Component[] = [
     slug: "button",
     category: "Buttons",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/button.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/button.mp4",
     name: "Button",
     description:
       "A versatile button component supporting multiple variants, sizes, icons, and a loading state.",
@@ -916,7 +926,8 @@ export const components: Component[] = [
     slug: "mobile-mockup",
     category: "Visuals",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/mobileMockup.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/mobileMockup.mp4",
     name: "Mobile Mockup",
     description:
       "An interactive mobile device frame mockup with a realistic smartphone chassis, status bar, and WhatsApp mobile chat UI.",
@@ -973,7 +984,8 @@ export const components: Component[] = [
     slug: "macbook-mockup",
     category: "Visuals",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/macbookMockup.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/macbookMockup.mp4",
     name: "Macbook Mockup",
     description:
       "A realistic 3D Macbook Pro device frame mockup with aluminum casing, keyboard base, and dual-pane WhatsApp Web chat UI.",
@@ -1029,7 +1041,8 @@ export const components: Component[] = [
     slug: "deployment-checklist",
     category: "Layout & Cards",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/deploymentchecklist.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/deploymentchecklist.mp4",
     name: "Deployment Checklist",
     description:
       "An interactive CI/CD pipeline protocol checklist depicting git clone, install, build, and deploy stages with custom animated status icons.",
@@ -1051,7 +1064,8 @@ export const components: Component[] = [
     slug: "floating-menu",
     category: "Visuals",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/floatingmenu.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/floatingmenu.mp4",
     name: "Floating Menu",
     description:
       "A floating, animated capsule menu that expands into a full-screen navigation overlay.",
@@ -1087,7 +1101,8 @@ export const components: Component[] = [
     slug: "vinyl-album-card",
     category: "Layout & Cards",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/vinyl.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/vinyl.mp4",
     name: "Vinyl Album Card",
     description:
       "An interactive music album card with a spinning vinyl record that emerges from the cover sleeve upon hover.",
@@ -1129,7 +1144,8 @@ export const components: Component[] = [
         name: "coverImage",
         type: ["string"],
         description: "URL or local asset path of the album cover image.",
-        default: "'https://ik.imagekit.io/ybq4azred/greatui/album_art.png'",
+        default:
+          "'https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/greatui/album_art.png'",
         customizable: false,
       },
     ],
@@ -1138,7 +1154,7 @@ export const components: Component[] = [
     slug: "liquid-ripple-shader",
     category: "Shaders",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/liquidRiple.mp4",
+    preview: "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/liquidRiple.mp4",
     name: "Liquid Ripple Shader",
     description:
       "A fullscreen WebGL page transition that animates a fluid concentric ripple wave expanding from the center of the viewport during route changes.",
@@ -1184,7 +1200,7 @@ export const components: Component[] = [
     slug: "cyber-glitch-shader",
     category: "Shaders",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/cyberglitch.mp4",
+    preview: "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/cyberglitch.mp4",
     name: "Cyber Glitch Shader",
     description:
       "A fullscreen WebGL page transition that applies an RGB-split chromatic aberration glitch effect across the viewport during route changes.",
@@ -1230,7 +1246,7 @@ export const components: Component[] = [
     slug: "vortex-spiral-shader",
     category: "Shaders",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/swirl.mp4",
+    preview: "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/swirl.mp4",
     name: "Vortex Spiral Shader",
     description:
       "A fullscreen WebGL page transition that spins a rotating swirl vortex wipe across the viewport during route changes.",
@@ -1276,7 +1292,7 @@ export const components: Component[] = [
     slug: "liquid-dissolve-shader",
     category: "Shaders",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/liquidDisolve.mp4",
+    preview: "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/liquidDisolve.mp4",
     name: "Liquid Dissolve Shader",
     description:
       "A fullscreen WebGL page transition that melts the viewport away using organic fractal noise dissolve during route changes.",
@@ -1322,7 +1338,7 @@ export const components: Component[] = [
     slug: "animated-select",
     category: "Visuals",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/dropdown.mp4",
+    preview: "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/dropdown.mp4",
     name: "Animated Select",
     description:
       "A premium interactive dropdown component with dynamic spring-based menu expanding animations and sequenced staggering list items.",
@@ -1383,7 +1399,8 @@ export const components: Component[] = [
     slug: "animated-link",
     category: "Visuals",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/links.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/links.mp4",
     name: "Animated Link",
     description:
       "An interactive link component supporting 13 premium hover variants including custom clipping masks, SVG sine waves, and text marquee animations.",
@@ -1480,7 +1497,8 @@ export const components: Component[] = [
     slug: "terminal-loader",
     category: "Visuals",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/terminalLoader.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/terminalLoader.mp4",
     name: "Terminal Loader",
     description:
       "A retro, terminal-inspired monospace loading indicator that animates character blocks and trailing density particles in real-time.",
@@ -1570,7 +1588,7 @@ export const components: Component[] = [
         description:
           "Source URL of the avatar image to be revealed from grayscale to color.",
         default:
-          "'https://ik.imagekit.io/ybq4azred/temp_avatar_new_1784920336469.png'",
+          "'https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/temp_avatar_new_1784920336469.png'",
         customizable: false,
       },
       {
@@ -1606,7 +1624,8 @@ export const components: Component[] = [
     slug: "minimal-buttons",
     category: "Buttons",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/shadowButton.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/shadowButton.mp4",
     name: "Minimal Buttons",
     description:
       "A tactile, retro-modern button component featuring beveled top-border highlights, inner gradients, and inset shadow detailing.",
@@ -1647,7 +1666,8 @@ export const components: Component[] = [
     slug: "aceternity-button",
     category: "Buttons",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/aceternitybutton.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/aceternitybutton.mp4",
     name: "Aceternity Button",
     description:
       "A soft, convex tactile button component featuring inner shadows, active scaling states, and smooth gradients for premium feedback.",
@@ -1747,7 +1767,8 @@ export const components: Component[] = [
     slug: "diagonal-marquee-carousel",
     category: "Layout & Cards",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/marquee.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/marquee.mp4",
     name: "Diagonal Marquee Carousel",
     description:
       "A premium diagonally slanted, infinitely scrolling marquee showing cards or landscapes with offset speeds, alternating directions, and soft gradients.",
@@ -1812,7 +1833,8 @@ export const components: Component[] = [
     slug: "revision-timeline",
     category: "Layout & Cards",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/timeline.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/timeline.mp4",
     name: "Revision Timeline",
     description:
       "A premium interactive document revision history log timeline featuring Gaussian-weighted dial scale indicators, spring-based sliding position centering, and parsed markdown log lists.",
@@ -1890,7 +1912,7 @@ export const components: Component[] = [
   // {
   //   slug: "frosted-glass-reveal",
   //   inspiration: "",
-  //   preview: "https://ik.imagekit.io/greatui/frostedglass.mp4",
+  //   preview: "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/frostedglass.mp4",
   //   name: "Frosted Glass Reveal",
   //   description:
   //     "An interactive frosted glass image reveal effect that simulates realistic light refraction and tracks the user's cursor.",
@@ -1930,7 +1952,8 @@ export const components: Component[] = [
     slug: "card",
     category: "Layout & Cards",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/card.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/card.mp4",
     name: "Card",
     description:
       "A card component that displays an image, a title, and a date, and highlights custom divider lines on hover.",
@@ -1994,7 +2017,8 @@ export const components: Component[] = [
     slug: "text-reveal",
     category: "Typography",
     inspiration: "https://x.com/samitkapoorr",
-    preview: "https://ik.imagekit.io/greatui/textscroll.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/textscroll.mp4",
     name: "Text Reveal",
     description:
       "A scroll-driven text mask reveal component that animates words and characters letter-by-letter as the viewport scrolls.",
@@ -2065,7 +2089,8 @@ export const components: Component[] = [
     slug: "github-card",
     category: "Social Cards",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/avatarhover.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/avatarhover.mp4",
     name: "Github Card",
     description:
       "A customizable hover link component that reveals a realistic 3D-tilted GitHub contributions calendar popup with interactive tooltips.",
@@ -2173,7 +2198,8 @@ export const components: Component[] = [
     slug: "team-section",
     category: "Layout & Cards",
     inspiration: "",
-    preview: "https://ik.imagekit.io/greatui/teamSection.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/teamSection.mp4",
     name: "Team Section",
     description:
       "A premium interactive team listing component featuring custom layout reveals, grayscale-to-color hover effects, and responsive layout.",
@@ -2239,7 +2265,8 @@ export const components: Component[] = [
     slug: "scrambled-install-command",
     category: "Typography",
     inspiration: "",
-    preview: "https://ik.imagekit.io/j65jb9u8q/command-copy-scramble-text.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/command-copy-scramble-text.mp4",
     name: "Scrambled Install Command",
     description:
       "A copy-to-clipboard command installation component featuring an animated scramble text effect.",
@@ -2355,7 +2382,8 @@ export const components: Component[] = [
     slug: "text-on-path-scroll",
     category: "Typography",
     inspiration: "",
-    preview: "https://ik.imagekit.io/niqgaoeg3/textscroll.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/textscroll.mp4",
     name: "Text On Path Scroll",
     description:
       "A scroll-driven text animation that follows a custom SVG path as the user scrolls.",
@@ -2411,7 +2439,8 @@ export const components: Component[] = [
     interactionType: "Language toggle with smooth animated text transitions.",
     dependencies: ["motion"],
     previewFile: "MultilingualQuotePreview",
-    preview: "https://ik.imagekit.io/niqgaoeg3/quote-multilingual.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/quote-multilingual.mp4",
     props: [
       {
         name: "quotes",
@@ -2462,7 +2491,8 @@ export const components: Component[] = [
       "Hover triggers a procedural pixelation followed by an ASCII art conversion.",
     dependencies: ["motion"],
     previewFile: "PixelToAsciiImagePreview",
-    preview: "https://ik.imagekit.io/niqgaoeg3/pixel-to-ascii.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/pixel-to-ascii.mp4",
     props: [
       {
         name: "src",
@@ -2520,7 +2550,8 @@ export const components: Component[] = [
       "Triggered on route change or programmatically. Covers the viewport in staggered animated panels, seamlessly revealing the next view underneath.",
     dependencies: ["motion"],
     previewFile: "StaggeredPageTransitionPreview",
-    preview: "https://ik.imagekit.io/niqgaoeg3/staggering-page-transition.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/staggering-page-transition.mp4",
     props: [
       {
         name: "trigger",
@@ -2671,7 +2702,8 @@ export function AppShell() {
       "Programmatically triggered. Covers the screen horizontally with 10 staggered lines before sliding out to reveal the new state.",
     dependencies: ["motion"],
     previewFile: "ColorWipePageTransitionPreview",
-    preview: "https://ik.imagekit.io/niqgaoeg3/ColorWipeTransition.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/ColorWipeTransition.mp4",
     props: [
       {
         name: "trigger",
@@ -2846,7 +2878,8 @@ export function AppShell() {
   {
     slug: "split-line-fly-in",
     category: "Typography",
-    preview: "https://ik.imagekit.io/niqgaoeg3/flyIntext.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/flyIntext.mp4",
     name: "Split Line Fly In",
     description:
       "A scroll-driven text animation component where lines fly in from opposite sides of the viewport and settle at the center.",
@@ -2948,7 +2981,8 @@ export function AppShell() {
   {
     slug: "blur-scroll-reveal",
     category: "Typography",
-    preview: "https://ik.imagekit.io/niqgaoeg3/BlurTextScroll.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/BlurTextScroll.mp4",
     name: "Blur Scroll Reveal",
     description:
       "A scroll-driven text animation component where words or lines fade and transition from blur to sharp as they scroll into view.",
@@ -3046,7 +3080,8 @@ export function AppShell() {
   {
     slug: "word-focus-scroll",
     category: "Typography",
-    preview: "https://ik.imagekit.io/niqgaoeg3/wordFocus.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/wordFocus.mp4",
     name: "Word Focus Scroll",
     description:
       "A scroll-driven text focusing component where individual words scale up, unblur, and fade in sequentially on scroll and lock into focus.",
@@ -3125,7 +3160,8 @@ export function AppShell() {
       "A transition manager that switches between light and dark themes using a directional wipe/swipe transition via the Web View Transition API.",
     interactionType:
       "Triggered programmatically or using directional controls. Wipes the screen in the selected direction.",
-    preview: "https://ik.imagekit.io/j65jb9u8q/GUI-SwipeThemeProviders.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-SwipeThemeProviders.mp4",
     dependencies: [],
     previewFile: "SwipeThemeChangePreview",
     props: [
@@ -3225,7 +3261,8 @@ export function CustomThemeToggle() {
       "A transition manager that switches between light and dark themes using a custom circular clip-path view transition centered at the user's cursor position or specified coordinates.",
     interactionType:
       "Triggered by user clicks or programmatically. Wipes the screen outward in an expanding circle.",
-    preview: "https://ik.imagekit.io/j65jb9u8q/GUI-CircularThemeProvider.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-CircularThemeProvider.mp4",
     dependencies: [],
     previewFile: "CircularThemeProviderPreview",
     props: [
@@ -3309,7 +3346,8 @@ export function CustomThemeToggle() {
       "A transition manager that switches between light and dark themes using a vertical or horizontal split transition starting from the center (in-to-out) or edges (out-to-in).",
     interactionType:
       "Triggered programmatically or using control buttons. Splits the viewport outward from the center, or inward from the edges.",
-    preview: "https://ik.imagekit.io/j65jb9u8q/GUI-SplitThemeProvider.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-SplitThemeProvider.mp4",
     dependencies: [],
     previewFile: "SplitThemeProviderPreview",
     props: [
@@ -3401,7 +3439,8 @@ export function CustomThemeToggle() {
       "Programmatically triggered on route change or view swaps, splitting the viewport in two halves that slide outwards to reveal the next state.",
     dependencies: ["motion"],
     previewFile: "CurtainPageTransitionPreview",
-    preview: "https://ik.imagekit.io/niqgaoeg3/GUI-Curtain-Transition.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-Curtain-Transition.mp4",
     props: [
       {
         name: "trigger",
@@ -3514,7 +3553,7 @@ export function AppShell() {
     dependencies: ["motion"],
     previewFile: "InterlockingPageTransitionPreview",
     preview:
-      "https://ik.imagekit.io/niqgaoeg3/GUI-Interlocking-Page-Transition.mp4",
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-Interlocking-Page-Transition.mp4",
     props: [
       {
         name: "trigger",
@@ -3635,7 +3674,8 @@ export function AppShell() {
       "Programmatically triggered on route change or view swaps, showing three overlapping solid color sweeps sliding in sequence and sliding offscreen in reverse order to reveal content.",
     dependencies: ["motion"],
     previewFile: "SweepPageTransitionPreview",
-    preview: "https://ik.imagekit.io/niqgaoeg3/GUI-Sweep-Page-Transition.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-Sweep-Page-Transition.mp4",
     props: [
       {
         name: "trigger",
@@ -3764,7 +3804,8 @@ export function AppShell() {
       "Programmatically triggered on route change or view swaps, filling the screen with a grid of block pixels in a shuffled random order, then dissolving them to reveal content.",
     dependencies: ["motion"],
     previewFile: "PixelPageTransitionPreview",
-    preview: "https://ik.imagekit.io/niqgaoeg3/GUI-Pixel-page-Transition.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-Pixel-page-Transition.mp4",
     props: [
       {
         name: "trigger",
@@ -3880,7 +3921,7 @@ export function AppShell() {
     dependencies: ["motion"],
     previewFile: "SineWavePageTransitionPreview",
     preview:
-      "https://ik.imagekit.io/niqgaoeg3/GUI-Sine-Wave-Page-Transition.mp4",
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-Sine-Wave-Page-Transition.mp4",
     props: [
       {
         name: "trigger",
@@ -4019,7 +4060,8 @@ export function AppShell() {
       "Programmatically triggered on route change or view swaps, showing a cascade of colored stripes with customizable borders.",
     dependencies: ["motion"],
     previewFile: "CascadePageTransitionPreview",
-    preview: "https://ik.imagekit.io/niqgaoeg3/GUI-Cascade-Page-Transition.mp4",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-Cascade-Page-Transition.mp4",
     props: [
       {
         name: "trigger",
@@ -4206,7 +4248,7 @@ export function AppShell() {
     dependencies: ["motion"],
     previewFile: "VenetianBlindsPageTransitionPreview",
     preview:
-      "https://ik.imagekit.io/niqgaoeg3/GUI-Venetian-Blinds-Page-Transition.mp4",
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-Venetian-Blinds-Page-Transition.mp4",
     props: [
       {
         name: "trigger",
@@ -4349,7 +4391,7 @@ export function AppShell() {
     interactionType:
       "Triggered programmatically. Smoothly cross-fades and blurs the screen during theme changes.",
     preview:
-      "https://ik.imagekit.io/j65jb9u8q/GUI-blur-fade-theme-transition.mp4",
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-blur-fade-theme-transition.mp4",
     dependencies: [],
     previewFile: "BlurFadeThemeTransitionPreview",
     props: [
@@ -4422,7 +4464,7 @@ export function CustomThemeToggle() {
     interactionType:
       "Programmatically triggered on route change or view swaps, applying a soft blur over the screen.",
     preview:
-      "https://ik.imagekit.io/niqgaoeg3/GUI-cross-blur-page-transition.mp4",
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-cross-blur-page-transition.mp4",
     dependencies: ["motion"],
     previewFile: "CrossBlurPageTransitionPreview",
     props: [
@@ -4479,7 +4521,8 @@ export default function PageTransitionWrapper() {
     name: "Scroll Flying Cards",
     category: "Visuals",
     inspiration: "https://www.hexcode.design/",
-    preview: "https://ik.imagekit.io/niqgaoeg3/GUI-Scroll-flying-Cards.mp4?v=2",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-Scroll-flying-Cards.mp4?v=2",
     description:
       "A scroll-driven flying cards component featuring dynamic entry/exit transforms, rotation, scale depth, blur filters, and sticky background text.",
     interactionType:
