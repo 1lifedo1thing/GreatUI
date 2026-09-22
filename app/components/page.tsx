@@ -37,10 +37,9 @@ export const metadata: Metadata = {
 };
 
 const FEATURED_SLUGS = [
+  "pixel-swipe-page-transition",
   "pixel-swipe-text",
   "scroll-flying-cards",
-  "animated-path",
-  "twitter-card",
 ];
 
 export default function ComponentsPage() {

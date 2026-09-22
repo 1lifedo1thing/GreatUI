@@ -5,6 +5,12 @@ export type ChangelogItem = {
 
 export const changelogData: ChangelogItem[] = [
   {
+    date: "September 23, 2026",
+    features: [
+      "Added [Pixel Swipe Page Transition](/components/pixel-swipe-page-transition) component featuring a canvas-powered single pixel wipe transition with dynamic pixel-dithered noise edges and multi-directional support.",
+    ],
+  },
+  {
     date: "September 17, 2026",
     features: [
       "Added [Pixel Swipe Text Animation](/components/pixel-swipe-text) component featuring a pixel-dithered dual-band canvas wipe reveal animation.",

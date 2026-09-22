@@ -39,6 +39,133 @@ export function getPreviewFallback(component: {
 
 export const components: Component[] = [
   {
+    slug: "pixel-swipe-page-transition",
+    category: "Page Transitions",
+    name: "Pixel Swipe Page Transition",
+    description:
+      "A fast, canvas-powered single pixel wipe page transition with dynamic dithered noise edges.",
+    interactionType:
+      "Programmatically triggered on route change or interaction. A cubic-bezier eased pixel-dithered noise curtain sweeps across the screen, cleanly swapping the page at 100% mask coverage before smoothly revealing the new view.",
+    dependencies: [],
+    previewFile: "PixelSwipePageTransitionPreview",
+    preview:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/GUI-Pixel-Swipe-Page-Transition.mp4",
+    props: [
+      {
+        name: "trigger",
+        type: ["number"],
+        description:
+          "Value key to programmatically trigger the transition overlay.",
+        default: "0",
+        customizable: false,
+      },
+      {
+        name: "onViewSwap",
+        type: ["() => void"],
+        description:
+          "Callback fired at mid-transition when the viewport is 100% covered to perform view/route swapping.",
+        customizable: false,
+      },
+      {
+        name: "wipeColor",
+        type: ["string"],
+        description:
+          "The color of the pixel wipe band with pixelated dithered edges.",
+        default: "#f43f5e",
+        customizable: false,
+      },
+      {
+        name: "direction",
+        type: ["'left'", "'right'", "'top'", "'bottom'"],
+        description: "Direction of the pixel swipe.",
+        default: '"left"',
+        customizable: false,
+      },
+      {
+        name: "speed",
+        type: ["number"],
+        description: "Animation speed multiplier (higher is faster).",
+        default: "1",
+        min: 0.2,
+        max: 3,
+        step: 0.1,
+      },
+      {
+        name: "cellSize",
+        type: ["number"],
+        description: "The pixel cell block size in pixels.",
+        default: "7",
+        min: 4,
+        max: 40,
+        step: 1,
+      },
+      {
+        name: "bandWidth",
+        type: ["number"],
+        description: "The width of the pixelated noise band in pixels.",
+        default: "52",
+        min: 20,
+        max: 200,
+        step: 2,
+      },
+    ],
+    usageCode: `// 1. General Setup (All React Frameworks)
+// The RouteTransitionProvider is framework-agnostic. Wrap your app with it 
+// and pass your router's navigation function to the 'navigate' prop.
+import { RouteTransitionProvider } from "@/components/ui/PixelSwipePageTransition";
+
+export function AppWrapper({ children }) {
+  // Get your framework's router hook here (e.g. useRouter, useNavigate, useLocation)
+  const navigate = (url: string) => { /* your router push function */ };
+  
+  return (
+    <RouteTransitionProvider navigate={navigate} wipeColor="#f43f5e">
+      {children}
+    </RouteTransitionProvider>
+  );
+}
+
+
+// 2. Next.js App Router Setup
+// Create a client-side wrapper in a new file (e.g. components/TransitionWrapper.tsx):
+"use client";
+import { useRouter } from "next/navigation";
+import { RouteTransitionProvider } from "@/components/ui/PixelSwipePageTransition";
+
+export function TransitionWrapper({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
+  
+  return (
+    <RouteTransitionProvider navigate={(url) => router.push(url)} wipeColor="#f43f5e">
+      {children}
+    </RouteTransitionProvider>
+  );
+}
+
+// Then wrap your application in layout.tsx:
+// <TransitionWrapper>{children}</TransitionWrapper>
+
+
+// 3. React Router (Vite / Remix) Setup
+// Simply wrap your Routes with the provider and pass the navigate hook:
+import { useNavigate, Routes, Route } from "react-router-dom";
+import { RouteTransitionProvider } from "@/components/ui/PixelSwipePageTransition";
+
+export function AppShell() {
+  const navigate = useNavigate();
+
+  return (
+    <RouteTransitionProvider navigate={navigate} wipeColor="#f43f5e">
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+      </Routes>
+    </RouteTransitionProvider>
+  );
+}
+`,
+  },
+  {
     slug: "pixel-swipe-text",
     category: "Typography",
     name: "Pixel Swipe Text ",
