@@ -55,7 +55,7 @@ export function getComponentMarkdown(component: Component): string {
   }
 
   md += `## License\n\n`;
-  md += `Released under the MIT License.\n\n`;
+  md += `Released under the Great UI Custom License Agreement.\n\n`;
 
   return md;
 }

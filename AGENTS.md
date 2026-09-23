@@ -32,7 +32,7 @@ When adding a new component to this codebase, follow these rules:
       * GitHub: https://github.com/Saurabh-2607/GreatUI
       * X (Great UI): https://x.com/GreatUIHQ
       *
-      * Released under the MIT License.
+      * Released under the Great UI Custom License Agreement.
       * Contributions, issues, and feature requests are always welcome.
       *
       * Author: [User's Name] (Default: Saurabh Sharma)
