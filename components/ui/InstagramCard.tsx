@@ -34,7 +34,7 @@ const InstagramIcon = ({ className }: { className?: string }) => (
 export const InstagramCard = ({
   username,
   name = "Instagram User",
-  avatarUrl = "https://ik.imagekit.io/niqgaoeg3/Great-UI.png",
+  avatarUrl = "https://ik.imagekit.io/j65jb9u8q/Great-UI.png",
   bio = "This is a placeholder bio for Instagram.",
   posts = "120",
   followers = "10K",

@@ -34,8 +34,8 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
 export const LinkedinCard = ({
   username,
   name = "LinkedIn User",
-  avatarUrl = "https://ik.imagekit.io/niqgaoeg3/Great-UI.png",
-  bannerUrl = "https://ik.imagekit.io/niqgaoeg3/banner.png",
+  avatarUrl = "https://ik.imagekit.io/j65jb9u8q/Great-UI.png",
+  bannerUrl = "https://ik.imagekit.io/j65jb9u8q/banner.png",
   headline = "Software Engineer",
   connections = "500+",
   location = "San Francisco, CA",

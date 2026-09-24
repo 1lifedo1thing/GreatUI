@@ -82,10 +82,10 @@ export const metadata: Metadata = {
     siteName: "Great UI",
     images: [
       {
-        url: "/Great-UI.png",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "Great UI Logo",
+        alt: "Great UI - Craft Premium React Interfaces with Absolute Speed",
       },
     ],
     locale: "en_US",
@@ -96,7 +96,7 @@ export const metadata: Metadata = {
     title: "Great UI - Craft Premium React Interfaces with Absolute Speed",
     description:
       "Beautiful, accessible, and high-performance React components built with Tailwind CSS.",
-    images: ["/Great-UI.png"],
+    images: ["/twitter-image.png"],
   },
   icons: {
     icon: "/favicon.ico",

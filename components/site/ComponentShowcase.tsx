@@ -19,7 +19,7 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
     id: "staggered-page-transition",
     title: "Staggered Page Transition",
     videoLink:
-      "https://ik.imagekit.io/niqgaoeg3/staggering-page-transition.mp4",
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/staggering-page-transition.mp4",
     icon: (
       <svg
         width="24"
@@ -41,7 +41,8 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
     id: "multilingual-quote",
     title: "Multilingual Quote",
-    videoLink: "https://ik.imagekit.io/niqgaoeg3/quote-multilingual.mp4",
+    videoLink:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/quote-multilingual.mp4",
     icon: (
       <svg
         width="24"
@@ -57,7 +58,8 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
     id: "text-on-path-scroll",
     title: "Text on Path Scroll",
-    videoLink: "https://ik.imagekit.io/niqgaoeg3/textscroll.mp4",
+    videoLink:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/textscroll.mp4",
     icon: (
       <svg
         width="24"
@@ -73,7 +75,8 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
     id: "pixel-to-ascii-image",
     title: "Pixel to ASCII",
-    videoLink: "https://ik.imagekit.io/niqgaoeg3/pixel-to-ascii.mp4",
+    videoLink:
+      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/pixel-to-ascii.mp4",
     icon: (
       <svg
         width="24"

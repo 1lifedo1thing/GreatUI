@@ -34,8 +34,8 @@ const FacebookIcon = ({ className }: { className?: string }) => (
 export const FacebookCard = ({
   username,
   name = "Facebook User",
-  avatarUrl = "https://ik.imagekit.io/niqgaoeg3/Great-UI.png",
-  bannerUrl = "https://ik.imagekit.io/niqgaoeg3/banner.png",
+  avatarUrl = "https://ik.imagekit.io/j65jb9u8q/Great-UI.png",
+  bannerUrl = "https://ik.imagekit.io/j65jb9u8q/banner.png",
   bio = "This is a placeholder bio for Facebook.",
   friends = "1.2K",
   mutualFriends = "12",

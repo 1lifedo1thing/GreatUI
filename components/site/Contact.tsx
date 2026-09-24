@@ -206,7 +206,7 @@ export default function Contact() {
               <div className="flex h-full w-full flex-col bg-white text-left font-sans text-xs select-none dark:bg-[#050505]">
                 <div className="relative flex h-24 w-full shrink-0 items-center justify-center overflow-hidden bg-neutral-100 dark:bg-neutral-950">
                   <img
-                    src="https://ik.imagekit.io/ybq4azred/banner.png"
+                    src="https://ik.imagekit.io/j65jb9u8q/banner.png"
                     alt="Great UI Banner"
                     className="h-full w-full object-cover"
                   />
@@ -214,7 +214,7 @@ export default function Contact() {
 
                 <div className="relative flex flex-col justify-end px-5 pt-12">
                   <img
-                    src="https://ik.imagekit.io/ybq4azred/Great-UI.png"
+                    src="https://ik.imagekit.io/j65jb9u8q/Great-UI.png"
                     alt="Great UI Avatar"
                     className="absolute -top-10 left-4 h-20 w-20 rounded-full border-4 border-white bg-white object-cover shadow transition-transform duration-300 group-hover:scale-[1.02] dark:border-[#050505] dark:bg-[#050505]"
                   />
