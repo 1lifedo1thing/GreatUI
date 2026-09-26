@@ -13,8 +13,8 @@
 }
 
 .dark {
-  --background: #000000;
-  --foreground: #ededed;
+  --background: var(--color-neutral-950);
+  --foreground: var(--color-neutral-100);
   --color-decor-dots-100: rgba(237, 237, 237, 0.15);
   --color-border-100: rgba(237, 237, 237, 0.15);
 }

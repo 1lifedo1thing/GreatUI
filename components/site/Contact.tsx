@@ -29,7 +29,7 @@ function ContactCard({
 }: ContactCardProps) {
   return (
     <div className="group relative block cursor-pointer overflow-hidden rounded-3xl bg-neutral-100 no-underline dark:bg-neutral-900">
-      <div className="relative flex h-56 w-full items-center justify-center overflow-hidden bg-white dark:bg-neutral-950">
+      <div className="relative flex h-56 w-full items-center justify-center overflow-hidden bg-white dark:bg-neutral-900">
         {mockup}
       </div>
 
@@ -121,7 +121,7 @@ export default function Contact() {
 
   return (
     <div className="relative mx-auto max-w-[1360px]">
-      <Container className="relative bg-white py-10 md:py-16 dark:bg-black">
+      <Container className="relative py-10 md:py-16">
         <div className="flex flex-col items-start text-left">
           <h2 className="mt-2 max-w-4xl text-4xl leading-[1.05] font-semibold tracking-tight text-neutral-950 sm:text-5xl md:text-6xl dark:text-white">
             Get in touch.
@@ -141,7 +141,7 @@ export default function Contact() {
             handleCopy={handleCopy}
             copiedEmail={copiedEmail}
             mockup={
-              <div className="flex h-full w-full flex-col justify-between bg-white p-4 text-left font-sans text-xs dark:bg-neutral-950">
+              <div className="flex h-full w-full flex-col justify-between bg-white p-4 text-left font-sans text-xs dark:bg-neutral-900">
                 <div>
                   <div className="mb-3 flex items-center justify-between border-b border-neutral-100 pb-2.5 dark:border-neutral-900">
                     <div className="flex items-center gap-1.5">
@@ -186,8 +186,8 @@ export default function Contact() {
             title="@GreatUIHQ"
             description="DMs are best for quick questions and early ideas."
             mockup={
-              <div className="flex h-full w-full flex-col bg-white text-left font-sans text-xs select-none dark:bg-[#050505]">
-                <div className="relative flex h-24 w-full shrink-0 items-center justify-center overflow-hidden bg-neutral-100 dark:bg-neutral-950">
+              <div className="flex h-full w-full flex-col bg-white text-left font-sans text-xs select-none dark:bg-neutral-900">
+                <div className="relative flex h-24 w-full shrink-0 items-center justify-center overflow-hidden bg-neutral-100 dark:bg-neutral-900">
                   <img
                     src="https://ik.imagekit.io/j65jb9u8q/banner.png"
                     alt="Great UI Banner"
@@ -199,7 +199,7 @@ export default function Contact() {
                   <img
                     src="https://ik.imagekit.io/j65jb9u8q/Great-UI.png"
                     alt="Great UI Avatar"
-                    className="absolute -top-10 left-4 h-20 w-20 rounded-full border-4 border-white bg-white object-cover shadow transition-transform duration-300 group-hover:scale-[1.02] dark:border-[#050505] dark:bg-[#050505]"
+                    className="absolute -top-10 left-4 h-20 w-20 rounded-full border-4 border-white bg-white object-cover shadow transition-transform duration-300 group-hover:scale-[1.02] dark:border-neutral-900 dark:bg-neutral-900"
                   />
 
                   <div className="space-y-0">
@@ -227,7 +227,7 @@ export default function Contact() {
             title="GreatUI"
             description="Report bugs, request features, or view open source code."
             mockup={
-              <div className="flex h-full w-full flex-col gap-3 bg-white p-4 text-left font-sans text-xs select-none dark:bg-neutral-950">
+              <div className="flex h-full w-full flex-col gap-3 bg-white p-4 text-left font-sans text-xs select-none dark:bg-neutral-900">
                 <div className="flex items-center gap-2">
                   <svg
                     className="h-5 w-5 shrink-0 fill-current text-neutral-800 dark:text-white"
@@ -256,7 +256,7 @@ export default function Contact() {
                 </div>
 
                 <div className="flex min-h-0 flex-1 gap-3">
-                  <div className="flex flex-1 flex-col justify-center gap-2 rounded-2xl bg-neutral-50 p-2.5 dark:bg-neutral-950">
+                  <div className="flex flex-1 flex-col justify-center gap-2 rounded-2xl bg-neutral-50 p-2.5 dark:bg-neutral-900">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <div className="h-3 w-4 shrink-0 rounded-sm bg-neutral-200 dark:bg-neutral-800" />

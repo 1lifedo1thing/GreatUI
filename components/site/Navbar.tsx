@@ -44,7 +44,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-transparent transition-colors">
-      <Container className="bg-white py-3 dark:bg-black">
+      <Container className="py-3">
         <div className="flex w-full items-center justify-between">
           <Link
             href="/"

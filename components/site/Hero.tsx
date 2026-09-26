@@ -9,7 +9,7 @@ import { SectionIcon } from "./Icons";
 export function Hero() {
   return (
     <div className="relative mx-auto max-w-[1360px]">
-      <Container className="bg-white pt-48 pb-6 md:pt-16 dark:bg-black">
+      <Container className="pt-48 pb-6 md:pt-16">
         <div className="flex flex-col gap-6 py-4 text-left md:flex-row md:items-end md:justify-between md:gap-8">
           <div className="max-w-3xl">
             <h1 className="animate-fade-in text-4xl leading-[1.05] font-semibold tracking-tight text-neutral-950 sm:text-5xl dark:text-white">

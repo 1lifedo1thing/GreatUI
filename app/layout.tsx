@@ -117,7 +117,7 @@ export default function RootLayout({
       lang="en"
       className={`${ttCommons.variable} ${geistMono.variable} dark h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-white font-sans text-neutral-900 transition-colors dark:bg-black dark:text-[#ededed]">
+      <body className="flex min-h-full flex-col bg-white font-sans text-neutral-900 transition-colors dark:bg-neutral-950 dark:text-neutral-100">
         <ThemeProvider>
           <SearchCommand />
           {children}

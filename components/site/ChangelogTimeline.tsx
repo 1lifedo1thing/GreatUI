@@ -143,7 +143,7 @@ export default function ChangelogTimeline() {
           )}
 
           {index === 0 ? (
-            <span className="absolute top-1.5 left-0 flex h-4 w-4 -translate-x-1/2 items-center justify-center overflow-hidden rounded-full bg-white ring-4 ring-white md:left-[180px] dark:bg-[#0a0a0a] dark:ring-[#0a0a0a]">
+            <span className="absolute top-1.5 left-0 flex h-4 w-4 -translate-x-1/2 items-center justify-center overflow-hidden rounded-full bg-white ring-4 ring-white md:left-[180px] dark:bg-neutral-900 dark:ring-neutral-900">
               <img
                 src="/Great-UI.png"
                 alt="Great UI Release"
@@ -151,7 +151,7 @@ export default function ChangelogTimeline() {
               />
             </span>
           ) : (
-            <span className="absolute top-1.5 left-0 flex h-4 w-4 -translate-x-1/2 items-center justify-center rounded-full bg-white ring-4 ring-white md:left-[180px] dark:bg-[#0a0a0a] dark:ring-[#0a0a0a]">
+            <span className="absolute top-1.5 left-0 flex h-4 w-4 -translate-x-1/2 items-center justify-center rounded-full bg-white ring-4 ring-white md:left-[180px] dark:bg-neutral-900 dark:ring-neutral-900">
               <div className="h-2 w-2 rounded-full bg-neutral-400 dark:bg-neutral-600" />
             </span>
           )}

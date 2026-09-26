@@ -5,8 +5,8 @@ import Container from "./Container";
 
 export function AnnouncementBanner() {
   return (
-    <div className="relative w-full bg-gradient-to-r from-white via-neutral-50 to-white transition-colors dark:from-black dark:via-neutral-900/30 dark:to-black">
-      <Container className="bg-white py-4 dark:bg-black">
+    <div className="relative w-full transition-colors">
+      <Container className="py-4">
         <div className="flex w-full flex-wrap items-center justify-center gap-2.5 text-center text-xs font-semibold text-neutral-800 sm:gap-3.5 sm:text-sm md:text-base dark:text-neutral-200">
           <span>
             Launching{" "}

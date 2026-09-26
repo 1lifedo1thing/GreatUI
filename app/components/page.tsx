@@ -48,12 +48,12 @@ export default function ComponentsPage() {
   ).filter((c): c is Component => c !== undefined);
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-white text-neutral-900 transition-colors dark:bg-black dark:text-white">
+    <div className="relative min-h-screen overflow-x-hidden bg-white text-neutral-900 transition-colors dark:bg-neutral-950 dark:text-white">
       <BackgroundGrid />
       <Navbar />
 
       <main className="relative z-10">
-        <Container className="bg-white py-10 md:py-16 dark:bg-black">
+        <Container className="py-10 md:py-16">
           <div className="flex flex-col items-center justify-center text-center">
             <h1 className="text-4xl font-semibold tracking-tight text-neutral-950 sm:text-5xl md:text-6xl dark:text-white">
               {components.length} Great Components

@@ -7,7 +7,7 @@ import Container from "./Container";
 export function Sponsors() {
   return (
     <div className="relative mx-auto max-w-[1360px]">
-      <Container className="relative bg-white py-10 md:py-16 dark:bg-black">
+      <Container className="relative py-10 md:py-16">
         <div className="flex flex-col items-start text-left">
           <h2 className="mt-2 max-w-4xl text-4xl leading-[1.05] font-semibold tracking-tight text-neutral-950 sm:text-5xl md:text-6xl dark:text-white">
             Sponsors

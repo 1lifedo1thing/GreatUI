@@ -222,7 +222,7 @@ export function ComponentShowcase() {
             to { width: 100%; }
           }
         `}</style>
-        <Container className="bg-white dark:bg-black">
+        <Container>
           <div className="flex items-center justify-center">
             <div className="flex [scrollbar-width:none] items-stretch gap-1 overflow-x-auto [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
               {SHOWCASE_ITEMS.map((tab, idx) => {
@@ -275,7 +275,7 @@ export function ComponentShowcase() {
       </div>
 
       <div className="relative mx-auto max-w-[1360px]">
-        <Container className="bg-white dark:bg-black">
+        <Container>
           <div
             className="w-full overflow-hidden"
             onMouseEnter={() => setIsHovered(true)}
@@ -293,7 +293,7 @@ export function ComponentShowcase() {
                 >
                   <Link
                     href={`/components/${activeTab.id}`}
-                    className="block aspect-video w-full cursor-alias overflow-hidden border border-neutral-200/30 bg-neutral-50 dark:border-neutral-800/50 dark:bg-neutral-950/80"
+                    className="block aspect-video w-full cursor-alias overflow-hidden border border-neutral-200/30 bg-neutral-50 dark:border-neutral-800/50 dark:bg-neutral-900"
                   >
                     <ShowcaseVideo
                       key={activeTab.id}
