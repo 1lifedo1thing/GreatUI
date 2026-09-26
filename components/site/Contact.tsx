@@ -29,25 +29,8 @@ function ContactCard({
 }: ContactCardProps) {
   return (
     <div className="group relative block cursor-pointer overflow-hidden rounded-3xl bg-neutral-100 no-underline dark:bg-neutral-900">
-      <div className="relative flex h-56 w-full items-center justify-center overflow-hidden bg-neutral-200/40 px-3.5 pt-3.5 pb-0 dark:bg-neutral-950/40">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.12] dark:opacity-[0.08]"
-          style={{
-            backgroundImage: `
-              repeating-linear-gradient(
-                -45deg,
-                #f6821f 0,
-                #f6821f 1px,
-                transparent 1px,
-                transparent 10px
-              )
-            `,
-          }}
-        />
-
-        <div className="relative z-10 flex h-full w-full items-center justify-center overflow-hidden rounded-t-2xl bg-white dark:bg-neutral-950">
-          {mockup}
-        </div>
+      <div className="relative flex h-56 w-full items-center justify-center overflow-hidden bg-white dark:bg-neutral-950">
+        {mockup}
       </div>
 
       <div className="flex flex-col p-4">
@@ -138,7 +121,7 @@ export default function Contact() {
 
   return (
     <div className="relative mx-auto max-w-[1360px]">
-      <Container className="relative bg-white px-4 py-10 sm:px-6 md:py-16 dark:bg-neutral-950">
+      <Container className="relative bg-white py-10 md:py-16 dark:bg-black">
         <div className="flex flex-col items-start text-left">
           <h2 className="mt-2 max-w-4xl text-4xl leading-[1.05] font-semibold tracking-tight text-neutral-950 sm:text-5xl md:text-6xl dark:text-white">
             Get in touch.
@@ -333,15 +316,6 @@ export default function Contact() {
           />
         </div>
       </Container>
-      <div
-        className="pointer-events-none absolute right-0 bottom-0 left-0 z-20 h-px select-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, var(--color-border-100) 50%, transparent 50%)",
-          backgroundSize: "32px 1px",
-          backgroundRepeat: "repeat-x",
-        }}
-      />
     </div>
   );
 }

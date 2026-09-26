@@ -253,21 +253,6 @@ export function SearchCommand() {
             className="relative z-10 w-full px-0 sm:max-w-2xl sm:px-4"
           >
             <div className="relative overflow-hidden rounded-t-3xl rounded-b-none bg-neutral-100/70 px-3 pt-3 pb-0 shadow-2xl sm:rounded-3xl sm:p-3.5 dark:bg-neutral-900">
-              <div
-                className="pointer-events-none absolute inset-0 opacity-[0.12] dark:opacity-[0.08]"
-                style={{
-                  backgroundImage: `
-                    repeating-linear-gradient(
-                      -45deg,
-                      #f6821f 0,
-                      #f6821f 1px,
-                      transparent 1px,
-                      transparent 10px
-                    )
-                  `,
-                }}
-              />
-
               <Command
                 className="relative z-10 flex h-full w-full flex-col overflow-hidden rounded-t-2xl rounded-b-none bg-white shadow-sm transition-colors sm:rounded-2xl dark:bg-neutral-950"
                 label="Global Search"

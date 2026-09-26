@@ -52,16 +52,7 @@ export function Footer() {
       ref={footerRef}
       className="group relative z-10 mx-auto w-full max-w-[1360px] overflow-hidden bg-transparent transition-colors"
     >
-      <div
-        className="pointer-events-none absolute top-0 right-0 left-0 z-20 h-px select-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, var(--color-border-100) 50%, transparent 50%)",
-          backgroundSize: "32px 1px",
-          backgroundRepeat: "repeat-x",
-        }}
-      />
-      <div className="absolute inset-y-0 left-1/2 z-0 w-[calc(100%-2rem)] max-w-[1280px] -translate-x-1/2 overflow-hidden bg-white sm:w-[calc(100%-3rem)] md:w-[calc(100%-4rem)] lg:w-[calc(100%-6rem)] xl:w-full dark:bg-neutral-950">
+      <div className="absolute inset-y-0 left-1/2 z-0 w-full max-w-[1360px] -translate-x-1/2 overflow-hidden bg-white px-4 sm:px-6 md:px-8 dark:bg-black">
         <div className="pointer-events-none absolute right-0 bottom-0 left-0 z-0 translate-y-[35%] select-none">
           <div className="text-center text-[18vw] leading-none font-black tracking-tighter text-neutral-100 uppercase sm:text-[20vw] md:text-[22vw] lg:text-[300px] dark:text-neutral-900/30">
             GREAT <span className="text-[#f6821f]/85">UI</span>

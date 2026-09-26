@@ -222,22 +222,13 @@ export function ComponentShowcase() {
             to { width: 100%; }
           }
         `}</style>
-        <Container className="bg-white dark:bg-neutral-950">
+        <Container className="bg-white dark:bg-black">
           <div className="flex items-center justify-center">
-            <div className="flex [scrollbar-width:none] items-stretch gap-0 overflow-x-auto [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex [scrollbar-width:none] items-stretch gap-1 overflow-x-auto [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
               {SHOWCASE_ITEMS.map((tab, idx) => {
                 const isActive = idx === activeTabIdx;
                 return (
                   <React.Fragment key={tab.id}>
-                    <div
-                      className="w-px shrink-0 self-stretch select-none"
-                      style={{
-                        backgroundImage:
-                          "linear-gradient(to bottom, var(--color-border-100) 50%, transparent 50%)",
-                        backgroundSize: "1px 16px",
-                        backgroundRepeat: "repeat-y",
-                      }}
-                    />
                     <button
                       onClick={() => handleTabClick(idx)}
                       className={cn(
@@ -275,36 +266,16 @@ export function ComponentShowcase() {
                         </>
                       )}
                     </button>
-                    {idx === SHOWCASE_ITEMS.length - 1 && (
-                      <div
-                        className="w-px shrink-0 self-stretch select-none"
-                        style={{
-                          backgroundImage:
-                            "linear-gradient(to bottom, var(--color-border-100) 50%, transparent 50%)",
-                          backgroundSize: "1px 16px",
-                          backgroundRepeat: "repeat-y",
-                        }}
-                      />
-                    )}
                   </React.Fragment>
                 );
               })}
             </div>
           </div>
         </Container>
-        <div
-          className="pointer-events-none absolute right-0 bottom-0 left-0 z-20 h-px select-none"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, var(--color-border-100) 50%, transparent 50%)",
-            backgroundSize: "32px 1px",
-            backgroundRepeat: "repeat-x",
-          }}
-        />
       </div>
 
       <div className="relative mx-auto max-w-[1360px]">
-        <Container className="bg-white dark:bg-neutral-950">
+        <Container className="bg-white dark:bg-black">
           <div
             className="w-full overflow-hidden"
             onMouseEnter={() => setIsHovered(true)}
@@ -334,15 +305,6 @@ export function ComponentShowcase() {
             </div>
           </div>
         </Container>
-        <div
-          className="pointer-events-none absolute right-0 bottom-0 left-0 z-20 h-px select-none"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, var(--color-border-100) 50%, transparent 50%)",
-            backgroundSize: "32px 1px",
-            backgroundRepeat: "repeat-x",
-          }}
-        />
       </div>
     </ViewerProvider>
   );

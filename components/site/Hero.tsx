@@ -9,7 +9,7 @@ import { SectionIcon } from "./Icons";
 export function Hero() {
   return (
     <div className="relative mx-auto max-w-[1360px]">
-      <Container className="max-w-[1360px] bg-white px-4 pt-48 pb-6 sm:px-6 md:pt-16 dark:bg-neutral-950">
+      <Container className="bg-white pt-48 pb-6 md:pt-16 dark:bg-black">
         <div className="flex flex-col gap-6 py-4 text-left md:flex-row md:items-end md:justify-between md:gap-8">
           <div className="max-w-3xl">
             <h1 className="animate-fade-in text-4xl leading-[1.05] font-semibold tracking-tight text-neutral-950 sm:text-5xl dark:text-white">
@@ -39,15 +39,6 @@ export function Hero() {
           </div>
         </div>
       </Container>
-      <div
-        className="pointer-events-none absolute right-0 bottom-0 left-0 z-20 h-px select-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, var(--color-border-100) 50%, transparent 50%)",
-          backgroundSize: "32px 1px",
-          backgroundRepeat: "repeat-x",
-        }}
-      />
     </div>
   );
 }

@@ -82,20 +82,6 @@ function ChangelogPreviewCard({
       onMouseLeave={() => setIsHovered(false)}
       className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-none"
     >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.12] dark:opacity-[0.08]"
-        style={{
-          backgroundImage: `
-            repeating-linear-gradient(
-              -45deg,
-              #f6821f 0,
-              #f6821f 1px,
-              transparent 1px,
-              transparent 10px
-            )
-          `,
-        }}
-      />
       <div className="relative z-10 flex h-full w-full items-center justify-center overflow-hidden bg-neutral-50 dark:bg-neutral-950/80">
         <ChangelogMedia
           key={component.slug}

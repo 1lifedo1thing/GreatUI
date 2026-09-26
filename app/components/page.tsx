@@ -48,12 +48,12 @@ export default function ComponentsPage() {
   ).filter((c): c is Component => c !== undefined);
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-white text-neutral-900 transition-colors dark:bg-[#0a0a0a] dark:text-white">
+    <div className="relative min-h-screen overflow-x-hidden bg-white text-neutral-900 transition-colors dark:bg-black dark:text-white">
       <BackgroundGrid />
       <Navbar />
 
       <main className="relative z-10">
-        <Container className="bg-white px-4 py-10 sm:px-6 md:py-16 dark:bg-neutral-950">
+        <Container className="bg-white py-10 md:py-16 dark:bg-black">
           <div className="flex flex-col items-center justify-center text-center">
             <h1 className="text-4xl font-semibold tracking-tight text-neutral-950 sm:text-5xl md:text-6xl dark:text-white">
               {components.length} Great Components
@@ -77,7 +77,7 @@ export default function ComponentsPage() {
                       href={`/components/${c.slug}`}
                       key={c.slug}
                       aria-label={`View ${c.name} component`}
-                      className="group relative block cursor-pointer overflow-hidden rounded-t-3xl rounded-b-2xl bg-neutral-100/70 no-underline dark:bg-neutral-900"
+                      className="group relative block cursor-pointer overflow-hidden rounded-3xl bg-neutral-100 no-underline dark:bg-neutral-900"
                     >
                       <ComponentCard component={c} isFeatured={true} />
                     </Link>
@@ -113,7 +113,7 @@ export default function ComponentsPage() {
                         href={`/components/${c.slug}`}
                         key={c.slug}
                         aria-label={`View ${c.name} component`}
-                        className="group relative block cursor-pointer overflow-hidden rounded-t-3xl rounded-b-2xl bg-neutral-100/70 no-underline dark:bg-neutral-900"
+                        className="group relative block cursor-pointer overflow-hidden rounded-3xl bg-neutral-100 no-underline dark:bg-neutral-900"
                       >
                         <ComponentCard component={c} />
                       </Link>

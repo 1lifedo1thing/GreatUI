@@ -56,14 +56,7 @@ function CardMedia({
   }
 
   return (
-    <motion.div
-      animate={{
-        borderTopLeftRadius: isHovered ? "0px" : "16px",
-        borderTopRightRadius: isHovered ? "0px" : "16px",
-      }}
-      transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
-      className="relative z-10 flex h-full w-full items-center justify-center overflow-hidden bg-neutral-50 transition-colors duration-300 group-hover:border-transparent dark:bg-neutral-950/80"
-    >
+    <div className="relative z-10 flex h-full w-full items-center justify-center overflow-hidden bg-neutral-50 dark:bg-neutral-950/80">
       {currentSrc.includes(".mp4") ? (
         <video
           key={currentSrc}
@@ -84,7 +77,7 @@ function CardMedia({
           className="relative z-10 h-full w-full scale-120 object-cover"
         />
       )}
-    </motion.div>
+    </div>
   );
 }
 
@@ -106,38 +99,15 @@ export default function ComponentCard({
       onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group flex h-full w-full flex-col bg-transparent select-none"
+      className="group flex h-full w-full flex-col overflow-hidden bg-transparent select-none"
     >
-      <motion.div
-        animate={{
-          paddingTop: isHovered ? "0rem" : "0.875rem",
-          paddingLeft: isHovered ? "0rem" : "0.875rem",
-          paddingRight: isHovered ? "0rem" : "0.875rem",
-        }}
-        transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
-        className="relative flex h-56 w-full items-center justify-center overflow-hidden bg-neutral-100/50 pb-0 dark:bg-neutral-900/20"
-      >
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.12] dark:opacity-[0.08]"
-          style={{
-            backgroundImage: `
-              repeating-linear-gradient(
-                -45deg,
-                #f6821f 0,
-                #f6821f 1px,
-                transparent 1px,
-                transparent 10px
-              )
-            `,
-          }}
-        />
-
+      <div className="relative flex h-56 w-full items-center justify-center overflow-hidden rounded-t-3xl bg-neutral-100 dark:bg-neutral-900">
         <CardMedia
           key={component.slug}
           component={component}
           isHovered={isHovered}
         />
-      </motion.div>
+      </div>
 
       <div className="flex flex-col px-4 pt-3 pb-2">
         <div className="flex items-center justify-between gap-2">
