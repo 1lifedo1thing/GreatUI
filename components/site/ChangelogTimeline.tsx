@@ -132,18 +132,18 @@ export default function ChangelogTimeline() {
           key={index}
           className="group relative flex flex-col pb-16 last:pb-0 md:flex-row"
         >
-          <div className="hidden shrink-0 pr-8 text-left md:block md:w-[180px]">
-            <h2 className="text-lg font-bold tracking-tight text-neutral-900 dark:text-white">
+          <div className="hidden shrink-0 pr-8 text-left md:block md:w-[240px]">
+            <h2 className="text-lg font-semibold tracking-tight whitespace-nowrap text-neutral-900 dark:text-neutral-300">
               {log.date}
             </h2>
           </div>
 
           {index !== changelogData.length - 1 && (
-            <div className="absolute top-1.5 bottom-[-8px] left-0 w-px -translate-x-1/2 bg-neutral-200 md:left-[180px] dark:bg-neutral-800" />
+            <div className="absolute top-1.5 bottom-[-8px] left-0 w-px -translate-x-1/2 bg-neutral-200 md:left-[240px] dark:bg-neutral-800" />
           )}
 
           {index === 0 ? (
-            <span className="absolute top-1.5 left-0 flex h-4 w-4 -translate-x-1/2 items-center justify-center overflow-hidden rounded-full bg-white ring-4 ring-white md:left-[180px] dark:bg-neutral-900 dark:ring-neutral-900">
+            <span className="absolute top-1.5 left-0 flex h-4 w-4 -translate-x-1/2 items-center justify-center overflow-hidden rounded-full bg-white ring-4 ring-white md:left-[240px] dark:bg-neutral-900 dark:ring-neutral-900">
               <img
                 src="/Great-UI.png"
                 alt="Great UI Release"
@@ -151,14 +151,14 @@ export default function ChangelogTimeline() {
               />
             </span>
           ) : (
-            <span className="absolute top-1.5 left-0 flex h-4 w-4 -translate-x-1/2 items-center justify-center rounded-full bg-white ring-4 ring-white md:left-[180px] dark:bg-neutral-900 dark:ring-neutral-900">
+            <span className="absolute top-1.5 left-0 flex h-4 w-4 -translate-x-1/2 items-center justify-center rounded-full bg-white ring-4 ring-white md:left-[240px] dark:bg-neutral-900 dark:ring-neutral-900">
               <div className="h-2 w-2 rounded-full bg-neutral-400 dark:bg-neutral-600" />
             </span>
           )}
 
           <div className="flex flex-1 flex-col gap-4 pt-0 md:pl-12">
             <div className="w-full md:hidden">
-              <h2 className="text-2xl font-bold tracking-tight text-neutral-900 sm:text-3xl dark:text-white">
+              <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 sm:text-3xl dark:text-neutral-300">
                 {log.date}
               </h2>
             </div>
@@ -197,14 +197,14 @@ export default function ChangelogTimeline() {
 
                 return (
                   <div
-                    className={`mt-4 grid w-full gap-0 overflow-hidden rounded-2xl ${gridColsClass} ${maxWClass}`}
+                    className={`mt-4 grid w-full gap-4 ${gridColsClass} ${maxWClass}`}
                   >
                     {logComponents.map((c) => (
                       <Link
                         href={`/components/${c.slug}`}
                         key={c.slug}
                         aria-label={`View ${c.name} component`}
-                        className="group relative block cursor-pointer no-underline"
+                        className="group relative block cursor-pointer overflow-hidden rounded-2xl no-underline ring-1 ring-neutral-200/50 transition-shadow hover:shadow-md dark:ring-neutral-800/80"
                       >
                         <ChangelogPreviewCard component={c} />
                       </Link>

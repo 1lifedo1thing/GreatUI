@@ -252,9 +252,9 @@ export function SearchCommand() {
             }
             className="relative z-10 w-full px-0 sm:max-w-2xl sm:px-4"
           >
-            <div className="relative overflow-hidden rounded-t-3xl rounded-b-none bg-neutral-100/70 px-3 pt-3 pb-0 shadow-2xl sm:rounded-3xl sm:p-3.5 dark:bg-neutral-900">
+            <div className="relative overflow-hidden rounded-t-3xl rounded-b-none shadow-2xl sm:rounded-3xl sm:border sm:border-neutral-200 dark:sm:border-neutral-800">
               <Command
-                className="relative z-10 flex h-full w-full flex-col overflow-hidden rounded-t-2xl rounded-b-none bg-white shadow-sm transition-colors sm:rounded-2xl dark:bg-neutral-950"
+                className="relative z-10 flex h-full w-full flex-col overflow-hidden rounded-t-3xl rounded-b-none bg-white shadow-sm transition-colors sm:rounded-3xl dark:bg-neutral-950"
                 label="Global Search"
                 filter={customFilter}
               >
@@ -312,7 +312,7 @@ export function SearchCommand() {
                           onSelect={() =>
                             handleSelect(item.url, item.title, item.id)
                           }
-                          className="group flex cursor-default items-center gap-3.5 rounded-xl px-3 py-2.5 text-sm font-medium text-neutral-700 outline-hidden transition-all duration-155 select-none data-[selected=true]:bg-[#f6821f]/8 data-[selected=true]:text-neutral-900 dark:text-neutral-300 dark:data-[selected=true]:bg-[#f6821f]/10 dark:data-[selected=true]:text-neutral-100"
+                          className="group flex cursor-default items-center gap-3.5 rounded-xl px-3 py-2.5 text-sm font-medium text-neutral-700 outline-hidden transition-all duration-155 select-none data-[selected=true]:bg-neutral-100 data-[selected=true]:text-neutral-900 dark:text-neutral-300 dark:data-[selected=true]:bg-neutral-800/80 dark:data-[selected=true]:text-white"
                         >
                           <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-[var(--color-border-100)] bg-neutral-50 text-neutral-500 transition-colors group-data-[selected=true]:border-neutral-300 group-data-[selected=true]:bg-white dark:bg-neutral-900/60 dark:group-data-[selected=true]:border-neutral-700 dark:group-data-[selected=true]:bg-neutral-950">
                             {item.category === "General Pages" ? (
@@ -371,7 +371,7 @@ export function SearchCommand() {
                           </div>
 
                           <div className="flex flex-1 flex-col">
-                            <span className="text-[17.5px] font-semibold text-neutral-900 transition-colors group-data-[selected=true]:text-[#f6821f] dark:text-neutral-100 dark:group-data-[selected=true]:text-[#f6821f]">
+                            <span className="text-[17.5px] font-semibold text-neutral-900 transition-colors group-data-[selected=true]:text-neutral-900 dark:text-neutral-300 dark:group-data-[selected=true]:text-white">
                               {item.title}
                             </span>
                             <span className="mt-0.5 line-clamp-1 text-[14.5px] font-normal text-neutral-500 dark:text-neutral-400">

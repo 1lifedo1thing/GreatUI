@@ -5,6 +5,14 @@ export type ChangelogItem = {
 
 export const changelogData: ChangelogItem[] = [
   {
+    date: "September 28, 2026",
+    features: [
+      "Switched global site typography from TT Commons to the sleek Geist sans-serif font and refined global layout spacing.",
+      "Added the Testimonials layout into a dynamic 3-row infinite scrolling marquee powered by react-tweet.",
+      "Polished layouts across the Hero, Sponsors, Contact, and CTA sections, standardizing heading typography and text balance.",
+    ],
+  },
+  {
     date: "September 23, 2026",
     features: [
       "Added [Pixel Swipe Page Transition](/components/pixel-swipe-page-transition) component featuring a canvas-powered single pixel wipe transition with dynamic pixel-dithered noise edges and multi-directional support.",

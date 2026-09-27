@@ -310,9 +310,31 @@ export function ComponentShowcase() {
             <div className="relative flex aspect-video min-h-[350px] w-full overflow-hidden rounded-3xl bg-neutral-100/60 dark:bg-neutral-900/60">
               <Link
                 href={`/components/${activeTab.id}`}
-                className="absolute inset-0 z-20"
+                className="absolute inset-0 z-20 md:hidden"
                 aria-label={`View ${activeTab.title} component`}
               />
+
+              {/* Desktop Link Pill */}
+              <div className="absolute right-6 bottom-6 z-30 hidden md:flex">
+                <Link
+                  href={`/components/${activeTab.id}`}
+                  className="group flex items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-neutral-900 shadow-sm ring-1 ring-neutral-200/50 transition-all hover:scale-105 hover:shadow-md dark:bg-neutral-900 dark:text-white dark:ring-neutral-800"
+                >
+                  View Component
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab.id}
@@ -322,10 +344,10 @@ export function ComponentShowcase() {
                   transition={{ duration: 0.25, ease: "easeInOut" }}
                   className="absolute inset-0 flex h-full w-full items-center justify-center"
                 >
-                  <div className="hidden h-full w-full items-center justify-center p-8 sm:flex">
+                  <div className="hidden h-full w-full items-center justify-center p-8 md:flex">
                     {renderActiveComponent()}
                   </div>
-                  <div className="flex h-full w-full items-center justify-center sm:hidden">
+                  <div className="flex h-full w-full items-center justify-center md:hidden">
                     {activeComponentPreviewVideo ? (
                       <video
                         src={activeComponentPreviewVideo}
