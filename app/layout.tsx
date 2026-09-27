@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import ThemeProvider from "@/components/site/ThemeProvider";
 import { SearchCommand } from "@/components/site/SearchCommand";
+import VideoPreloader from "@/components/site/VideoPreloader";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -142,6 +143,7 @@ export default function RootLayout({
           <SearchCommand />
           {children}
           <BreakpointIndicator />
+          <VideoPreloader />
         </ThemeProvider>
       </body>
     </html>
