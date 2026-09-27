@@ -29,7 +29,7 @@ function ContactCard({
 }: ContactCardProps) {
   return (
     <div className="group relative block cursor-pointer overflow-hidden rounded-3xl bg-neutral-100 no-underline dark:bg-neutral-900">
-      <div className="relative flex h-56 w-full items-center justify-center overflow-hidden bg-white dark:bg-neutral-900">
+      <div className="relative flex h-56 w-full items-center justify-center overflow-hidden bg-white dark:bg-neutral-800">
         {mockup}
       </div>
 
@@ -120,7 +120,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="relative mx-auto max-w-[1360px]">
+    <div className="relative mx-auto max-w-[1400px]">
       <Container className="relative py-10 md:py-16">
         <div className="flex flex-col items-start text-left">
           <h2 className="mt-2 max-w-4xl text-4xl leading-[1.05] font-semibold tracking-tight text-neutral-950 sm:text-5xl md:text-6xl dark:text-white">
@@ -141,9 +141,9 @@ export default function Contact() {
             handleCopy={handleCopy}
             copiedEmail={copiedEmail}
             mockup={
-              <div className="flex h-full w-full flex-col justify-between bg-white p-4 text-left font-sans text-xs dark:bg-neutral-900">
+              <div className="flex h-full w-full flex-col justify-between bg-white p-4 text-left font-sans text-xs dark:bg-neutral-800">
                 <div>
-                  <div className="mb-3 flex items-center justify-between border-b border-neutral-100 pb-2.5 dark:border-neutral-900">
+                  <div className="mb-3 flex items-center justify-between border-b border-neutral-100 pb-2.5 dark:border-neutral-700">
                     <div className="flex items-center gap-1.5">
                       <span className="h-3 w-3 rounded-full bg-red-500/80" />
                       <span className="h-3 w-3 rounded-full bg-yellow-500/80" />
@@ -171,9 +171,9 @@ export default function Contact() {
                   </div>
                 </div>
                 <div className="mt-4 space-y-2.5">
-                  <div className="h-2.5 w-[95%] rounded bg-neutral-100 dark:bg-neutral-900" />
-                  <div className="h-2.5 w-[80%] rounded bg-neutral-100 dark:bg-neutral-900" />
-                  <div className="h-2.5 w-[50%] rounded bg-neutral-100 dark:bg-neutral-900" />
+                  <div className="h-2.5 w-[95%] rounded bg-neutral-100 dark:bg-neutral-700" />
+                  <div className="h-2.5 w-[80%] rounded bg-neutral-100 dark:bg-neutral-700" />
+                  <div className="h-2.5 w-[50%] rounded bg-neutral-100 dark:bg-neutral-700" />
                 </div>
               </div>
             }
@@ -186,7 +186,7 @@ export default function Contact() {
             title="@GreatUIHQ"
             description="DMs are best for quick questions and early ideas."
             mockup={
-              <div className="flex h-full w-full flex-col bg-white text-left font-sans text-xs select-none dark:bg-neutral-900">
+              <div className="flex h-full w-full flex-col bg-white text-left font-sans text-xs select-none dark:bg-neutral-800">
                 <div className="relative flex h-24 w-full shrink-0 items-center justify-center overflow-hidden bg-neutral-100 dark:bg-neutral-900">
                   <img
                     src="https://ik.imagekit.io/j65jb9u8q/banner.png"
@@ -199,7 +199,7 @@ export default function Contact() {
                   <img
                     src="https://ik.imagekit.io/j65jb9u8q/Great-UI.png"
                     alt="Great UI Avatar"
-                    className="absolute -top-10 left-4 h-20 w-20 rounded-full border-4 border-white bg-white object-cover shadow transition-transform duration-300 group-hover:scale-[1.02] dark:border-neutral-900 dark:bg-neutral-900"
+                    className="absolute -top-10 left-4 h-20 w-20 rounded-full border-4 border-white bg-white object-cover shadow transition-transform duration-300 group-hover:scale-[1.02] dark:border-neutral-800 dark:bg-neutral-800"
                   />
 
                   <div className="space-y-0">
@@ -209,10 +209,9 @@ export default function Contact() {
                     <div className="text-xs text-neutral-500">@GreatUIHQ</div>
                   </div>
                   <div className="space-y-0 pt-1">
-                    <div className="text-sm leading-5 tracking-tight text-neutral-500">
-                      Great UI is an open-source React component library focused
-                      on beautiful design, smooth animations, and exceptional
-                      developer experience by @srbh_here
+                    <div className="text-sm leading-tight tracking-tight text-neutral-500">
+                      Open-source React component library focused on beautiful
+                      design, smooth animations, and exceptional DX.
                     </div>
                   </div>
                 </div>
@@ -227,7 +226,7 @@ export default function Contact() {
             title="GreatUI"
             description="Report bugs, request features, or view open source code."
             mockup={
-              <div className="flex h-full w-full flex-col gap-3 bg-white p-4 text-left font-sans text-xs select-none dark:bg-neutral-900">
+              <div className="flex h-full w-full flex-col gap-3 bg-white p-4 text-left font-sans text-xs select-none dark:bg-neutral-800">
                 <div className="flex items-center gap-2">
                   <svg
                     className="h-5 w-5 shrink-0 fill-current text-neutral-800 dark:text-white"
@@ -250,63 +249,63 @@ export default function Contact() {
 
                 <div className="flex gap-2">
                   <div className="h-2.5 w-12 rounded-full bg-orange-500" />
-                  <div className="h-2.5 w-14 rounded-full bg-neutral-100 dark:bg-neutral-900" />
-                  <div className="h-2.5 w-16 rounded-full bg-neutral-100 dark:bg-neutral-900" />
-                  <div className="h-2.5 w-10 rounded-full bg-neutral-100 dark:bg-neutral-900" />
+                  <div className="h-2.5 w-14 rounded-full bg-neutral-100 dark:bg-neutral-700" />
+                  <div className="h-2.5 w-16 rounded-full bg-neutral-100 dark:bg-neutral-700" />
+                  <div className="h-2.5 w-10 rounded-full bg-neutral-100 dark:bg-neutral-700" />
                 </div>
 
                 <div className="flex min-h-0 flex-1 gap-3">
                   <div className="flex flex-1 flex-col justify-center gap-2 rounded-2xl bg-neutral-50 p-2.5 dark:bg-neutral-900">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <div className="h-3 w-4 shrink-0 rounded-sm bg-neutral-200 dark:bg-neutral-800" />
-                        <div className="h-2 w-12 rounded-full bg-neutral-200 dark:bg-neutral-800" />
-                        <div className="h-2 w-20 rounded-full bg-neutral-100 dark:bg-neutral-900" />
+                        <div className="h-3 w-4 shrink-0 rounded-sm bg-neutral-200 dark:bg-neutral-600" />
+                        <div className="h-2 w-12 rounded-full bg-neutral-200 dark:bg-neutral-600" />
+                        <div className="h-2 w-20 rounded-full bg-neutral-100 dark:bg-neutral-700" />
                       </div>
-                      <div className="h-2 w-8 rounded-full bg-neutral-100 dark:bg-neutral-900" />
+                      <div className="h-2 w-8 rounded-full bg-neutral-100 dark:bg-neutral-700" />
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <div className="h-3 w-4 shrink-0 rounded-sm bg-neutral-200 dark:bg-neutral-800" />
-                        <div className="h-2 w-8 rounded-full bg-neutral-200 dark:bg-neutral-800" />
-                        <div className="h-2 w-24 rounded-full bg-neutral-100 dark:bg-neutral-900" />
+                        <div className="h-3 w-4 shrink-0 rounded-sm bg-neutral-200 dark:bg-neutral-600" />
+                        <div className="h-2 w-8 rounded-full bg-neutral-200 dark:bg-neutral-600" />
+                        <div className="h-2 w-24 rounded-full bg-neutral-100 dark:bg-neutral-700" />
                       </div>
-                      <div className="h-2 w-6 rounded-full bg-neutral-100 dark:bg-neutral-900" />
+                      <div className="h-2 w-6 rounded-full bg-neutral-100 dark:bg-neutral-700" />
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <div className="h-3 w-4 shrink-0 rounded-sm bg-neutral-200 dark:bg-neutral-800" />
-                        <div className="h-2 w-14 rounded-full bg-neutral-200 dark:bg-neutral-800" />
-                        <div className="h-2 w-16 rounded-full bg-neutral-100 dark:bg-neutral-900" />
+                        <div className="h-3 w-4 shrink-0 rounded-sm bg-neutral-200 dark:bg-neutral-600" />
+                        <div className="h-2 w-14 rounded-full bg-neutral-200 dark:bg-neutral-600" />
+                        <div className="h-2 w-16 rounded-full bg-neutral-100 dark:bg-neutral-700" />
                       </div>
-                      <div className="h-2 w-10 rounded-full bg-neutral-100 dark:bg-neutral-900" />
+                      <div className="h-2 w-10 rounded-full bg-neutral-100 dark:bg-neutral-700" />
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <div className="h-3 w-5 shrink-0 rounded-sm bg-neutral-200 dark:bg-neutral-800" />
-                        <div className="h-2 w-10 rounded-full bg-neutral-200 dark:bg-neutral-800" />
-                        <div className="h-2 w-28 rounded-full bg-neutral-100 dark:bg-neutral-900" />
+                        <div className="h-3 w-5 shrink-0 rounded-sm bg-neutral-200 dark:bg-neutral-600" />
+                        <div className="h-2 w-10 rounded-full bg-neutral-200 dark:bg-neutral-600" />
+                        <div className="h-2 w-28 rounded-full bg-neutral-100 dark:bg-neutral-700" />
                       </div>
-                      <div className="h-2 w-8 rounded-full bg-neutral-100 dark:bg-neutral-900" />
+                      <div className="h-2 w-8 rounded-full bg-neutral-100 dark:bg-neutral-700" />
                     </div>
                   </div>
 
                   <div className="flex w-24 shrink-0 flex-col justify-center gap-2.5">
                     <div className="flex flex-col gap-1.5">
-                      <div className="bg-neutral-350 h-2 w-8 rounded-full dark:bg-neutral-700" />
-                      <div className="h-1.5 w-20 rounded-full bg-neutral-200 dark:bg-neutral-800" />
-                      <div className="h-1.5 w-16 rounded-full bg-neutral-200 dark:bg-neutral-800" />
-                      <div className="h-1.5 w-18 rounded-full bg-neutral-100 dark:bg-neutral-900/60" />
+                      <div className="bg-neutral-350 h-2 w-8 rounded-full dark:bg-neutral-500" />
+                      <div className="h-1.5 w-20 rounded-full bg-neutral-200 dark:bg-neutral-600" />
+                      <div className="h-1.5 w-16 rounded-full bg-neutral-200 dark:bg-neutral-600" />
+                      <div className="h-1.5 w-18 rounded-full bg-neutral-100 dark:bg-neutral-700/80" />
                     </div>
                     <div className="mt-1 flex flex-col gap-1.5">
-                      <div className="bg-neutral-350 h-2 w-14 rounded-full dark:bg-neutral-700" />
-                      <div className="flex h-1.5 w-full overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-900">
+                      <div className="bg-neutral-350 h-2 w-14 rounded-full dark:bg-neutral-500" />
+                      <div className="flex h-1.5 w-full overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-700">
                         <div className="h-full w-[85%] bg-orange-500" />
                         <div className="h-full w-[15%] bg-blue-500" />
                       </div>
                       <div className="flex gap-2">
-                        <div className="h-1.5 w-8 rounded-full bg-neutral-200 dark:bg-neutral-800" />
-                        <div className="h-1.5 w-6 rounded-full bg-neutral-200 dark:bg-neutral-800" />
+                        <div className="h-1.5 w-8 rounded-full bg-neutral-200 dark:bg-neutral-600" />
+                        <div className="h-1.5 w-6 rounded-full bg-neutral-200 dark:bg-neutral-600" />
                       </div>
                     </div>
                   </div>

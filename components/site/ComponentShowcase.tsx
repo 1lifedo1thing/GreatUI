@@ -4,22 +4,25 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Container from "./Container";
 import { cn } from "@/lib/utils";
-import { ViewerProvider } from "@/lib/viewer-context";
 import Link from "next/link";
+import ScrambledInstallCommandPreview from "@/components/site/previews/ScrambledInstallCommandPreview";
+import MultilingualQuotePreview from "@/components/site/previews/MultilingualQuotePreview";
+import AccordionPreview from "@/components/site/previews/AccordionPreview";
+import AvatarStackPreview from "@/components/site/previews/AvatarStackPreview";
+import MinimalButtonsPreview from "@/components/site/previews/MinimalButtonsPreview";
+import InstagramCardPreview from "@/components/site/previews/InstagramCardPreview";
+import PixelToAsciiImagePreview from "@/components/site/previews/PixelToAsciiImagePreview";
 
 interface ShowcaseItem {
   id: string;
   title: string;
-  videoLink: string;
   icon: React.ReactNode;
 }
 
 const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
-    id: "staggered-page-transition",
-    title: "Staggered Page Transition",
-    videoLink:
-      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/staggering-page-transition.mp4",
+    id: "scrambled-install-command",
+    title: "Scrambled Command",
     icon: (
       <svg
         width="24"
@@ -27,22 +30,19 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        strokeWidth="2.5"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
         className="size-4"
       >
-        <line x1="4" y1="12" x2="20" y2="12" />
-        <line x1="4" y1="6" x2="16" y2="6" />
-        <line x1="4" y1="18" x2="24" y2="18" />
+        <polyline points="4 17 10 11 4 5" />
+        <line x1="12" y1="19" x2="20" y2="19" />
       </svg>
     ),
   },
   {
     id: "multilingual-quote",
     title: "Multilingual Quote",
-    videoLink:
-      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/quote-multilingual.mp4",
     icon: (
       <svg
         width="24"
@@ -56,27 +56,8 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
     ),
   },
   {
-    id: "text-on-path-scroll",
-    title: "Text on Path Scroll",
-    videoLink:
-      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/textscroll.mp4",
-    icon: (
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        className="size-4"
-      >
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 7h2v6h-2zm0 8h2v2h-2z" />
-      </svg>
-    ),
-  },
-  {
-    id: "pixel-to-ascii-image",
+    id: "pixel-to-ascii",
     title: "Pixel to ASCII",
-    videoLink:
-      "https://br-cold-art-b4ndjkjf.storage.c-6.us-east-2.aws.neon.tech/srbh/pixel-to-ascii.mp4",
     icon: (
       <svg
         width="24"
@@ -90,31 +71,8 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
     ),
   },
   {
-    id: "scrambled-install-command",
-    title: "Scrambled Install Command",
-    videoLink:
-      "https://ik.imagekit.io/j65jb9u8q/command-copy-scramble-text.mp4",
-    icon: (
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="size-4"
-      >
-        <polyline points="4 17 10 11 4 5" />
-        <line x1="12" y1="19" x2="20" y2="19" />
-      </svg>
-    ),
-  },
-  {
     id: "accordion",
     title: "Accordion",
-    videoLink: "https://ik.imagekit.io/greatui/accordian.mp4",
     icon: (
       <svg
         width="24"
@@ -128,9 +86,8 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
     ),
   },
   {
-    id: "floating-menu",
-    title: "Floating Menu",
-    videoLink: "https://ik.imagekit.io/greatui/floatingmenu.mp4",
+    id: "avatar-stack",
+    title: "Avatar Stack",
     icon: (
       <svg
         width="24"
@@ -138,42 +95,60 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        strokeWidth="2.5"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
         className="size-4"
       >
-        <circle cx="12" cy="12" r="10" />
-        <line x1="12" y1="8" x2="12" y2="16" />
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    ),
+  },
+  {
+    id: "minimal-buttons",
+    title: "Minimal Buttons",
+    icon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="size-4"
+      >
+        <rect width="18" height="12" x="3" y="6" rx="2" />
         <line x1="8" y1="12" x2="16" y2="12" />
       </svg>
     ),
   },
+  {
+    id: "instagram-card",
+    title: "Instagram Card",
+    icon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="size-4"
+      >
+        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+      </svg>
+    ),
+  },
 ];
-
-function ShowcaseVideo({ videoLink }: { videoLink: string }) {
-  const [currentSrc, setCurrentSrc] = useState(videoLink);
-  const fallbackVideoLink = videoLink.startsWith("/previews/")
-    ? videoLink
-    : `/previews/${videoLink.split("/").pop()?.split("?")[0]}`;
-
-  return (
-    <video
-      key={currentSrc}
-      src={currentSrc}
-      autoPlay
-      loop
-      muted
-      playsInline
-      onError={() => {
-        if (currentSrc !== fallbackVideoLink) {
-          setCurrentSrc(fallbackVideoLink);
-        }
-      }}
-      className="block h-full w-full object-cover"
-    />
-  );
-}
 
 export function ComponentShowcase() {
   const [activeTabIdx, setActiveTabIdx] = useState(0);
@@ -213,100 +188,130 @@ export function ComponentShowcase() {
 
   const activeTab = SHOWCASE_ITEMS[activeTabIdx] || SHOWCASE_ITEMS[0];
 
+  const renderActiveComponent = () => {
+    switch (activeTab.id) {
+      case "scrambled-install-command":
+        return <ScrambledInstallCommandPreview />;
+      case "multilingual-quote":
+        return <MultilingualQuotePreview />;
+      case "pixel-to-ascii":
+        return <PixelToAsciiImagePreview />;
+      case "accordion":
+        return <AccordionPreview />;
+      case "avatar-stack":
+        return <AvatarStackPreview />;
+      case "minimal-buttons":
+        return <MinimalButtonsPreview />;
+      case "instagram-card":
+        return <InstagramCardPreview />;
+      default:
+        return null;
+    }
+  };
+
   return (
-    <ViewerProvider>
-      <div className="relative mx-auto max-w-[1360px]">
-        <style>{`
-          @keyframes showcase-progress {
-            from { width: 0%; }
-            to { width: 100%; }
-          }
-        `}</style>
-        <Container>
-          <div className="flex items-center justify-center">
-            <div className="flex [scrollbar-width:none] items-stretch gap-1 overflow-x-auto [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-              {SHOWCASE_ITEMS.map((tab, idx) => {
-                const isActive = idx === activeTabIdx;
-                return (
-                  <React.Fragment key={tab.id}>
-                    <button
-                      onClick={() => handleTabClick(idx)}
-                      className={cn(
-                        "relative z-10 flex shrink-0 items-center justify-center gap-1.5 px-3.5 py-2 text-sm font-medium transition-colors select-none sm:text-base",
-                        isActive
-                          ? "text-neutral-900 dark:text-white"
-                          : "text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white",
-                      )}
-                    >
-                      <span
-                        className={cn(
-                          "transition-colors",
-                          isActive
-                            ? "text-neutral-900 dark:text-white"
-                            : "text-neutral-500 dark:text-neutral-400",
-                        )}
-                      >
-                        {tab.icon}
-                      </span>
-                      <span>{tab.title}</span>
+    <div className="relative mx-auto max-w-[1400px] pt-4">
+      <style>{`
+        @keyframes showcase-progress {
+          from { width: 0%; }
+          to { width: 100%; }
+        }
+      `}</style>
+      <Container>
+        <div className="flex items-center justify-center pt-6">
+          <div className="flex [scrollbar-width:none] items-stretch gap-1 overflow-x-auto [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            {SHOWCASE_ITEMS.map((tab, idx) => {
+              const isActive = idx === activeTabIdx;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => handleTabClick(idx)}
+                  className={cn(
+                    "relative z-10 flex shrink-0 cursor-pointer items-center justify-center gap-1.5 px-3.5 py-2 text-sm font-medium transition-colors select-none sm:text-base",
+                    isActive
+                      ? "text-neutral-900 dark:text-white"
+                      : "text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white",
+                  )}
+                >
+                  <span
+                    className={cn(
+                      "transition-colors",
+                      isActive
+                        ? "text-neutral-900 dark:text-white"
+                        : "text-neutral-500 dark:text-neutral-400",
+                    )}
+                  >
+                    {tab.icon}
+                  </span>
+                  <span>{tab.title}</span>
 
-                      {isActive && (
-                        <>
-                          <div className="absolute right-0 bottom-0 left-0 h-[2px] bg-neutral-100 dark:bg-neutral-900" />
-                          <div
-                            key={activeTabIdx}
-                            className="absolute bottom-0 left-0 z-20 h-[2px] bg-[#f6821f]"
-                            style={{
-                              animation: "showcase-progress 6s linear forwards",
-                              animationPlayState: isHovered
-                                ? "paused"
-                                : "running",
-                            }}
-                          />
-                        </>
-                      )}
-                    </button>
-                  </React.Fragment>
-                );
-              })}
-            </div>
+                  {isActive && (
+                    <>
+                      <div className="absolute right-0 bottom-0 left-0 h-[2px] bg-neutral-100 dark:bg-neutral-900" />
+                      <div
+                        key={activeTabIdx}
+                        className="absolute bottom-0 left-0 z-20 h-[2px] bg-[#f6821f]"
+                        style={{
+                          animation: "showcase-progress 6s linear forwards",
+                          animationPlayState: isHovered ? "paused" : "running",
+                        }}
+                      />
+                    </>
+                  )}
+                </button>
+              );
+            })}
           </div>
-        </Container>
-      </div>
+        </div>
+      </Container>
 
-      <div className="relative mx-auto max-w-[1360px]">
+      <div className="relative mx-auto mt-4 max-w-[1400px] pb-16">
         <Container>
           <div
             className="w-full overflow-hidden"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            <div className="relative flex w-full items-center justify-center">
+            <div className="relative flex aspect-video min-h-[350px] w-full items-center justify-center rounded-3xl bg-neutral-100/60 p-8 dark:bg-neutral-900/60">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab.id}
-                  initial={{ opacity: 0, y: 15 }}
+                  initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
+                  exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.25, ease: "easeInOut" }}
-                  className="pointer-events-auto flex h-full w-full items-center justify-center"
+                  className="flex h-full w-full items-center justify-center"
                 >
-                  <Link
-                    href={`/components/${activeTab.id}`}
-                    className="block aspect-video w-full cursor-alias overflow-hidden border border-neutral-200/30 bg-neutral-50 dark:border-neutral-800/50 dark:bg-neutral-900"
-                  >
-                    <ShowcaseVideo
-                      key={activeTab.id}
-                      videoLink={activeTab.videoLink}
-                    />
-                  </Link>
+                  {renderActiveComponent()}
                 </motion.div>
               </AnimatePresence>
+
+              <div className="absolute top-4 right-4">
+                <Link
+                  href={`/components/${activeTab.id}`}
+                  className="inline-flex items-center gap-1 rounded-full bg-neutral-200/70 px-3 py-1 text-xs font-medium text-neutral-800 transition-colors hover:bg-neutral-300/80 dark:bg-neutral-800/80 dark:text-neutral-200 dark:hover:bg-neutral-700"
+                >
+                  <span>Component Docs</span>
+                  <svg
+                    className="h-3 w-3"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                    />
+                  </svg>
+                </Link>
+              </div>
             </div>
           </div>
         </Container>
       </div>
-    </ViewerProvider>
+    </div>
   );
 }
 

@@ -25,6 +25,7 @@
   --color-brand: #f6821f;
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
+  --font-tt: var(--font-tt);
 }
 
 body {

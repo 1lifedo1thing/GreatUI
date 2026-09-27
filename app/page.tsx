@@ -5,6 +5,7 @@ import Contact from "@/components/site/Contact";
 import Footer from "@/components/site/Footer";
 import BackgroundGrid from "@/components/site/BackgroundGrid";
 import Sponsors from "@/components/site/Sponsors";
+import Testimonials from "@/components/site/Testimonials";
 import CTASection from "@/components/site/CTASection";
 
 import type { Metadata } from "next";
@@ -25,9 +26,10 @@ export default function Home() {
       <Navbar />
       <Hero />
       <ComponentShowcase />
-      <Contact />
+      <Testimonials />
       <Sponsors />
       <CTASection />
+      {/* <Contact /> */}
       <Footer />
     </div>
   );

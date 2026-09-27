@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import posthog from "posthog-js";
 import Link from "next/link";
 import Container from "./Container";
@@ -8,38 +9,32 @@ import { SectionIcon } from "./Icons";
 
 export function Hero() {
   return (
-    <div className="relative mx-auto max-w-[1360px]">
-      <Container className="pt-48 pb-6 md:pt-16">
-        <div className="flex flex-col gap-6 py-4 text-left md:flex-row md:items-end md:justify-between md:gap-8">
-          <div className="max-w-3xl">
-            <h1 className="animate-fade-in text-4xl leading-[1.05] font-semibold tracking-tight text-neutral-950 sm:text-5xl dark:text-white">
-              Build Premium React Interfaces
-            </h1>
-            <p className="mt-2.5 max-w-2xl text-base text-neutral-600 sm:text-lg dark:text-neutral-400">
-              Beautiful, accessible, and high-performance Tailwind CSS
-              components designed to build stunning web applications instantly.
-            </p>
-          </div>
-
-          <div className="flex w-full shrink-0 items-center justify-start md:w-auto md:justify-end">
-            <Link
-              href="/components"
-              onClick={() => posthog.capture("components_catalogue_opened")}
-              className="w-full md:w-auto"
+    <Container className="py-0">
+      <div className="flex flex-col items-center gap-2 py-8 text-center sm:gap-1 md:gap-2 md:py-16 lg:py-20">
+        <h1 className="w-full text-[24px] leading-[1.1] font-semibold tracking-tight text-balance text-neutral-900 sm:text-4xl md:font-semibold xl:text-6xl xl:tracking-tighter dark:text-neutral-300">
+          Ship Premium Web Interfaces Faster
+        </h1>
+        <p className="text-foreground max-w-4xl text-base text-balance sm:text-lg md:text-lg xl:text-xl">
+          A curated collection of over 50 accessible, beautifully designed
+          Tailwind CSS components. Copy, paste, and customize to build stunning
+          applications in minutes.
+        </p>
+        <div className="flex w-full items-center justify-center gap-2 pt-2 **:data-[slot=button]:shadow-none">
+          <Link
+            href="/components"
+            onClick={() => posthog.capture("components_catalogue_opened")}
+          >
+            <Button
+              variant="primary"
+              size="md"
+              leftIcon={<SectionIcon className="h-4 w-4" />}
             >
-              <Button
-                variant="primary"
-                size="md"
-                className="w-full justify-center md:w-auto"
-                leftIcon={<SectionIcon className="h-4 w-4" />}
-              >
-                Browse Components
-              </Button>
-            </Link>
-          </div>
+              Browse Components
+            </Button>
+          </Link>
         </div>
-      </Container>
-    </div>
+      </div>
+    </Container>
   );
 }
 

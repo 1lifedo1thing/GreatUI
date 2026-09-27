@@ -55,7 +55,7 @@ export function Navbar() {
               alt="Great UI Logo"
               className="h-8 w-auto object-contain"
             />
-            <span className="text-3xl font-bold tracking-tight text-neutral-900 uppercase sm:block dark:text-white">
+            <span className="font-tt text-3xl font-bold tracking-tight text-neutral-900 uppercase sm:block dark:text-white">
               Great <span className="text-[#f6821f]">UI</span>
             </span>
           </Link>

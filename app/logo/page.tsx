@@ -28,7 +28,7 @@ export default function LogoPage() {
               alt="Great UI Logo"
               className="h-[1em] w-auto object-contain"
             />
-            <h1>
+            <h1 className="font-[family-name:var(--font-tt-commons)]">
               Great <span className="text-[#f6821f]">UI</span>
             </h1>
           </div>

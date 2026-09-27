@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
-import { Geist_Mono } from "next/font/google";
 import ThemeProvider from "@/components/site/ThemeProvider";
 import { SearchCommand } from "@/components/site/SearchCommand";
 import "./globals.css";
+
+const geistSans = Geist({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
@@ -38,7 +43,7 @@ const ttCommons = localFont({
       style: "normal",
     },
   ],
-  variable: "--font-sans",
+  variable: "--font-tt",
 });
 
 export const metadata: Metadata = {
@@ -107,6 +112,21 @@ export const metadata: Metadata = {
   },
 };
 
+export function BreakpointIndicator() {
+  if (process.env.NODE_ENV === "production") return null;
+
+  return (
+    <div className="fixed bottom-1 left-1 z-50 flex size-6 items-center justify-center rounded-full bg-gray-800 p-3 font-mono text-xs text-white">
+      <div className="block sm:hidden">xs</div>
+      <div className="hidden sm:block md:hidden">sm</div>
+      <div className="hidden md:block lg:hidden">md</div>
+      <div className="hidden lg:block xl:hidden">lg</div>
+      <div className="hidden xl:block 2xl:hidden">xl</div>
+      <div className="hidden 2xl:block">2xl</div>
+    </div>
+  );
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -115,12 +135,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${ttCommons.variable} ${geistMono.variable} dark h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${ttCommons.variable} dark h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-white font-sans text-neutral-900 transition-colors dark:bg-neutral-950 dark:text-neutral-100">
         <ThemeProvider>
           <SearchCommand />
           {children}
+          <BreakpointIndicator />
         </ThemeProvider>
       </body>
     </html>
