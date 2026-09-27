@@ -14,14 +14,14 @@ export default function CTASection() {
     <div className="relative mx-auto max-w-[1400px]">
       <Container className="relative py-10 md:py-16">
         <div className="flex flex-col items-start text-left">
-          <h2 className="mt-2 max-w-4xl text-4xl leading-[1.05] font-semibold tracking-tight text-neutral-950 sm:text-5xl md:text-6xl dark:text-white">
+          <h2 className="mt-2 w-full text-3xl leading-[1.1] font-semibold tracking-tight text-balance text-neutral-900 sm:text-4xl md:text-5xl dark:text-neutral-300">
             Ready to build something great?
           </h2>
-          <p className="mt-4 max-w-2xl text-base tracking-normal text-neutral-600 sm:text-lg dark:text-neutral-400">
+          <p className="mt-2 max-w-4xl text-base text-balance text-neutral-600 sm:text-lg dark:text-neutral-400">
             Join the community and start crafting premium interfaces today.
           </p>
 
-          <div className="relative z-10 mt-12 grid w-full grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="relative z-10 mt-8 grid w-full grid-cols-1 gap-6 md:grid-cols-3">
             <Link
               href="/components"
               onClick={() =>

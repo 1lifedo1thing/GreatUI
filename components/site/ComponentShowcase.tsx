@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from "motion/react";
 import Container from "./Container";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import ScrambledInstallCommandPreview from "@/components/site/previews/ScrambledInstallCommandPreview";
+import { components } from "@/lib/registry";
+import FloatingMenuPreview from "@/components/site/previews/FloatingMenuPreview";
 import MultilingualQuotePreview from "@/components/site/previews/MultilingualQuotePreview";
 import AccordionPreview from "@/components/site/previews/AccordionPreview";
 import AvatarStackPreview from "@/components/site/previews/AvatarStackPreview";
@@ -21,8 +22,8 @@ interface ShowcaseItem {
 
 const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
-    id: "scrambled-install-command",
-    title: "Scrambled Command",
+    id: "floating-menu",
+    title: "Floating Menu",
     icon: (
       <svg
         width="24"
@@ -35,8 +36,7 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
         strokeLinejoin="round"
         className="size-4"
       >
-        <polyline points="4 17 10 11 4 5" />
-        <line x1="12" y1="19" x2="20" y2="19" />
+        <path d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     ),
   },
@@ -159,6 +159,25 @@ export function ComponentShowcase() {
   const elapsedTimeRef = useRef<number>(0);
   const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
 
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const activeTabRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (activeTabRef.current && scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const activeTab = activeTabRef.current;
+      const scrollLeft =
+        activeTab.offsetLeft -
+        container.offsetWidth / 2 +
+        activeTab.offsetWidth / 2;
+
+      container.scrollTo({
+        left: scrollLeft,
+        behavior: "smooth",
+      });
+    }
+  }, [activeTabIdx]);
+
   useEffect(() => {
     if (isHovered) {
       if (timeoutIdRef.current) {
@@ -187,11 +206,14 @@ export function ComponentShowcase() {
   };
 
   const activeTab = SHOWCASE_ITEMS[activeTabIdx] || SHOWCASE_ITEMS[0];
+  const activeComponentPreviewVideo = components.find(
+    (c) => c.slug === activeTab.id,
+  )?.preview;
 
   const renderActiveComponent = () => {
     switch (activeTab.id) {
-      case "scrambled-install-command":
-        return <ScrambledInstallCommandPreview />;
+      case "floating-menu":
+        return <FloatingMenuPreview />;
       case "multilingual-quote":
         return <MultilingualQuotePreview />;
       case "pixel-to-ascii":
@@ -218,49 +240,62 @@ export function ComponentShowcase() {
         }
       `}</style>
       <Container>
-        <div className="flex items-center justify-center pt-6">
-          <div className="flex [scrollbar-width:none] items-stretch gap-1 overflow-x-auto [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-            {SHOWCASE_ITEMS.map((tab, idx) => {
-              const isActive = idx === activeTabIdx;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => handleTabClick(idx)}
-                  className={cn(
-                    "relative z-10 flex shrink-0 cursor-pointer items-center justify-center gap-1.5 px-3.5 py-2 text-sm font-medium transition-colors select-none sm:text-base",
-                    isActive
-                      ? "text-neutral-900 dark:text-white"
-                      : "text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white",
-                  )}
-                >
-                  <span
+        <div className="flex w-full items-center justify-center pt-6">
+          <div className="relative w-full max-w-full">
+            {/* Left fade mask */}
+            <div className="pointer-events-none absolute top-0 bottom-0 left-0 z-10 w-8 bg-gradient-to-r from-white to-transparent md:hidden dark:from-neutral-950" />
+            {/* Right fade mask */}
+            <div className="pointer-events-none absolute top-0 right-0 bottom-0 z-10 w-8 bg-gradient-to-l from-white to-transparent md:hidden dark:from-neutral-950" />
+
+            <div
+              ref={scrollContainerRef}
+              className="flex w-full [scrollbar-width:none] items-stretch justify-start gap-1 overflow-x-auto px-4 [-ms-overflow-style:none] sm:px-12 md:justify-center md:px-0 [&::-webkit-scrollbar]:hidden"
+            >
+              {SHOWCASE_ITEMS.map((tab, idx) => {
+                const isActive = idx === activeTabIdx;
+                return (
+                  <button
+                    key={tab.id}
+                    ref={isActive ? activeTabRef : null}
+                    onClick={() => handleTabClick(idx)}
                     className={cn(
-                      "transition-colors",
+                      "relative z-10 flex shrink-0 cursor-pointer items-center justify-center gap-1.5 px-3.5 py-2 text-sm font-medium transition-colors select-none sm:text-base",
                       isActive
                         ? "text-neutral-900 dark:text-white"
-                        : "text-neutral-500 dark:text-neutral-400",
+                        : "text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white",
                     )}
                   >
-                    {tab.icon}
-                  </span>
-                  <span>{tab.title}</span>
+                    <span
+                      className={cn(
+                        "transition-colors",
+                        isActive
+                          ? "text-neutral-900 dark:text-white"
+                          : "text-neutral-500 dark:text-neutral-400",
+                      )}
+                    >
+                      {tab.icon}
+                    </span>
+                    <span>{tab.title}</span>
 
-                  {isActive && (
-                    <>
-                      <div className="absolute right-0 bottom-0 left-0 h-[2px] bg-neutral-100 dark:bg-neutral-900" />
-                      <div
-                        key={activeTabIdx}
-                        className="absolute bottom-0 left-0 z-20 h-[2px] bg-[#f6821f]"
-                        style={{
-                          animation: "showcase-progress 6s linear forwards",
-                          animationPlayState: isHovered ? "paused" : "running",
-                        }}
-                      />
-                    </>
-                  )}
-                </button>
-              );
-            })}
+                    {isActive && (
+                      <>
+                        <div className="absolute right-0 bottom-0 left-0 h-[2px] bg-neutral-100 dark:bg-neutral-900" />
+                        <div
+                          key={activeTabIdx}
+                          className="absolute bottom-0 left-0 z-20 h-[2px] bg-[#f6821f]"
+                          style={{
+                            animation: "showcase-progress 6s linear forwards",
+                            animationPlayState: isHovered
+                              ? "paused"
+                              : "running",
+                          }}
+                        />
+                      </>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </Container>
@@ -272,7 +307,12 @@ export function ComponentShowcase() {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            <div className="relative flex aspect-video min-h-[350px] w-full items-center justify-center rounded-3xl bg-neutral-100/60 p-8 dark:bg-neutral-900/60">
+            <div className="relative flex aspect-video min-h-[350px] w-full overflow-hidden rounded-3xl bg-neutral-100/60 dark:bg-neutral-900/60">
+              <Link
+                href={`/components/${activeTab.id}`}
+                className="absolute inset-0 z-20"
+                aria-label={`View ${activeTab.title} component`}
+              />
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab.id}
@@ -280,33 +320,29 @@ export function ComponentShowcase() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.25, ease: "easeInOut" }}
-                  className="flex h-full w-full items-center justify-center"
+                  className="absolute inset-0 flex h-full w-full items-center justify-center"
                 >
-                  {renderActiveComponent()}
+                  <div className="hidden h-full w-full items-center justify-center p-8 sm:flex">
+                    {renderActiveComponent()}
+                  </div>
+                  <div className="flex h-full w-full items-center justify-center sm:hidden">
+                    {activeComponentPreviewVideo ? (
+                      <video
+                        src={activeComponentPreviewVideo}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center p-8">
+                        {renderActiveComponent()}
+                      </div>
+                    )}
+                  </div>
                 </motion.div>
               </AnimatePresence>
-
-              <div className="absolute top-4 right-4">
-                <Link
-                  href={`/components/${activeTab.id}`}
-                  className="inline-flex items-center gap-1 rounded-full bg-neutral-200/70 px-3 py-1 text-xs font-medium text-neutral-800 transition-colors hover:bg-neutral-300/80 dark:bg-neutral-800/80 dark:text-neutral-200 dark:hover:bg-neutral-700"
-                >
-                  <span>Component Docs</span>
-                  <svg
-                    className="h-3 w-3"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
-                    />
-                  </svg>
-                </Link>
-              </div>
             </div>
           </div>
         </Container>

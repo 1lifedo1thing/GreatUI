@@ -9,16 +9,16 @@ export function Sponsors() {
     <div className="relative mx-auto max-w-[1400px]">
       <Container className="relative py-10 md:py-16">
         <div className="flex flex-col items-start text-left">
-          <h2 className="mt-2 max-w-4xl text-4xl leading-[1.05] font-semibold tracking-tight text-neutral-950 sm:text-5xl md:text-6xl dark:text-white">
-            Sponsors
+          <h2 className="mt-2 w-full text-3xl leading-[1.1] font-semibold tracking-tight text-balance text-neutral-900 sm:text-4xl md:text-5xl dark:text-neutral-300">
+            Become a sponsor.
           </h2>
-          <p className="mt-4 max-w-2xl text-base tracking-normal text-neutral-600 sm:text-lg dark:text-neutral-400">
+          <p className="mt-2 max-w-4xl text-base text-balance text-neutral-600 sm:text-lg dark:text-neutral-400">
             Support independent open-source component development and feature
             your logo.
           </p>
         </div>
 
-        <div className="relative z-10 mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="relative z-10 mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
           <a
             href="https://github.com/sponsors/Saurabh-2607"
             target="_blank"

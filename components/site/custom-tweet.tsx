@@ -1,9 +1,16 @@
 import { getTweet } from "react-tweet/api";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 const SENTENCES_TO_REMOVE = ["  and want x profile card, can do it?"];
 
-export async function CustomTweet({ id }: { id: string }) {
+export async function CustomTweet({
+  id,
+  className,
+}: {
+  id: string;
+  className?: string;
+}) {
   let tweet = null;
   try {
     tweet = await getTweet(id);
@@ -36,7 +43,10 @@ export async function CustomTweet({ id }: { id: string }) {
       href={tweetUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex h-auto w-full flex-col gap-3 rounded-3xl bg-neutral-100 p-5 dark:bg-neutral-900"
+      className={cn(
+        "group flex h-auto w-full flex-col gap-3 rounded-3xl bg-neutral-100 p-5 dark:bg-neutral-900",
+        className,
+      )}
     >
       <div className="flex w-full items-start justify-between">
         <div className="flex items-center gap-2.5 overflow-hidden">
@@ -70,7 +80,7 @@ export async function CustomTweet({ id }: { id: string }) {
         </div>
       </div>
 
-      <p className="text-sm leading-relaxed whitespace-pre-wrap text-neutral-700 dark:text-neutral-300">
+      <p className="text-sm leading-snug whitespace-pre-wrap text-neutral-600 dark:text-neutral-400">
         {cleanText}
       </p>
     </a>

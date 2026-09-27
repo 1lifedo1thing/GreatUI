@@ -14,7 +14,7 @@ export function Hero() {
         <h1 className="w-full text-[24px] leading-[1.1] font-semibold tracking-tight text-balance text-neutral-900 sm:text-4xl md:font-semibold xl:text-6xl xl:tracking-tighter dark:text-neutral-300">
           Ship Premium Web Interfaces Faster
         </h1>
-        <p className="text-foreground max-w-4xl text-base text-balance sm:text-lg md:text-lg xl:text-xl">
+        <p className="max-w-4xl text-base text-balance text-neutral-600 sm:text-lg md:text-lg xl:text-xl dark:text-neutral-400">
           A curated collection of over 50 accessible, beautifully designed
           Tailwind CSS components. Copy, paste, and customize to build stunning
           applications in minutes.
