@@ -44,7 +44,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-transparent transition-colors">
-      <Container className="max-w-[1360px] bg-white px-4 py-3 sm:px-6 dark:bg-neutral-950">
+      <Container className="py-3">
         <div className="flex w-full items-center justify-between">
           <Link
             href="/"
@@ -55,7 +55,7 @@ export function Navbar() {
               alt="Great UI Logo"
               className="h-8 w-auto object-contain"
             />
-            <span className="text-3xl font-bold tracking-tight text-neutral-900 uppercase sm:block dark:text-white">
+            <span className="font-tt text-3xl font-bold tracking-tight text-neutral-900 uppercase sm:block dark:text-white">
               Great <span className="text-[#f6821f]">UI</span>
             </span>
           </Link>
@@ -150,15 +150,6 @@ export function Navbar() {
             <ThemeToggle className="dark:!hover:text-white !h-10 !w-10 !rounded-xl !border-0 !bg-neutral-100 !text-neutral-700 shadow-xs hover:!bg-neutral-200 hover:!text-neutral-950 dark:!border-0 dark:!bg-neutral-900 dark:!text-neutral-300 dark:hover:!bg-neutral-800 [&>svg]:h-5 [&>svg]:w-5 [&>svg]:text-neutral-700 dark:[&>svg]:text-neutral-300" />
           </div>
         </div>
-        <div
-          className="pointer-events-none absolute -right-4 -bottom-4 -left-4 z-20 h-px select-none sm:-right-6 sm:-left-6"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, var(--color-border-100) 50%, transparent 50%)",
-            backgroundSize: "32px 1px",
-            backgroundRepeat: "repeat-x",
-          }}
-        />
       </Container>
     </header>
   );

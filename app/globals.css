@@ -13,8 +13,8 @@
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: var(--color-neutral-950);
+  --foreground: var(--color-neutral-100);
   --color-decor-dots-100: rgba(237, 237, 237, 0.15);
   --color-border-100: rgba(237, 237, 237, 0.15);
 }
@@ -25,6 +25,7 @@
   --color-brand: #f6821f;
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
+  --font-tt: var(--font-tt);
 }
 
 body {

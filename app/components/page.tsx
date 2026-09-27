@@ -48,17 +48,17 @@ export default function ComponentsPage() {
   ).filter((c): c is Component => c !== undefined);
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-white text-neutral-900 transition-colors dark:bg-[#0a0a0a] dark:text-white">
+    <div className="relative min-h-screen overflow-x-hidden bg-white text-neutral-900 transition-colors dark:bg-neutral-950 dark:text-white">
       <BackgroundGrid />
       <Navbar />
 
       <main className="relative z-10">
-        <Container className="bg-white px-4 py-10 sm:px-6 md:py-16 dark:bg-neutral-950">
+        <Container className="py-10 md:py-16">
           <div className="flex flex-col items-center justify-center text-center">
-            <h1 className="text-4xl font-semibold tracking-tight text-neutral-950 sm:text-5xl md:text-6xl dark:text-white">
+            <h1 className="text-4xl leading-[1.1] font-semibold tracking-tight text-balance text-neutral-900 sm:text-5xl md:text-6xl dark:text-neutral-300">
               {components.length} Great Components
             </h1>
-            <p className="mt-4 max-w-2xl text-lg text-neutral-600 sm:text-xl md:text-2xl dark:text-neutral-400">
+            <p className="mt-4 max-w-2xl text-lg text-balance text-neutral-600 sm:text-xl md:text-2xl dark:text-neutral-400">
               Explore our collection of production-grade React &amp; Tailwind
               CSS components.{" "}
               <span className="font-medium text-[#f6821f]/80">
@@ -77,7 +77,7 @@ export default function ComponentsPage() {
                       href={`/components/${c.slug}`}
                       key={c.slug}
                       aria-label={`View ${c.name} component`}
-                      className="group relative block cursor-pointer overflow-hidden rounded-t-3xl rounded-b-2xl bg-neutral-100/70 no-underline dark:bg-neutral-900"
+                      className="group relative block cursor-pointer overflow-hidden rounded-3xl bg-neutral-100 no-underline dark:bg-neutral-900"
                     >
                       <ComponentCard component={c} isFeatured={true} />
                     </Link>
@@ -96,7 +96,7 @@ export default function ComponentsPage() {
               return (
                 <section key={catName} className="flex flex-col">
                   <div className="mb-6 flex items-baseline justify-between border-b border-neutral-100 pb-4 dark:border-neutral-900">
-                    <h2 className="text-2xl font-bold tracking-tight text-neutral-700 sm:text-3xl dark:text-neutral-300">
+                    <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 sm:text-3xl dark:text-neutral-300">
                       {catName}
                     </h2>
                     <span className="text-sm font-semibold tracking-wider text-neutral-500 uppercase dark:text-neutral-400">
@@ -113,7 +113,7 @@ export default function ComponentsPage() {
                         href={`/components/${c.slug}`}
                         key={c.slug}
                         aria-label={`View ${c.name} component`}
-                        className="group relative block cursor-pointer overflow-hidden rounded-t-3xl rounded-b-2xl bg-neutral-100/70 no-underline dark:bg-neutral-900"
+                        className="group relative block cursor-pointer overflow-hidden rounded-3xl bg-neutral-100 no-underline dark:bg-neutral-900"
                       >
                         <ComponentCard component={c} />
                       </Link>

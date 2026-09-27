@@ -207,8 +207,8 @@ export default function DocsPanel({ component }: { component: Component }) {
         <p className="text-md text-neutral-450 font-semibold uppercase dark:text-neutral-500">
           Installation
         </p>
-        <div className="overflow-hidden rounded-xl bg-neutral-100 dark:bg-[#141414]">
-          <div className="flex h-11 items-center justify-between border-b border-neutral-200/60 bg-neutral-200/30 px-4 select-none dark:border-neutral-800/60 dark:bg-[#0a0a0a]/30">
+        <div className="overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-900">
+          <div className="flex h-11 items-center justify-between border-b border-neutral-200/60 bg-neutral-200/30 px-4 select-none dark:border-neutral-800/60 dark:bg-neutral-900/40">
             <div className="flex items-center gap-3">
               <svg
                 viewBox="0 0 24 24"

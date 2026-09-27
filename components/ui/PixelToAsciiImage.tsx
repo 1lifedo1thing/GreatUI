@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { useMotionValue, useSpring, useAnimationFrame } from "framer-motion";
+import { useMotionValue, useSpring, useAnimationFrame } from "motion/react";
 
 export default function PixelToAsciiImage({
   src,

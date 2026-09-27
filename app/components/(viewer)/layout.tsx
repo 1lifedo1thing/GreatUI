@@ -115,7 +115,7 @@ function ViewerLayoutContent({ children }: { children: React.ReactNode }) {
 
   if (!isMounted) {
     return (
-      <div className="flex h-[100dvh] w-full items-center justify-center bg-white dark:bg-[#0a0a0a]">
+      <div className="flex h-[100dvh] w-full items-center justify-center bg-white dark:bg-neutral-950">
         <div className="text-sm text-neutral-400">Loading layout...</div>
       </div>
     );
@@ -123,14 +123,14 @@ function ViewerLayoutContent({ children }: { children: React.ReactNode }) {
 
   if (!component) {
     return (
-      <div className="flex h-[100dvh] w-full items-center justify-center bg-white dark:bg-[#0a0a0a]">
+      <div className="flex h-[100dvh] w-full items-center justify-center bg-white dark:bg-neutral-950">
         <div className="text-sm text-neutral-400">Loading component...</div>
       </div>
     );
   }
 
   return (
-    <div className="relative flex h-[100dvh] w-full flex-col overflow-hidden bg-white p-4 text-neutral-900 transition-colors dark:bg-[#0a0a0a] dark:text-white">
+    <div className="relative flex h-[100dvh] w-full flex-col overflow-hidden bg-white p-4 text-neutral-900 transition-colors dark:bg-neutral-950 dark:text-white">
       <div
         className={`absolute top-4 left-4 z-[60] flex items-center gap-3.5 transition-opacity duration-300 sm:top-9 sm:left-9 ${isCodeOpen || isMarkdownOpen ? "pointer-events-none opacity-0" : "opacity-100"}`}
       >

@@ -29,17 +29,17 @@ export const metadata = {
 
 export default function ChangelogPage() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-white text-neutral-900 transition-colors dark:bg-[#0a0a0a] dark:text-white">
+    <div className="relative min-h-screen overflow-x-hidden bg-white text-neutral-900 transition-colors dark:bg-neutral-950 dark:text-white">
       <BackgroundGrid />
       <Navbar />
 
-      <Container className="bg-white px-4 sm:px-6 dark:bg-neutral-950">
+      <Container>
         <main className="relative mx-4 py-24 md:py-32">
           <div className="mb-20">
-            <h1 className="mb-4 text-4xl font-black tracking-tight text-neutral-900 sm:text-6xl dark:text-white">
+            <h1 className="mb-4 text-4xl leading-[1.1] font-semibold tracking-tight text-balance text-neutral-900 sm:text-5xl md:text-6xl dark:text-neutral-300">
               Changelog
             </h1>
-            <p className="text-lg text-neutral-600 dark:text-neutral-400">
+            <p className="max-w-4xl text-base text-balance text-neutral-600 sm:text-lg dark:text-neutral-400">
               New updates and improvements to Great UI.
             </p>
           </div>

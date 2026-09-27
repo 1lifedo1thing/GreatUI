@@ -5,6 +5,7 @@ import Contact from "@/components/site/Contact";
 import Footer from "@/components/site/Footer";
 import BackgroundGrid from "@/components/site/BackgroundGrid";
 import Sponsors from "@/components/site/Sponsors";
+import Testimonials from "@/components/site/Testimonials";
 import CTASection from "@/components/site/CTASection";
 
 import type { Metadata } from "next";
@@ -20,14 +21,15 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-white text-neutral-900 transition-colors dark:bg-[#0a0a0a] dark:text-white">
+    <div className="relative min-h-screen overflow-x-hidden bg-white text-neutral-900 transition-colors dark:bg-neutral-950 dark:text-white">
       <BackgroundGrid />
       <Navbar />
       <Hero />
       <ComponentShowcase />
-      <Contact />
+      <Testimonials />
       <Sponsors />
       <CTASection />
+      {/* <Contact /> */}
       <Footer />
     </div>
   );
