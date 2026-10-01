@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { components } from "@/lib/registry";
 
-// High priority components shown on the landing page
 const LANDING_PAGE_SLUGS = [
   "floating-menu",
   "multilingual-quote",
@@ -21,26 +20,36 @@ const LANDING_PAGE_SLUGS = [
 export default function VideoPreloader() {
   const [isClient, setIsClient] = useState(false);
 
-  // Wait until hydration to prevent SSR mismatch or excessive server parsing
   useEffect(() => {
-    // Slight delay so we don't block critical page load
     const timer = setTimeout(() => setIsClient(true), 1500);
     return () => clearTimeout(timer);
   }, []);
 
   if (!isClient) return null;
 
-  const landingPageUrls = components
-    .filter((c) => LANDING_PAGE_SLUGS.includes(c.slug) && c.preview)
-    .map((c) => c.preview as string);
+  const landingPageUrls = Array.from(
+    new Set(
+      components
+        .filter((c) => LANDING_PAGE_SLUGS.includes(c.slug) && c.preview)
+        .map((c) => c.preview as string),
+    ),
+  );
 
-  const otherUrls = components
-    .filter((c) => !LANDING_PAGE_SLUGS.includes(c.slug) && c.preview)
-    .map((c) => c.preview as string);
+  const otherUrls = Array.from(
+    new Set(
+      components
+        .filter(
+          (c) =>
+            !LANDING_PAGE_SLUGS.includes(c.slug) &&
+            c.preview &&
+            !landingPageUrls.includes(c.preview as string),
+        )
+        .map((c) => c.preview as string),
+    ),
+  );
 
   return (
     <div aria-hidden="true" className="hidden">
-      {/* Load landing page videos first */}
       {landingPageUrls.map((url) => (
         <link
           key={url}
@@ -48,12 +57,10 @@ export default function VideoPreloader() {
           as="video"
           href={url}
           type="video/mp4"
-          // @ts-expect-error - fetchpriority is not yet in React's standard types
-          fetchpriority="auto"
+          fetchPriority="auto"
         />
       ))}
 
-      {/* Load all other videos after with lowest priority */}
       {otherUrls.map((url) => (
         <link
           key={url}
@@ -61,8 +68,7 @@ export default function VideoPreloader() {
           as="video"
           href={url}
           type="video/mp4"
-          // @ts-expect-error - fetchpriority is not yet in React's standard types
-          fetchpriority="low"
+          fetchPriority="low"
         />
       ))}
     </div>

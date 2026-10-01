@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import posthog from "posthog-js";
 import Container from "./Container";
 
@@ -18,51 +19,51 @@ export function Sponsors() {
           </p>
         </div>
 
-        <div className="relative z-10 mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
-          <a
-            href="https://github.com/sponsors/Saurabh-2607"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => posthog.capture("sponsorship_link_clicked")}
-            className="group relative flex h-40 cursor-pointer flex-col items-center justify-center gap-1.5 overflow-hidden rounded-3xl bg-neutral-100 p-4 text-center no-underline transition-all duration-300 hover:bg-neutral-200/70 dark:bg-neutral-900 dark:hover:bg-neutral-800/80"
+        <div className="relative z-10 mt-8 flex flex-col items-center gap-4 md:flex-row md:items-end md:gap-6">
+          <Link
+            href="/sponsors#tiers"
+            onClick={() =>
+              posthog.capture("sponsorship_link_clicked", { tier: "platinum" })
+            }
+            className="group relative flex h-48 w-full cursor-pointer flex-col items-center justify-center gap-2 overflow-hidden rounded-3xl bg-neutral-100 p-6 text-center no-underline transition-all duration-300 hover:bg-neutral-200/70 sm:h-56 md:flex-[6] dark:bg-neutral-900 dark:hover:bg-neutral-800/80"
           >
-            <span className="text-neutral-450 text-4xl font-light transition-colors duration-300 group-hover:text-[#f6821f] dark:text-neutral-500">
+            <span className="text-4xl font-light text-neutral-400 transition-colors duration-300 group-hover:text-[#f6821f] sm:text-5xl dark:text-neutral-500">
               +
             </span>
-            <span className="text-sm font-semibold tracking-wide text-neutral-500 transition-colors duration-300 group-hover:text-[#f6821f] dark:text-neutral-400">
-              Place your logo here
+            <span className="text-base font-semibold tracking-wide text-neutral-500 transition-colors duration-300 group-hover:text-[#f6821f] sm:text-lg dark:text-neutral-400">
+              Become a Platinum Sponsor
             </span>
-          </a>
+          </Link>
 
-          <a
-            href="https://github.com/sponsors/Saurabh-2607"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => posthog.capture("sponsorship_link_clicked")}
-            className="group relative hidden h-40 cursor-pointer flex-col items-center justify-center gap-1.5 overflow-hidden rounded-3xl bg-neutral-100 p-4 text-center no-underline transition-all duration-300 hover:bg-neutral-200/70 md:flex dark:bg-neutral-900 dark:hover:bg-neutral-800/80"
+          <Link
+            href="/sponsors#tiers"
+            onClick={() =>
+              posthog.capture("sponsorship_link_clicked", { tier: "gold" })
+            }
+            className="group relative flex h-36 w-full cursor-pointer flex-col items-center justify-center gap-1.5 overflow-hidden rounded-3xl bg-neutral-100 p-4 text-center no-underline transition-all duration-300 hover:bg-neutral-200/70 sm:h-44 md:flex-[4] dark:bg-neutral-900 dark:hover:bg-neutral-800/80"
           >
-            <span className="text-neutral-450 text-4xl font-light transition-colors duration-300 group-hover:text-[#f6821f] dark:text-neutral-500">
+            <span className="text-3xl font-light text-neutral-400 transition-colors duration-300 group-hover:text-[#f6821f] sm:text-4xl dark:text-neutral-500">
               +
             </span>
-            <span className="text-sm font-semibold tracking-wide text-neutral-500 transition-colors duration-300 group-hover:text-[#f6821f] dark:text-neutral-400">
-              Place your logo here
+            <span className="text-sm font-semibold tracking-wide text-neutral-500 transition-colors duration-300 group-hover:text-[#f6821f] sm:text-base dark:text-neutral-400">
+              Become a Gold Sponsor
             </span>
-          </a>
+          </Link>
 
-          <a
-            href="https://github.com/sponsors/Saurabh-2607"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => posthog.capture("sponsorship_link_clicked")}
-            className="group relative hidden h-40 cursor-pointer flex-col items-center justify-center gap-1.5 overflow-hidden rounded-3xl bg-neutral-100 p-4 text-center no-underline transition-all duration-300 hover:bg-neutral-200/70 md:flex dark:bg-neutral-900 dark:hover:bg-neutral-800/80"
+          <Link
+            href="/sponsors#tiers"
+            onClick={() =>
+              posthog.capture("sponsorship_link_clicked", { tier: "silver" })
+            }
+            className="group relative flex h-28 w-full cursor-pointer flex-col items-center justify-center gap-1 overflow-hidden rounded-3xl bg-neutral-100 p-3 text-center no-underline transition-all duration-300 hover:bg-neutral-200/70 sm:h-36 md:flex-[3] dark:bg-neutral-900 dark:hover:bg-neutral-800/80"
           >
-            <span className="text-neutral-450 text-4xl font-light transition-colors duration-300 group-hover:text-[#f6821f] dark:text-neutral-500">
+            <span className="text-2xl font-light text-neutral-400 transition-colors duration-300 group-hover:text-[#f6821f] sm:text-3xl dark:text-neutral-500">
               +
             </span>
-            <span className="text-sm font-semibold tracking-wide text-neutral-500 transition-colors duration-300 group-hover:text-[#f6821f] dark:text-neutral-400">
-              Place your logo here
+            <span className="text-xs font-semibold tracking-wide text-neutral-500 transition-colors duration-300 group-hover:text-[#f6821f] sm:text-sm dark:text-neutral-400">
+              Become a Silver Sponsor
             </span>
-          </a>
+          </Link>
         </div>
       </Container>
     </div>

@@ -54,7 +54,7 @@ export default function Testimonials() {
   const row3 = ALL_TWEETS.slice(8, 12);
 
   return (
-    <div className="relative mx-auto w-full max-w-[1400px]">
+    <div className="relative mx-auto w-full max-w-[1400px] pb-10 md:pb-16">
       <style>{`
         @keyframes marquee-left {
           from { transform: translateX(0); }

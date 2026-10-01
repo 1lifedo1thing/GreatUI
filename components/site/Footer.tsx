@@ -105,6 +105,13 @@ export function Footer() {
                 Components
               </Link>
               <Link
+                href="/sponsors"
+                className="transition-colors hover:text-[#f6821f] dark:hover:text-[#f6821f]"
+              >
+                Sponsors
+              </Link>
+
+              <Link
                 href="/changelog"
                 className="transition-colors hover:text-[#f6821f] dark:hover:text-[#f6821f]"
               >
@@ -123,6 +130,15 @@ export function Footer() {
               </div>
 
               <div className="flex items-center gap-x-4 text-sm text-neutral-400 sm:text-base dark:text-neutral-500">
+                <Link
+                  href="/terms"
+                  className="transition-colors hover:text-neutral-900 dark:hover:text-white"
+                >
+                  Terms
+                </Link>
+                <span className="text-neutral-300 dark:text-neutral-700/80">
+                  ·
+                </span>
                 <Link
                   href="/logo"
                   className="transition-colors hover:text-neutral-900 dark:hover:text-white"
@@ -153,7 +169,7 @@ export function Footer() {
             <div className="text-sm text-neutral-500 dark:text-neutral-400">
               Made by{" "}
               <a
-                href="https://srh.site"
+                href="https://srbh.site"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-medium transition-colors hover:text-neutral-900 dark:hover:text-white"
