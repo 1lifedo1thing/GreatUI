@@ -21,7 +21,7 @@ export default function VideoPreloader() {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsClient(true), 1500);
+    const timer = setTimeout(() => setIsClient(true), 2500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -35,41 +35,10 @@ export default function VideoPreloader() {
     ),
   );
 
-  const otherUrls = Array.from(
-    new Set(
-      components
-        .filter(
-          (c) =>
-            !LANDING_PAGE_SLUGS.includes(c.slug) &&
-            c.preview &&
-            !landingPageUrls.includes(c.preview as string),
-        )
-        .map((c) => c.preview as string),
-    ),
-  );
-
   return (
     <div aria-hidden="true" className="hidden">
       {landingPageUrls.map((url) => (
-        <link
-          key={url}
-          rel="preload"
-          as="video"
-          href={url}
-          type="video/mp4"
-          fetchPriority="auto"
-        />
-      ))}
-
-      {otherUrls.map((url) => (
-        <link
-          key={url}
-          rel="preload"
-          as="video"
-          href={url}
-          type="video/mp4"
-          fetchPriority="low"
-        />
+        <link key={url} rel="prefetch" href={url} as="video" type="video/mp4" />
       ))}
     </div>
   );

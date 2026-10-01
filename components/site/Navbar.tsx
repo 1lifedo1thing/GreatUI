@@ -7,7 +7,8 @@ export async function Navbar() {
     const response = await fetch(
       "https://api.github.com/repos/Saurabh-2607/GreatUI",
       {
-        next: { revalidate: 60 },
+        next: { revalidate: 3600 },
+        signal: AbortSignal.timeout(2000),
       },
     );
 
