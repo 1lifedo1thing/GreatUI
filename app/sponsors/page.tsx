@@ -7,6 +7,7 @@ import Container from "@/components/site/Container";
 import Button from "@/components/site/ui/Button";
 import { SectionIcon } from "@/components/site/Icons";
 import SponsorStats from "@/components/site/SponsorStats";
+import CarbonAds from "@/components/site/CarbonAds";
 
 export default function SponsorsPage() {
   return (
@@ -595,6 +596,10 @@ export default function SponsorsPage() {
               </Button>
             </a>
           </div>
+        </div>
+
+        <div className="mt-12 flex w-full justify-center">
+          <CarbonAds className="mx-auto w-full max-w-100" />
         </div>
       </Container>
 

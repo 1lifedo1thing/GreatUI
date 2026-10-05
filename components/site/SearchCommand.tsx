@@ -7,6 +7,127 @@ import posthog from "posthog-js";
 import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "./ThemeProvider";
 import { getSearchIndex, type SearchEntry } from "@/lib/search";
+interface CarbonAdData {
+  company?: string;
+  title?: string;
+  description?: string;
+  statlink: string;
+  statimp?: string;
+  statview?: string;
+  ad_via_link?: string;
+  logo?: string;
+  smallImage?: string;
+  largeImage?: string;
+}
+
+function SearchCommandAd() {
+  const [ad, setAd] = useState<CarbonAdData | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    fetch(
+      "https://srv.carbonads.net/ads/CWBI62QE.json?segment=placement:wwwgreat-uicom",
+    )
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to load ad");
+        return res.json();
+      })
+      .then((data) => {
+        if (cancelled) return;
+        const firstAd = data?.ads?.[0];
+        if (firstAd && firstAd.statlink) {
+          setAd(firstAd);
+          if (firstAd.statimp) {
+            new Image().src = firstAd.statimp;
+          }
+          if (firstAd.statview) {
+            new Image().src = firstAd.statview;
+          }
+        }
+      })
+      .catch(() => {});
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  if (!ad) return null;
+
+  const imageUrl = ad.logo || ad.smallImage || ad.largeImage;
+  const companyName = ad.company || ad.title;
+
+  return (
+    <Command.Group
+      heading="Ad"
+      className="[&_[cmdk-group-heading]]:text-neutral-450 overflow-hidden text-neutral-500 dark:text-neutral-400 [&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:py-2 [&_[cmdk-group-heading]]:text-[13px] [&_[cmdk-group-heading]]:font-bold [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:uppercase dark:[&_[cmdk-group-heading]]:text-neutral-500"
+    >
+      <Command.Item
+        value={`ad ${companyName || ""} ${ad.description || ""}`.toLowerCase()}
+        onSelect={() => {
+          window.open(ad.statlink, "_blank", "noopener,noreferrer");
+        }}
+        className="group flex cursor-pointer items-center gap-3.5 rounded-xl px-3 py-2.5 text-sm font-medium text-neutral-700 outline-hidden transition-all duration-155 select-none data-[selected=true]:bg-neutral-100 data-[selected=true]:text-neutral-900 dark:text-neutral-300 dark:data-[selected=true]:bg-neutral-800/80 dark:data-[selected=true]:text-white"
+      >
+        <div className="flex h-7 w-7 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-[var(--color-border-100)] bg-neutral-50 dark:bg-neutral-900/60">
+          {imageUrl ? (
+            <img
+              src={imageUrl}
+              alt=""
+              className="h-full w-full object-contain"
+            />
+          ) : (
+            <span className="text-[10px] font-bold text-neutral-400">Ad</span>
+          )}
+        </div>
+
+        <div className="flex flex-1 flex-col">
+          <div className="flex items-center gap-2">
+            {companyName && (
+              <span className="text-[17.5px] font-semibold text-neutral-900 transition-colors group-data-[selected=true]:text-neutral-900 dark:text-neutral-300 dark:group-data-[selected=true]:text-white">
+                {companyName}
+              </span>
+            )}
+            <span className="rounded-md bg-neutral-200/60 px-1.5 py-0.5 text-[10px] font-semibold tracking-wider text-neutral-500 uppercase dark:bg-neutral-800 dark:text-neutral-400">
+              AD
+            </span>
+          </div>
+          {ad.description && (
+            <span className="mt-0.5 line-clamp-1 text-[14.5px] font-normal text-neutral-500 dark:text-neutral-400">
+              {ad.description}
+            </span>
+          )}
+        </div>
+
+        <div className="flex items-center gap-2">
+          {ad.ad_via_link && (
+            <a
+              href={ad.ad_via_link}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="text-[11px] text-neutral-400 hover:text-neutral-600 dark:text-neutral-500 dark:hover:text-neutral-300"
+            >
+              via Carbon
+            </a>
+          )}
+          <svg
+            className="h-4 w-4 shrink-0 text-neutral-400 opacity-0 transition-opacity group-data-[selected=true]:opacity-100 dark:text-neutral-500"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fillRule="evenodd"
+              d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </div>
+      </Command.Item>
+    </Command.Group>
+  );
+}
 
 export function SearchCommand() {
   const [open, setOpen] = useState(false);
@@ -394,6 +515,7 @@ export function SearchCommand() {
                       ))}
                     </Command.Group>
                   ))}
+                  <SearchCommandAd />
                 </Command.List>
 
                 <div className="hidden items-center gap-4 border-t border-[var(--color-border-100)] px-4 py-3.5 text-[13px] text-neutral-500 sm:flex dark:text-neutral-500">

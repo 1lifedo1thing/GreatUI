@@ -3,6 +3,7 @@ import Footer from "@/components/site/Footer";
 import BackgroundGrid from "@/components/site/BackgroundGrid";
 import Container from "@/components/site/Container";
 import ChangelogTimeline from "@/components/site/ChangelogTimeline";
+import CarbonAds from "@/components/site/CarbonAds";
 
 export const metadata = {
   title: "Changelog",
@@ -45,6 +46,10 @@ export default function ChangelogPage() {
           </div>
 
           <ChangelogTimeline />
+
+          <div className="mt-20 flex w-full justify-center">
+            <CarbonAds className="mx-auto w-full max-w-100" />
+          </div>
         </main>
       </Container>
 

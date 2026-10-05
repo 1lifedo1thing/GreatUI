@@ -4,6 +4,7 @@ import Navbar from "@/components/site/Navbar";
 import Footer from "@/components/site/Footer";
 import BackgroundGrid from "@/components/site/BackgroundGrid";
 import Container from "@/components/site/Container";
+import CarbonAds from "@/components/site/CarbonAds";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -389,6 +390,10 @@ export default function TermsPage() {
             </section>
           </div>
         </article>
+
+        <div className="mt-16 flex w-full justify-center">
+          <CarbonAds className="mx-auto w-full max-w-100" />
+        </div>
       </Container>
 
       <Footer />

@@ -6,6 +6,7 @@ import posthog from "posthog-js";
 import { components } from "@/lib/registry";
 import { CATEGORY_ORDER, componentsByCategory } from "@/lib/categories";
 import { animate } from "motion/react";
+import CarbonAds from "./CarbonAds";
 
 interface SidebarProps {
   activeSlug: string;
@@ -83,86 +84,92 @@ export default function Sidebar({ activeSlug }: SidebarProps) {
 
   return (
     <aside className="relative flex h-full w-full flex-col overflow-hidden bg-transparent text-neutral-900 select-none dark:text-white">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute top-0 right-0 left-0 z-20 h-24 bg-gradient-to-b from-neutral-100 via-neutral-100/80 to-transparent dark:from-[#141414] dark:via-[#141414]/80 dark:to-transparent"
-      />
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute right-0 bottom-0 left-0 z-20 h-28 bg-gradient-to-t from-neutral-100 via-neutral-100/80 to-transparent dark:from-[#141414] dark:via-[#141414]/80 dark:to-transparent"
-      />
-
-      <div
-        ref={scrollContainerRef}
-        className="relative flex-1 scrollbar-none overflow-x-clip overflow-y-auto pr-2 pl-1 tracking-tight"
-      >
+      <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden">
         <div
-          style={{
-            paddingTop: `${paddings.top}px`,
-            paddingBottom: `${paddings.bottom}px`,
-          }}
-          className="relative flex h-fit flex-col"
+          aria-hidden="true"
+          className="pointer-events-none absolute top-0 right-0 left-0 z-20 h-24 bg-gradient-to-b from-neutral-100 via-neutral-100/80 to-transparent dark:from-[#141414] dark:via-[#141414]/80 dark:to-transparent"
+        />
+
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute right-0 bottom-0 left-0 z-20 h-28 bg-gradient-to-t from-neutral-100 via-neutral-100/80 to-transparent dark:from-[#141414] dark:via-[#141414]/80 dark:to-transparent"
+        />
+
+        <div
+          ref={scrollContainerRef}
+          className="relative flex-1 scrollbar-none overflow-x-clip overflow-y-auto pr-2 pl-1 tracking-tight"
         >
-          {orderedComponents.length === 0 ? (
-            <div className="flex items-center justify-center p-4 text-center">
-              <span className="text-xs text-neutral-400">No components</span>
-            </div>
-          ) : (
-            orderedComponents.map((c, index) => {
-              const active = c.slug === activeSlug;
-              const itemNumber = (index + 1).toString().padStart(2, "0");
+          <div
+            style={{
+              paddingTop: `${paddings.top}px`,
+              paddingBottom: `${paddings.bottom}px`,
+            }}
+            className="relative flex h-fit flex-col"
+          >
+            {orderedComponents.length === 0 ? (
+              <div className="flex items-center justify-center p-4 text-center">
+                <span className="text-xs text-neutral-400">No components</span>
+              </div>
+            ) : (
+              orderedComponents.map((c, index) => {
+                const active = c.slug === activeSlug;
+                const itemNumber = (index + 1).toString().padStart(2, "0");
 
-              const headerInfo = categoryHeaders.find((h) => h.index === index);
-              const isFirstInCategory = !!headerInfo;
+                const headerInfo = categoryHeaders.find(
+                  (h) => h.index === index,
+                );
+                const isFirstInCategory = !!headerInfo;
 
-              return (
-                <React.Fragment key={c.slug}>
-                  {isFirstInCategory && (
-                    <div className="mt-6 mb-2 first:mt-0">
-                      <span className="text-xl font-bold text-neutral-400/80 dark:text-neutral-500/80">
-                        {headerInfo.name}
-                      </span>
-                    </div>
-                  )}
-                  <Link
-                    ref={active ? activeRef : undefined}
-                    href={`/components/${c.slug}`}
-                    onClick={() => {
-                      posthog.capture("sidebar_component_navigated", {
-                        component_slug: c.slug,
-                        component_name: c.name,
-                        from_slug: activeSlug,
-                      });
-                    }}
-                    className="group relative flex cursor-pointer flex-col transition-colors"
-                  >
-                    {!isFirstInCategory && <TickRow />}
-                    <div className="flex h-4 items-center gap-2">
-                      <span
-                        className={`block shrink-0 transition-all ${
-                          active
-                            ? "h-[3px] w-14 bg-[#f6821f]"
-                            : "h-[2px] w-8 bg-neutral-300 group-hover:w-11 group-hover:bg-[#f6821f] dark:bg-neutral-700"
-                        }`}
-                      />
-                      <span
-                        className={`text-[19px] leading-none whitespace-nowrap transition-all ease-out ${
-                          active
-                            ? "font-semibold text-[#f6821f] opacity-100 dark:text-[#ff9d42]"
-                            : "font-medium text-neutral-700 opacity-50 group-hover:text-[#f6821f] group-hover:opacity-100 dark:text-neutral-300 dark:group-hover:text-[#f6821f]"
-                        }`}
-                      >
-                        {itemNumber} {c.name}
-                      </span>
-                    </div>
-                  </Link>
-                </React.Fragment>
-              );
-            })
-          )}
+                return (
+                  <React.Fragment key={c.slug}>
+                    {isFirstInCategory && (
+                      <div className="mt-6 mb-2 first:mt-0">
+                        <span className="text-xl font-bold text-neutral-400/80 dark:text-neutral-500/80">
+                          {headerInfo.name}
+                        </span>
+                      </div>
+                    )}
+                    <Link
+                      ref={active ? activeRef : undefined}
+                      href={`/components/${c.slug}`}
+                      onClick={() => {
+                        posthog.capture("sidebar_component_navigated", {
+                          component_slug: c.slug,
+                          component_name: c.name,
+                          from_slug: activeSlug,
+                        });
+                      }}
+                      className="group relative flex cursor-pointer flex-col transition-colors"
+                    >
+                      {!isFirstInCategory && <TickRow />}
+                      <div className="flex h-4 items-center gap-2">
+                        <span
+                          className={`block shrink-0 transition-all ${
+                            active
+                              ? "h-[3px] w-14 bg-[#f6821f]"
+                              : "h-[2px] w-8 bg-neutral-300 group-hover:w-11 group-hover:bg-[#f6821f] dark:bg-neutral-700"
+                          }`}
+                        />
+                        <span
+                          className={`text-[19px] leading-none whitespace-nowrap transition-all ease-out ${
+                            active
+                              ? "font-semibold text-[#f6821f] opacity-100 dark:text-[#ff9d42]"
+                              : "font-medium text-neutral-700 opacity-50 group-hover:text-[#f6821f] group-hover:opacity-100 dark:text-neutral-300 dark:group-hover:text-[#f6821f]"
+                          }`}
+                        >
+                          {itemNumber} {c.name}
+                        </span>
+                      </div>
+                    </Link>
+                  </React.Fragment>
+                );
+              })
+            )}
+          </div>
         </div>
       </div>
+
+      <CarbonAds className="mt-4 shrink-0" />
     </aside>
   );
 }

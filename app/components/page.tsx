@@ -6,6 +6,7 @@ import Container from "@/components/site/Container";
 import ComponentCard from "@/components/site/ComponentCard";
 import { components, type Component } from "@/lib/registry";
 import { CATEGORY_ORDER, componentsByCategory } from "@/lib/categories";
+import { CarbonCardAd } from "@/components/site/CarbonAds";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -46,6 +47,11 @@ export default function ComponentsPage() {
   const featuredComponents = FEATURED_SLUGS.map((slug) =>
     components.find((c) => c.slug === slug),
   ).filter((c): c is Component => c !== undefined);
+
+  const activeCategories = CATEGORY_ORDER.filter(
+    (catName) => (componentsByCategory[catName] || []).length > 0,
+  );
+  const lastCategoryName = activeCategories[activeCategories.length - 1];
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white text-neutral-900 transition-colors dark:bg-neutral-950 dark:text-white">
@@ -118,6 +124,7 @@ export default function ComponentsPage() {
                         <ComponentCard component={c} />
                       </Link>
                     ))}
+                    {catName === lastCategoryName && <CarbonCardAd />}
                   </div>
                 </section>
               );

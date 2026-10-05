@@ -5,6 +5,8 @@
 :root {
   --background: #ffffff;
   --foreground: #09090b;
+  --muted: #f5f5f5;
+  --border: rgba(9, 9, 11, 0.16);
   --color-decor-dots-100: rgba(9, 9, 11, 0.12);
   --color-border-100: rgba(9, 9, 11, 0.16);
   --font-mono:
@@ -15,6 +17,8 @@
 .dark {
   --background: var(--color-neutral-950);
   --foreground: var(--color-neutral-100);
+  --muted: #141414;
+  --border: rgba(237, 237, 237, 0.15);
   --color-decor-dots-100: rgba(237, 237, 237, 0.15);
   --color-border-100: rgba(237, 237, 237, 0.15);
 }
@@ -85,4 +89,48 @@ body {
   font-style: var(--shiki-dark-font-style) !important;
   font-weight: var(--shiki-dark-font-weight) !important;
   text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+[data-slot="carbon-ads"] {
+  [id^="carbonads"] {
+    max-width: 100%;
+    border-radius: 1.25rem;
+    border: none !important;
+  }
+
+  #carbon-responsive {
+    --carbon-padding: 0.6em;
+    --carbon-bg-primary: var(--muted);
+    --carbon-bg-secondary: transparent;
+    --carbon-text-color: var(--foreground);
+    font-size: 12px;
+    border-radius: 1.25rem;
+    border: none !important;
+  }
+
+  #carbon-responsive .carbon-responsive-wrap {
+    border-radius: 1.25rem;
+    border: none !important;
+    overflow: hidden;
+  }
+
+  #carbon-responsive .carbon-responsive-img,
+  #carbon-responsive .carbon-responsive-img img {
+    border-radius: 0.75rem;
+    border: none !important;
+    overflow: hidden;
+  }
+
+  .carbon-wrap {
+    border-radius: 1.25rem;
+    border: none !important;
+    overflow: hidden;
+  }
+
+  .carbon-img,
+  .carbon-img img {
+    border-radius: 0.75rem;
+    border: none !important;
+    overflow: hidden;
+  }
 }
