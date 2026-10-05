@@ -3,7 +3,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { changelogData, type ChangelogItem } from "@/lib/changelog";
-import { components, getPreviewFallback } from "@/lib/registry";
+import {
+  components,
+  getPreviewFallback,
+  getPreviewPoster,
+} from "@/lib/registry";
 import { ViewerProvider } from "@/lib/viewer-context";
 import ComponentPreviewRenderer from "./ComponentPreviewRenderer";
 
@@ -17,9 +21,11 @@ function ChangelogMedia({
   const [currentSrc, setCurrentSrc] = useState(component.preview);
   const [hasError, setHasError] = useState(false);
   const [isInView, setIsInView] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const fallback = getPreviewFallback(component);
+  const poster = getPreviewPoster(component);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -69,28 +75,49 @@ function ChangelogMedia({
     );
   }
 
+  const isMp4 = currentSrc.includes(".mp4");
   const shouldLoad = isInView || isHovered;
-  const posterImage =
-    fallback && !fallback.endsWith(".mp4") ? fallback : undefined;
 
   return (
-    <div ref={containerRef} className="h-full w-full">
-      {currentSrc.includes(".mp4") ? (
+    <div ref={containerRef} className="relative h-full w-full">
+      {poster && (
+        <img
+          src={poster}
+          alt={component.name}
+          loading="lazy"
+          decoding="async"
+          className={
+            "absolute inset-0 z-10 h-full w-full object-contain transition-all duration-700 ease-out group-hover:scale-105 " +
+            (isVideoLoaded && isHovered
+              ? "pointer-events-none opacity-0"
+              : "opacity-100")
+          }
+        />
+      )}
+
+      {isMp4 && (
         <video
           key={currentSrc}
           ref={videoRef}
           src={shouldLoad ? currentSrc : undefined}
-          poster={posterImage}
+          poster={poster || undefined}
           preload={shouldLoad ? "metadata" : "none"}
           loop
           muted
           playsInline
           disablePictureInPicture
           disableRemotePlayback
+          onLoadedData={() => setIsVideoLoaded(true)}
+          onPlaying={() => setIsVideoLoaded(true)}
           onError={handleMediaError}
-          className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
+          className={
+            "h-full w-full object-contain transition-all duration-700 ease-out group-hover:scale-105 " +
+            (poster && !isVideoLoaded ? "opacity-0" : "opacity-100")
+          }
         />
-      ) : (
+      )}
+
+      {!isMp4 && !poster && (
         <img
           key={currentSrc}
           src={shouldLoad ? currentSrc : undefined}

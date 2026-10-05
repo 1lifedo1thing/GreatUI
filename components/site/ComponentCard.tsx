@@ -4,7 +4,12 @@ import React, { useState, useRef, useEffect } from "react";
 import posthog from "posthog-js";
 import { motion } from "motion/react";
 import ComponentPreviewRenderer from "./ComponentPreviewRenderer";
-import { type Component, getPreviewFallback } from "@/lib/registry";
+import { cn } from "@/lib/utils";
+import {
+  type Component,
+  getPreviewFallback,
+  getPreviewPoster,
+} from "@/lib/registry";
 import { ViewerProvider } from "@/lib/viewer-context";
 
 interface ComponentCardProps {
@@ -22,9 +27,11 @@ function CardMedia({
   const [currentSrc, setCurrentSrc] = useState(component.preview);
   const [hasError, setHasError] = useState(false);
   const [isInView, setIsInView] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const fallback = getPreviewFallback(component);
+  const poster = getPreviewPoster(component);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -77,31 +84,53 @@ function CardMedia({
     );
   }
 
+  const isMp4 = currentSrc.includes(".mp4");
   const shouldLoad = isInView || isHovered;
-  const posterImage =
-    fallback && !fallback.endsWith(".mp4") ? fallback : undefined;
 
   return (
     <div
       ref={containerRef}
       className="relative z-10 flex h-full w-full items-center justify-center overflow-hidden bg-neutral-50 dark:bg-neutral-950/80"
     >
-      {currentSrc.includes(".mp4") ? (
+      {poster && (
+        <img
+          src={poster}
+          alt={component.name}
+          loading="lazy"
+          decoding="async"
+          className={cn(
+            "absolute inset-0 z-10 h-full w-full object-cover transition-opacity duration-300",
+            isVideoLoaded && isHovered
+              ? "pointer-events-none opacity-0"
+              : "opacity-100",
+            !isMp4 && "scale-120",
+          )}
+        />
+      )}
+
+      {isMp4 && (
         <video
           key={currentSrc}
           ref={videoRef}
           src={shouldLoad ? currentSrc : undefined}
-          poster={posterImage}
+          poster={poster || undefined}
           preload={shouldLoad ? "metadata" : "none"}
           loop
           muted
           playsInline
           disablePictureInPicture
           disableRemotePlayback
+          onLoadedData={() => setIsVideoLoaded(true)}
+          onPlaying={() => setIsVideoLoaded(true)}
           onError={handleMediaError}
-          className="relative z-10 h-full w-full object-cover"
+          className={cn(
+            "relative z-0 h-full w-full object-cover transition-opacity duration-300",
+            poster && !isVideoLoaded ? "opacity-0" : "opacity-100",
+          )}
         />
-      ) : (
+      )}
+
+      {!isMp4 && !poster && (
         <img
           key={currentSrc}
           src={shouldLoad ? currentSrc : undefined}

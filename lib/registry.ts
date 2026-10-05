@@ -37,6 +37,23 @@ export function getPreviewFallback(component: {
   return fileName ? `/previews/${fileName}` : null;
 }
 
+export function getPreviewPoster(component: {
+  preview?: string;
+}): string | null {
+  if (!component.preview) return null;
+  if (
+    component.preview.endsWith(".png") ||
+    component.preview.endsWith(".webp") ||
+    component.preview.endsWith(".jpg")
+  ) {
+    return component.preview;
+  }
+  const fileName = component.preview.split("/").pop()?.split("?")[0];
+  if (!fileName) return null;
+  const baseName = fileName.replace(/\.[^/.]+$/, "");
+  return `/previews/${baseName}.webp`;
+}
+
 export const components: Component[] = [
   {
     slug: "pixel-swipe-page-transition",
