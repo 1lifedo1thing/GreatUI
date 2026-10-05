@@ -10,7 +10,8 @@ import FloatingMenuPreview from "@/components/site/previews/FloatingMenuPreview"
 import MultilingualQuotePreview from "@/components/site/previews/MultilingualQuotePreview";
 import AccordionPreview from "@/components/site/previews/AccordionPreview";
 import AvatarStackPreview from "@/components/site/previews/AvatarStackPreview";
-import MinimalButtonsPreview from "@/components/site/previews/MinimalButtonsPreview";
+import RevisionTimelinePreview from "@/components/site/previews/RevisionTimelinePreview";
+import TeamSectionPreview from "@/components/site/previews/TeamSectionPreview";
 import InstagramCardPreview from "@/components/site/previews/InstagramCardPreview";
 import PixelToAsciiImagePreview from "@/components/site/previews/PixelToAsciiImagePreview";
 
@@ -108,8 +109,8 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
     ),
   },
   {
-    id: "minimal-buttons",
-    title: "Minimal Buttons",
+    id: "revision-timeline",
+    title: "Revision Timeline",
     icon: (
       <svg
         width="24"
@@ -122,8 +123,30 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
         strokeLinejoin="round"
         className="size-4"
       >
-        <rect width="18" height="12" x="3" y="6" rx="2" />
-        <line x1="8" y1="12" x2="16" y2="12" />
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16 14" />
+      </svg>
+    ),
+  },
+  {
+    id: "team-section",
+    title: "Team Section",
+    icon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="size-4"
+      >
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
       </svg>
     ),
   },
@@ -222,8 +245,10 @@ export function ComponentShowcase() {
         return <AccordionPreview />;
       case "avatar-stack":
         return <AvatarStackPreview />;
-      case "minimal-buttons":
-        return <MinimalButtonsPreview />;
+      case "revision-timeline":
+        return <RevisionTimelinePreview />;
+      case "team-section":
+        return <TeamSectionPreview />;
       case "instagram-card":
         return <InstagramCardPreview />;
       default:

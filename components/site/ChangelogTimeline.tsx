@@ -16,8 +16,30 @@ function ChangelogMedia({
 }) {
   const [currentSrc, setCurrentSrc] = useState(component.preview);
   const [hasError, setHasError] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const fallback = getPreviewFallback(component);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: "300px" },
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -47,25 +69,39 @@ function ChangelogMedia({
     );
   }
 
-  return currentSrc.includes(".mp4") ? (
-    <video
-      key={currentSrc}
-      ref={videoRef}
-      src={currentSrc}
-      loop
-      muted
-      playsInline
-      onError={handleMediaError}
-      className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
-    />
-  ) : (
-    <img
-      key={currentSrc}
-      src={currentSrc}
-      alt={component.name}
-      onError={handleMediaError}
-      className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
-    />
+  const shouldLoad = isInView || isHovered;
+  const posterImage =
+    fallback && !fallback.endsWith(".mp4") ? fallback : undefined;
+
+  return (
+    <div ref={containerRef} className="h-full w-full">
+      {currentSrc.includes(".mp4") ? (
+        <video
+          key={currentSrc}
+          ref={videoRef}
+          src={shouldLoad ? currentSrc : undefined}
+          poster={posterImage}
+          preload={shouldLoad ? "metadata" : "none"}
+          loop
+          muted
+          playsInline
+          disablePictureInPicture
+          disableRemotePlayback
+          onError={handleMediaError}
+          className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
+        />
+      ) : (
+        <img
+          key={currentSrc}
+          src={shouldLoad ? currentSrc : undefined}
+          alt={component.name}
+          loading="lazy"
+          decoding="async"
+          onError={handleMediaError}
+          className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
+        />
+      )}
+    </div>
   );
 }
 

@@ -21,8 +21,30 @@ function CardMedia({
 }) {
   const [currentSrc, setCurrentSrc] = useState(component.preview);
   const [hasError, setHasError] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const fallback = getPreviewFallback(component);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: "300px" },
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -55,24 +77,37 @@ function CardMedia({
     );
   }
 
+  const shouldLoad = isInView || isHovered;
+  const posterImage =
+    fallback && !fallback.endsWith(".mp4") ? fallback : undefined;
+
   return (
-    <div className="relative z-10 flex h-full w-full items-center justify-center overflow-hidden bg-neutral-50 dark:bg-neutral-950/80">
+    <div
+      ref={containerRef}
+      className="relative z-10 flex h-full w-full items-center justify-center overflow-hidden bg-neutral-50 dark:bg-neutral-950/80"
+    >
       {currentSrc.includes(".mp4") ? (
         <video
           key={currentSrc}
           ref={videoRef}
-          src={currentSrc}
+          src={shouldLoad ? currentSrc : undefined}
+          poster={posterImage}
+          preload={shouldLoad ? "metadata" : "none"}
           loop
           muted
           playsInline
+          disablePictureInPicture
+          disableRemotePlayback
           onError={handleMediaError}
           className="relative z-10 h-full w-full object-cover"
         />
       ) : (
         <img
           key={currentSrc}
-          src={currentSrc}
+          src={shouldLoad ? currentSrc : undefined}
           alt={component.name}
+          loading="lazy"
+          decoding="async"
           onError={handleMediaError}
           className="relative z-10 h-full w-full scale-120 object-cover"
         />
