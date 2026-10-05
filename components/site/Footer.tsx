@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import Container from "./Container";
+import { GithubIcon, XIcon } from "./Icons";
 
 export function Footer() {
   const footerRef = useRef<HTMLElement>(null);
@@ -97,7 +98,7 @@ export function Footer() {
       <Container className="relative px-4 pt-16 pb-24 sm:px-6 sm:pb-32 md:pb-40 lg:pb-56">
         <div className="relative z-10 text-center select-none">
           <div className="flex flex-col items-center justify-center gap-y-3 md:gap-y-4">
-            <div className="flex items-center gap-x-6 text-lg font-medium text-neutral-900 sm:text-xl dark:text-white">
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-lg font-medium text-neutral-900 sm:text-xl dark:text-white">
               <Link
                 href="/components"
                 className="transition-colors hover:text-[#f6821f] dark:hover:text-[#f6821f]"
@@ -110,13 +111,36 @@ export function Footer() {
               >
                 Sponsors
               </Link>
-
               <Link
                 href="/changelog"
                 className="transition-colors hover:text-[#f6821f] dark:hover:text-[#f6821f]"
               >
                 Changelog
               </Link>
+              <span
+                className="h-4 w-px bg-neutral-300 dark:bg-neutral-700"
+                aria-hidden="true"
+              />
+              <div className="flex items-center gap-x-4">
+                <a
+                  href="https://github.com/Saurabh-2607/GreatUI"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  className="text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
+                >
+                  <GithubIcon className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://x.com/srbh_here"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="X (formerly Twitter)"
+                  className="text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
+                >
+                  <XIcon className="h-4 w-4" />
+                </a>
+              </div>
             </div>
 
             <div className="flex flex-col items-center gap-y-2 md:flex-row md:gap-x-6">

@@ -12,7 +12,7 @@ export default function CTASection() {
 
   return (
     <div className="relative mx-auto max-w-[1400px]">
-      <Container className="relative py-10 md:py-16">
+      <Container className="relative pt-10 pb-3 md:pt-16 md:pb-4">
         <div className="flex flex-col items-start text-left">
           <h2 className="mt-2 w-full text-3xl leading-[1.1] font-semibold tracking-tight text-balance text-neutral-900 sm:text-4xl md:text-5xl dark:text-neutral-300">
             Ready to build something great?
