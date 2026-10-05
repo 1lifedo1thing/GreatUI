@@ -98,7 +98,8 @@ body {
     border: none !important;
   }
 
-  #carbon-responsive {
+  #carbon-responsive,
+  #carbonads {
     --carbon-padding: 0.6em;
     --carbon-bg-primary: var(--muted);
     --carbon-bg-secondary: transparent;
@@ -106,31 +107,96 @@ body {
     font-size: 12px;
     border-radius: 1.25rem;
     border: none !important;
+    max-width: 100%;
   }
 
-  #carbon-responsive .carbon-responsive-wrap {
-    border-radius: 1.25rem;
-    border: none !important;
-    overflow: hidden;
-  }
-
-  #carbon-responsive .carbon-responsive-img,
-  #carbon-responsive .carbon-responsive-img img {
-    border-radius: 0.75rem;
-    border: none !important;
-    overflow: hidden;
-  }
-
+  #carbon-responsive .carbon-responsive-wrap,
+  #carbon-responsive.carbon-responsive--narrow .carbon-responsive-wrap,
   .carbon-wrap {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 0.625rem !important;
     border-radius: 1.25rem;
     border: none !important;
     overflow: hidden;
+    background-color: var(--muted) !important;
   }
 
-  .carbon-img,
+  #carbon-responsive .carbon-responsive-wrap-bg {
+    background-color: var(--muted) !important;
+  }
+
+  #carbon-responsive .carbon-responsive-wrap-bg::before,
+  #carbon-responsive .carbon-responsive-wrap-bg::after {
+    display: none !important;
+  }
+
+  #carbon-responsive .carbon-img,
+  #carbon-responsive .carbon-img-large,
+  #carbon-responsive.carbon-responsive--narrow .carbon-img,
+  #carbon-responsive.carbon-responsive--narrow .carbon-img-large,
+  .carbon-img {
+    flex: 0 0 100px !important;
+    width: 100px !important;
+    max-width: 100px !important;
+    min-width: 100px !important;
+    height: 100px !important;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: none !important;
+  }
+
+  #carbon-responsive .carbon-img img,
+  #carbon-responsive .carbon-img-large img,
+  #carbon-responsive.carbon-responsive--narrow .carbon-img img,
+  #carbon-responsive.carbon-responsive--narrow .carbon-img-large img,
   .carbon-img img {
+    width: 100px !important;
+    height: 100px !important;
+    max-width: 100px !important;
+    max-height: 100px !important;
+    object-fit: cover !important;
     border-radius: 0.75rem;
     border: none !important;
-    overflow: hidden;
+    display: block !important;
+  }
+
+  #carbon-responsive .carbon-text,
+  .carbon-text {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    color: var(--foreground) !important;
+    text-align: left !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  #carbon-responsive .carbon-description,
+  .carbon-text .carbon-description {
+    font-size: 12px !important;
+    line-height: 1.35 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    color: var(--foreground) !important;
+  }
+
+  .carbon-poweredby,
+  .carbon-via {
+    font-size: 10px !important;
+    text-align: right !important;
+    display: block !important;
+    color: var(--muted-foreground) !important;
+    margin-top: 0.25rem !important;
+    opacity: 0.75 !important;
+  }
+
+  #carbon-cover {
+    display: none !important;
   }
 }
