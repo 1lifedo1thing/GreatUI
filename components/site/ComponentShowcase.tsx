@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Container from "./Container";
 import { cn } from "@/lib/utils";
@@ -9,7 +9,6 @@ import { components } from "@/lib/registry";
 import FloatingMenuPreview from "@/components/site/previews/FloatingMenuPreview";
 import MultilingualQuotePreview from "@/components/site/previews/MultilingualQuotePreview";
 import AccordionPreview from "@/components/site/previews/AccordionPreview";
-import AvatarStackPreview from "@/components/site/previews/AvatarStackPreview";
 import RevisionTimelinePreview from "@/components/site/previews/RevisionTimelinePreview";
 import TeamSectionPreview from "@/components/site/previews/TeamSectionPreview";
 import InstagramCardPreview from "@/components/site/previews/InstagramCardPreview";
@@ -20,6 +19,133 @@ interface ShowcaseItem {
   title: string;
   icon: React.ReactNode;
 }
+
+interface SimulationStep {
+  selector?: string;
+  index?: number;
+  offsetX?: number;
+  offsetY?: number;
+  relX?: number;
+  relY?: number;
+  x?: number;
+  y?: number;
+  action?: "click" | "hover" | "unhover" | "move";
+  duration?: number;
+  wait?: number;
+}
+
+const COMPONENT_SCRIPTS: Record<string, SimulationStep[]> = {
+  "pixel-to-ascii": [
+    {
+      selector: "canvas",
+      relX: 0.5,
+      relY: 0.5,
+      action: "hover",
+      duration: 600,
+      wait: 2000,
+    },
+    { relX: 0.88, relY: 0.85, action: "unhover", duration: 600, wait: 1400 },
+  ],
+  "floating-menu": [
+    {
+      selector: "[class*='h-14'] [class*='space-x-2.5'] > div",
+      action: "click",
+      duration: 650,
+      wait: 850,
+    },
+    {
+      selector: "[class*='h-14'] [class*='space-x-2.5'] > div",
+      action: "click",
+      duration: 600,
+      wait: 1200,
+    },
+    { relX: 0.85, relY: 0.85, action: "unhover", duration: 500, wait: 800 },
+  ],
+  "multilingual-quote": [
+    {
+      selector: "button:nth-of-type(2)",
+      action: "click",
+      duration: 600,
+      wait: 1100,
+    },
+    {
+      selector: "button:nth-of-type(3)",
+      action: "click",
+      duration: 550,
+      wait: 1100,
+    },
+    {
+      selector: "button:nth-of-type(4)",
+      action: "click",
+      duration: 550,
+      wait: 1100,
+    },
+    {
+      selector: "button:nth-of-type(1)",
+      action: "click",
+      duration: 550,
+      wait: 1200,
+    },
+    { relX: 0.85, relY: 0.85, action: "unhover", duration: 500, wait: 600 },
+  ],
+  accordion: [
+    {
+      selector: "div > div:nth-child(2) button",
+      action: "click",
+      duration: 600,
+      wait: 1100,
+    },
+    {
+      selector: "div > div:nth-child(3) button",
+      action: "click",
+      duration: 550,
+      wait: 1100,
+    },
+    {
+      selector: "div > div:nth-child(1) button",
+      action: "click",
+      duration: 550,
+      wait: 1100,
+    },
+    { relX: 0.85, relY: 0.85, action: "unhover", duration: 500, wait: 600 },
+  ],
+  "revision-timeline": [
+    {
+      selector: "button[title='Previous Day']",
+      action: "click",
+      duration: 600,
+      wait: 1100,
+    },
+    {
+      selector: "button[title='Previous Day']",
+      action: "click",
+      duration: 500,
+      wait: 1100,
+    },
+    {
+      selector: "button[title='Next Day']",
+      action: "click",
+      duration: 500,
+      wait: 1100,
+    },
+    { relX: 0.85, relY: 0.85, action: "unhover", duration: 500, wait: 600 },
+  ],
+  "team-section": [
+    { relX: 0.35, relY: 0.5, action: "hover", duration: 600, wait: 700 },
+    { relX: 0.65, relY: 0.5, action: "hover", duration: 600, wait: 800 },
+    { relX: 0.85, relY: 0.85, action: "unhover", duration: 500, wait: 600 },
+  ],
+  "instagram-card": [
+    {
+      selector: "a[href*='instagram']",
+      action: "hover",
+      duration: 600,
+      wait: 800,
+    },
+    { relX: 0.5, relY: 0.32, action: "hover", duration: 500, wait: 1200 },
+    { relX: 0.85, relY: 0.85, action: "unhover", duration: 600, wait: 800 },
+  ],
+};
 
 const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
@@ -83,28 +209,6 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
         className="size-4"
       >
         <path d="M19 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zm0 6H5v-4h14v4zM5 2h14c1.1 0 2 .9 2 2v2H3V4c0-1.1.9-2 2-2zm14 18H5c-1.1 0-2-.9-2-2v-2h18v2c0 1.1-.9 2-2 2z" />
-      </svg>
-    ),
-  },
-  {
-    id: "avatar-stack",
-    title: "Avatar Stack",
-    icon: (
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="size-4"
-      >
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
       </svg>
     ),
   },
@@ -173,17 +277,40 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
   },
 ];
 
+const getSingleCycleDuration = (steps: SimulationStep[]) => {
+  const stepsTime = steps.reduce((sum, step) => {
+    const move = step.duration ?? 500;
+    const actionExtra = step.action === "click" ? 180 : 0;
+    const wait =
+      step.wait ??
+      (step.action === "hover" || step.action === "unhover" ? 600 : 400);
+    return sum + move + actionExtra + wait;
+  }, 0);
+  return stepsTime + 200;
+};
+
+const getSlideDuration = (slideId: string) => {
+  const steps = COMPONENT_SCRIPTS[slideId] || [];
+  if (steps.length === 0) return 8000;
+  return getSingleCycleDuration(steps) * 2;
+};
+
 export function ComponentShowcase() {
   const [activeTabIdx, setActiveTabIdx] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
-  const duration = 6000;
-  const startTimeRef = useRef<number>(0);
-  const elapsedTimeRef = useRef<number>(0);
-  const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
-
+  const idleTimerRef = useRef<NodeJS.Timeout | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const activeTabRef = useRef<HTMLButtonElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+
+  const [cursor, setCursor] = useState({
+    x: 100,
+    y: 100,
+    isDown: false,
+    visible: false,
+    durationMs: 450,
+  });
 
   useEffect(() => {
     if (activeTabRef.current && scrollContainerRef.current) {
@@ -201,37 +328,233 @@ export function ComponentShowcase() {
     }
   }, [activeTabIdx]);
 
-  useEffect(() => {
-    if (isHovered) {
-      if (timeoutIdRef.current) {
-        clearTimeout(timeoutIdRef.current);
-        timeoutIdRef.current = null;
-      }
-      elapsedTimeRef.current += Date.now() - startTimeRef.current;
-    } else {
-      const remaining = Math.max(0, duration - elapsedTimeRef.current);
-      startTimeRef.current = Date.now();
-
-      timeoutIdRef.current = setTimeout(() => {
-        elapsedTimeRef.current = 0;
-        setActiveTabIdx((prev) => (prev + 1) % SHOWCASE_ITEMS.length);
-      }, remaining);
-    }
-
-    return () => {
-      if (timeoutIdRef.current) clearTimeout(timeoutIdRef.current);
-    };
-  }, [isHovered, activeTabIdx]);
-
-  const handleTabClick = (idx: number) => {
-    elapsedTimeRef.current = 0;
-    setActiveTabIdx(idx);
-  };
-
   const activeTab = SHOWCASE_ITEMS[activeTabIdx] || SHOWCASE_ITEMS[0];
+  const activeSlideDuration = getSlideDuration(activeTab.id);
   const activeComponentPreviewVideo = components.find(
     (c) => c.slug === activeTab.id,
   )?.preview;
+
+  const handleTabClick = (idx: number) => {
+    setActiveTabIdx(idx);
+  };
+
+  const handlePointerEnter = () => {
+    if (idleTimerRef.current) {
+      clearTimeout(idleTimerRef.current);
+      idleTimerRef.current = null;
+    }
+    setIsHovered(true);
+    setCursor((c) => ({ ...c, visible: false }));
+  };
+
+  const handlePointerLeave = () => {
+    if (idleTimerRef.current) {
+      clearTimeout(idleTimerRef.current);
+    }
+    idleTimerRef.current = setTimeout(() => {
+      setIsHovered(false);
+    }, 2500);
+  };
+
+  const resolveTargetPosition = useCallback(
+    (container: HTMLElement, step: SimulationStep) => {
+      const containerRect = container.getBoundingClientRect();
+      if (step.selector) {
+        const elements = container.querySelectorAll(step.selector);
+        const el = (
+          step.index !== undefined ? elements[step.index] : elements[0]
+        ) as HTMLElement | undefined;
+        if (el) {
+          const elRect = el.getBoundingClientRect();
+          const targetX =
+            step.offsetX !== undefined
+              ? elRect.left + step.offsetX - containerRect.left
+              : elRect.left + elRect.width / 2 - containerRect.left;
+          const targetY =
+            step.offsetY !== undefined
+              ? elRect.top + step.offsetY - containerRect.top
+              : elRect.top + elRect.height / 2 - containerRect.top;
+          return {
+            x: targetX,
+            y: targetY,
+            element: el,
+          };
+        }
+      }
+      if (step.relX !== undefined && step.relY !== undefined) {
+        return {
+          x: containerRect.width * step.relX,
+          y: containerRect.height * step.relY,
+          element: null,
+        };
+      }
+      return {
+        x: step.x ?? containerRect.width / 2,
+        y: step.y ?? containerRect.height / 2,
+        element: null,
+      };
+    },
+    [],
+  );
+
+  useEffect(() => {
+    if (isHovered) return;
+
+    let isCancelled = false;
+    let activeHoveredEl: HTMLElement | null = null;
+    const steps = COMPONENT_SCRIPTS[activeTab.id] || [];
+    if (steps.length === 0) return;
+
+    const dispatchHover = (el: HTMLElement | null) => {
+      if (!el) return;
+      el.dispatchEvent(
+        new MouseEvent("mouseover", { bubbles: true, cancelable: true }),
+      );
+      el.dispatchEvent(
+        new MouseEvent("mouseenter", { bubbles: true, cancelable: true }),
+      );
+      el.dispatchEvent(
+        new PointerEvent("pointerenter", { bubbles: true, cancelable: true }),
+      );
+      if (el.parentElement) {
+        el.parentElement.dispatchEvent(
+          new MouseEvent("mouseover", { bubbles: true, cancelable: true }),
+        );
+        el.parentElement.dispatchEvent(
+          new MouseEvent("mouseenter", { bubbles: true, cancelable: true }),
+        );
+        el.parentElement.dispatchEvent(
+          new PointerEvent("pointerenter", { bubbles: true, cancelable: true }),
+        );
+      }
+    };
+
+    const dispatchUnhover = (el: HTMLElement | null) => {
+      if (!el) return;
+      el.dispatchEvent(
+        new MouseEvent("mouseout", { bubbles: true, cancelable: true }),
+      );
+      el.dispatchEvent(
+        new MouseEvent("mouseleave", { bubbles: true, cancelable: true }),
+      );
+      el.dispatchEvent(
+        new PointerEvent("pointerleave", { bubbles: true, cancelable: true }),
+      );
+      if (el.parentElement) {
+        el.parentElement.dispatchEvent(
+          new MouseEvent("mouseout", { bubbles: true, cancelable: true }),
+        );
+        el.parentElement.dispatchEvent(
+          new MouseEvent("mouseleave", { bubbles: true, cancelable: true }),
+        );
+        el.parentElement.dispatchEvent(
+          new PointerEvent("pointerleave", { bubbles: true, cancelable: true }),
+        );
+      }
+    };
+
+    async function runAutoplay() {
+      await new Promise((r) => setTimeout(r, 50));
+      if (isCancelled) return;
+
+      const stage = stageRef.current;
+      if (!stage) return;
+
+      const firstPos = resolveTargetPosition(stage, steps[0]);
+      setCursor({
+        x: firstPos.x,
+        y: 24,
+        isDown: false,
+        visible: true,
+        durationMs: 400,
+      });
+
+      let cycles = 0;
+
+      while (!isCancelled && cycles < 2) {
+        for (const step of steps) {
+          if (isCancelled) break;
+          const currentStage = stageRef.current;
+          if (!currentStage) break;
+
+          const target = resolveTargetPosition(currentStage, step);
+          const moveDuration = step.duration ?? 500;
+
+          setCursor({
+            x: target.x,
+            y: target.y,
+            isDown: false,
+            visible: true,
+            durationMs: moveDuration,
+          });
+
+          await new Promise((r) => setTimeout(r, moveDuration));
+          if (isCancelled) break;
+
+          if (step.action === "click") {
+            setCursor((prev) => ({ ...prev, isDown: true }));
+            if (target.element) {
+              target.element.dispatchEvent(
+                new MouseEvent("pointerdown", {
+                  bubbles: true,
+                  cancelable: true,
+                }),
+              );
+              target.element.dispatchEvent(
+                new MouseEvent("mousedown", {
+                  bubbles: true,
+                  cancelable: true,
+                }),
+              );
+              target.element.click();
+              target.element.dispatchEvent(
+                new MouseEvent("mouseup", { bubbles: true, cancelable: true }),
+              );
+              target.element.dispatchEvent(
+                new MouseEvent("pointerup", {
+                  bubbles: true,
+                  cancelable: true,
+                }),
+              );
+            }
+            await new Promise((r) => setTimeout(r, 180));
+            if (isCancelled) break;
+            setCursor((prev) => ({ ...prev, isDown: false }));
+            await new Promise((r) => setTimeout(r, step.wait ?? 600));
+          } else if (step.action === "hover") {
+            if (activeHoveredEl && activeHoveredEl !== target.element) {
+              dispatchUnhover(activeHoveredEl);
+            }
+            dispatchHover(target.element);
+            activeHoveredEl = target.element;
+            await new Promise((r) => setTimeout(r, step.wait ?? 600));
+          } else if (step.action === "unhover") {
+            dispatchUnhover(activeHoveredEl);
+            activeHoveredEl = null;
+            await new Promise((r) => setTimeout(r, step.wait ?? 600));
+          } else {
+            await new Promise((r) => setTimeout(r, step.wait ?? 400));
+          }
+        }
+
+        cycles++;
+        if (cycles < 2 && !isCancelled) {
+          await new Promise((r) => setTimeout(r, 400));
+        }
+      }
+
+      if (!isCancelled && cycles >= 2) {
+        setActiveTabIdx((prev) => (prev + 1) % SHOWCASE_ITEMS.length);
+      }
+    }
+
+    runAutoplay();
+
+    return () => {
+      isCancelled = true;
+      dispatchUnhover(activeHoveredEl);
+    };
+  }, [activeTab.id, isHovered, resolveTargetPosition]);
 
   const renderActiveComponent = () => {
     switch (activeTab.id) {
@@ -243,8 +566,6 @@ export function ComponentShowcase() {
         return <PixelToAsciiImagePreview />;
       case "accordion":
         return <AccordionPreview />;
-      case "avatar-stack":
-        return <AvatarStackPreview />;
       case "revision-timeline":
         return <RevisionTimelinePreview />;
       case "team-section":
@@ -267,9 +588,7 @@ export function ComponentShowcase() {
       <Container>
         <div className="flex w-full items-center justify-center pt-6">
           <div className="relative w-full max-w-full">
-            {/* Left fade mask */}
             <div className="pointer-events-none absolute top-0 bottom-0 left-0 z-10 w-8 bg-gradient-to-r from-white to-transparent md:hidden dark:from-neutral-950" />
-            {/* Right fade mask */}
             <div className="pointer-events-none absolute top-0 right-0 bottom-0 z-10 w-8 bg-gradient-to-l from-white to-transparent md:hidden dark:from-neutral-950" />
 
             <div
@@ -309,7 +628,7 @@ export function ComponentShowcase() {
                           key={activeTabIdx}
                           className="absolute bottom-0 left-0 z-20 h-[2px] bg-[#f6821f]"
                           style={{
-                            animation: "showcase-progress 6s linear forwards",
+                            animation: `showcase-progress ${activeSlideDuration}ms linear forwards`,
                             animationPlayState: isHovered
                               ? "paused"
                               : "running",
@@ -329,17 +648,19 @@ export function ComponentShowcase() {
         <Container>
           <div
             className="w-full overflow-hidden"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            onPointerEnter={handlePointerEnter}
+            onPointerLeave={handlePointerLeave}
           >
-            <div className="relative flex aspect-video min-h-[350px] w-full overflow-hidden rounded-3xl bg-neutral-100/60 dark:bg-neutral-900/60">
+            <div
+              ref={stageRef}
+              className="relative flex aspect-video min-h-[350px] w-full overflow-hidden rounded-3xl bg-neutral-100/60 dark:bg-neutral-900/60"
+            >
               <Link
                 href={`/components/${activeTab.id}`}
                 className="absolute inset-0 z-20 md:hidden"
                 aria-label={`View ${activeTab.title} component`}
               />
 
-              {/* Desktop Link Pill */}
               <div className="absolute right-6 bottom-6 z-30 hidden md:flex">
                 <Link
                   href={`/components/${activeTab.id}`}
@@ -390,6 +711,45 @@ export function ComponentShowcase() {
                   </div>
                 </motion.div>
               </AnimatePresence>
+
+              <div
+                className="pointer-events-none absolute top-0 left-0 z-[100] select-none"
+                style={{
+                  transform: `translate3d(${cursor.x}px, ${cursor.y}px, 0)`,
+                  opacity: cursor.visible && !isHovered ? 1 : 0,
+                  transition: `transform ${cursor.durationMs}ms cubic-bezier(0.22, 1, 0.36, 1), opacity 250ms ease`,
+                }}
+              >
+                <div
+                  className="relative transition-transform duration-150 ease-out"
+                  style={{
+                    transform: cursor.isDown
+                      ? "scale(0.82) rotate(-6deg)"
+                      : "scale(1) rotate(0deg)",
+                    transformOrigin: "top left",
+                  }}
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)]"
+                  >
+                    <path
+                      d="M5.5 3.2L18.8 12.1L12.4 13.5L15.9 20.3L13.2 21.7L9.7 15L5.5 19V3.2Z"
+                      fill="black"
+                      stroke="white"
+                      strokeWidth="1.5"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  {cursor.isDown && (
+                    <span className="absolute -top-1 -left-1 h-6 w-6 animate-ping rounded-full bg-orange-500/50" />
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </Container>
